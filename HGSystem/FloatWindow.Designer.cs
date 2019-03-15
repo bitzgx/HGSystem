@@ -41,7 +41,10 @@
             this.Name = "FloatWindow";
             this.Opacity = 0.5D;
             this.Text = "FloatWindow";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.FloatWindow_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FloatWindow_Paint);
+            this.DoubleClick += new System.EventHandler(this.FloatWindow_DoubleClick);
             this.ResumeLayout(false);
 
         }
