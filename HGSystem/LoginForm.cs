@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace HGSystem
 {
-    public partial class MainForm : Form
+    public partial class LoginForm : Form
     {
         private FormWindowState m_fws_previous;
         private FloatWindow m_float_window;
 
-        public MainForm()
+        public LoginForm()
         {
             InitializeComponent();
 

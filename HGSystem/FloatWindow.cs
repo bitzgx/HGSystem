@@ -13,11 +13,11 @@ namespace HGSystem
 {
     public partial class FloatWindow : Form
     {
-        private MainForm m_parent;
+        private LoginForm m_parent;
         private Point ptMouseCurrrnetPos, ptMouseNewPos, ptFormPos, ptFormNewPos;
         private bool blnMouseDown = false;
 
-        public FloatWindow(MainForm parent)
+        public FloatWindow(LoginForm parent)
         {
             InitializeComponent();
             m_parent = parent;
