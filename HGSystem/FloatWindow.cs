@@ -27,7 +27,7 @@ namespace HGSystem
         {
             System.Drawing.Drawing2D.GraphicsPath mp = new System.Drawing.Drawing2D.GraphicsPath();
             mp.AddEllipse(0, 0, this.Width, this.Height);
-            
+            mp.AddEllipse(this.Width - 20, -20, 40, 40);
             // mp.AddEllipse(60, 20, 20, 20);
             this.Region = new Region(mp);
 
@@ -41,6 +41,8 @@ namespace HGSystem
             // Graphics g3 = Graphics.FromImage(myBitmap);
             g.DrawImage(myBitmap, 1, 1);
 
+            Bitmap cornerBitmap = new Bitmap(@"D:\zhangguixin\myapps\HGSystem\res\corner.png");
+            g.DrawImage(cornerBitmap, this.Width - 20, 0);
         }
 
         private void FloatWindow_Load(object sender, EventArgs e)
