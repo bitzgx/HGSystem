@@ -60,6 +60,7 @@
             this.m_btn_close.Size = new System.Drawing.Size(34, 30);
             this.m_btn_close.TabIndex = 8;
             this.m_btn_close.UseVisualStyleBackColor = true;
+            this.m_btn_close.Click += new System.EventHandler(this.m_btn_close_Click);
             // 
             // m_btn_minimize
             // 
@@ -156,10 +157,13 @@
             this.Controls.Add(this.m_btn_hgplan);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.m_btn_content);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

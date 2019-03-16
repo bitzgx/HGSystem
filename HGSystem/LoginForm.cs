@@ -60,7 +60,8 @@ namespace HGSystem
         {
             MainForm mf = new MainForm();
             this.Hide();
-            mf.Show();
+            mf.ShowDialog();
+            Application.ExitThread(); // mainthread change to MainForm
         }
     }
 }
