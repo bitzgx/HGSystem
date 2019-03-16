@@ -47,7 +47,7 @@ namespace HGSystem
     } 
     public class ButtonEx : Button
     {
-        private Color _baseColor = Color.FromArgb(251, 161, 224);//基颜色
+        private Color _baseColor = Color.FromArgb(32, 78, 45);//基颜色
         private ControlState _controlState;//控件状态
         private int _imageWidth = 18;
         private RoundStyle _roundStyle = RoundStyle.All;//圆角
@@ -162,7 +162,7 @@ namespace HGSystem
 
         private void CalculateRect(out Rectangle imageRect, out Rectangle textRect)
         {
-            // TODO: 
+            // TODO: 根据图片大小和文字大小重新计算大小
             imageRect = new Rectangle(0, 0, this.Width, this.Height);
             textRect = new Rectangle(0, 0, this.Width, this.Height);
         }
