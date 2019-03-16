@@ -28,13 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.buttonEx1 = new HGSystem.ButtonEx();
             this.SuspendLayout();
+            // 
+            // buttonEx1
+            // 
+            this.buttonEx1.Location = new System.Drawing.Point(57, 36);
+            this.buttonEx1.Name = "buttonEx1";
+            this.buttonEx1.Size = new System.Drawing.Size(341, 50);
+            this.buttonEx1.TabIndex = 0;
+            this.buttonEx1.Text = "buttonEx1";
+            this.buttonEx1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 730);
+            this.Controls.Add(this.buttonEx1);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -44,5 +55,9 @@
         }
 
         #endregion
+
+        private ButtonEx buttonEx1;
+
+
     }
 }
