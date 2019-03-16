@@ -45,6 +45,9 @@
             this.Load += new System.EventHandler(this.FloatWindow_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FloatWindow_Paint);
             this.DoubleClick += new System.EventHandler(this.FloatWindow_DoubleClick);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FloatWindow_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FloatWindow_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FloatWindow_MouseUp);
             this.ResumeLayout(false);
 
         }

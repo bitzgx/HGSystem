@@ -14,6 +14,9 @@ namespace HGSystem
     public partial class FloatWindow : Form
     {
         private MainForm m_parent;
+        private Point ptMouseCurrrnetPos, ptMouseNewPos, ptFormPos, ptFormNewPos;
+        private bool blnMouseDown = false;
+
         public FloatWindow(MainForm parent)
         {
             InitializeComponent();
@@ -42,6 +45,7 @@ namespace HGSystem
             this.Height = 60;
         }
 
+        /*
         // drag and drop
         const int WM_NCHITTEST = 0x0084;
         const int HTCLIENT = 0x0001;
@@ -60,6 +64,7 @@ namespace HGSystem
                     break;
             }
         }
+         * */
 
         private void FloatWindow_DoubleClick(object sender, EventArgs e)
         {
@@ -72,6 +77,44 @@ namespace HGSystem
             m_parent.RestoreWindow();
             //Hide top most window
             this.Hide();
+        }
+
+        private void FloatWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (blnMouseDown)
+            {
+                //Get the current position of the mouse in the screen
+                ptMouseNewPos = Control.MousePosition;
+
+                //Set window position
+                ptFormNewPos.X = ptMouseNewPos.X - ptMouseCurrrnetPos.X + ptFormPos.X;
+                ptFormNewPos.Y = ptMouseNewPos.Y - ptMouseCurrrnetPos.Y + ptFormPos.Y;
+
+                //Save window position
+                Location = ptFormNewPos;
+                ptFormPos = ptFormNewPos;
+
+                //Save mouse position
+                ptMouseCurrrnetPos = ptMouseNewPos;
+            }      
+        }
+
+        private void FloatWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                blnMouseDown = true;
+                // Save window position and mouse position
+                ptMouseCurrrnetPos = Control.MousePosition;
+                ptFormPos = Location;
+            }
+        }
+
+        private void FloatWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                //Return back signal
+                blnMouseDown = false;
         }
     }
 }
