@@ -19,7 +19,9 @@ namespace HGSystem
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            ContentPublish cp = new ContentPublish();
+            cp.Location = new Point(0, 150);
+            this.Controls.Add(cp);
         }
 
         private void MainForm_Paint(object sender, PaintEventArgs e)

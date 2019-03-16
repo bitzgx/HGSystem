@@ -44,8 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AlbumInfo.Designer.cs">
+      <DependentUpon>AlbumInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ButtonEx.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ContentPublish.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ContentPublish.Designer.cs">
+      <DependentUpon>ContentPublish.cs</DependentUpon>
     </Compile>
     <Compile Include="EllipseButton.cs">
       <SubType>Component</SubType>
@@ -71,6 +83,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AlbumInfo.resx">
+      <DependentUpon>AlbumInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContentPublish.resx">
+      <DependentUpon>ContentPublish.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FloatWindow.resx">
       <DependentUpon>FloatWindow.cs</DependentUpon>
     </EmbeddedResource>
