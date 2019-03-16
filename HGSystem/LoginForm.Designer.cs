@@ -75,6 +75,7 @@
             this.m_btn_login.TabIndex = 4;
             this.m_btn_login.Text = "登录";
             this.m_btn_login.UseVisualStyleBackColor = true;
+            this.m_btn_login.Click += new System.EventHandler(this.m_btn_login_Click);
             // 
             // m_btn_resetpwd
             // 

@@ -55,5 +55,12 @@ namespace HGSystem
             }
 
         }
+
+        private void m_btn_login_Click(object sender, EventArgs e)
+        {
+            MainForm mf = new MainForm();
+            this.Hide();
+            mf.Show();
+        }
     }
 }
