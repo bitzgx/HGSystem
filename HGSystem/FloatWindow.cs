@@ -26,23 +26,29 @@ namespace HGSystem
         private void FloatWindow_Paint(object sender, PaintEventArgs e)
         {
             System.Drawing.Drawing2D.GraphicsPath mp = new System.Drawing.Drawing2D.GraphicsPath();
-            mp.AddEllipse(20, 20, this.Width - 20, this.Height - 20);
+            mp.AddEllipse(0, 0, this.Width, this.Height);
+            
             // mp.AddEllipse(60, 20, 20, 20);
             this.Region = new Region(mp);
 
             Graphics g = e.Graphics;
-            Color FColor = Color.Red;
+            /*Color FColor = Color.Red;
             Color TColor = Color.Yellow;
             Brush b = new LinearGradientBrush(this.ClientRectangle, FColor, TColor, LinearGradientMode.ForwardDiagonal);
-            g.FillRectangle(b, this.ClientRectangle);
+            g.FillRectangle(b, this.ClientRectangle);*/
+
+            Bitmap myBitmap = new Bitmap(@"D:\zhangguixin\myapps\HGSystem\res\float2.png");
+            // Graphics g3 = Graphics.FromImage(myBitmap);
+            g.DrawImage(myBitmap, 1, 1);
+
         }
 
         private void FloatWindow_Load(object sender, EventArgs e)
         {
-            this.Top = 20;
-            this.Left = Screen.PrimaryScreen.Bounds.Width - 80;
-            this.Width = 60;
-            this.Height = 60;
+            this.Top = Screen.PrimaryScreen.Bounds.Height - 500;
+            this.Left = Screen.PrimaryScreen.Bounds.Width - 100;
+            this.Width = 75;
+            this.Height = 75;
         }
 
         /*

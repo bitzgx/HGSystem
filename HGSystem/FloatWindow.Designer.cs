@@ -34,12 +34,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(100, 100);
+            this.ClientSize = new System.Drawing.Size(220, 192);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FloatWindow";
-            this.Opacity = 0.5D;
             this.Text = "FloatWindow";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FloatWindow_Load);
@@ -53,5 +52,6 @@
         }
 
         #endregion
+
     }
 }
