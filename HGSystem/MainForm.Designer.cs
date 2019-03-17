@@ -117,6 +117,7 @@
             this.m_btn_material.TabIndex = 3;
             this.m_btn_material.Text = "素材专栏";
             this.m_btn_material.UseVisualStyleBackColor = true;
+            this.m_btn_material.Click += new System.EventHandler(this.m_btn_material_Click);
             // 
             // m_btn_hgplan
             // 

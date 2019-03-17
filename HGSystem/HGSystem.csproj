@@ -75,6 +75,8 @@
     <Compile Include="HGPlan.Designer.cs">
       <DependentUpon>HGPlan.cs</DependentUpon>
     </Compile>
+    <Compile Include="HGRestfulAPI.cs" />
+    <Compile Include="HTTPClientHelper.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,8 +89,10 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\HGCaptcha.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResponseModel.cs" />
     <EmbeddedResource Include="AlbumInfo.resx">
       <DependentUpon>AlbumInfo.cs</DependentUpon>
     </EmbeddedResource>
