@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<HelpMapper>
+  <GetCompany>
+    SELECT * FROM dbo.Company t WHERE t.CompanyId=@CompanyId;
+  </GetCompany>
+  <GetTeamList>
+    <![CDATA[
+SELECT
+	*,
+	(
+		SELECT
+			COUNT(DISTINCT uf.UserId)
+		FROM dbo.UserFocus uf
+		WHERE uf.CompanyId=@CompanyId
+			AND uf.ObjectTypeId=t.ObjectTypeId
+			AND uf.ObjectId=t.ObjectId
+	) FocusTotal,
+	(
+		SELECT
+			COUNT(DISTINCT tm.UserId)
+		FROM dbo.TeamMember tm
+		WHERE tm.CompanyId=@CompanyId
+			AND tm.ObjectTypeId=t.ObjectTypeId
+			AND tm.ObjectId=t.ObjectId
+			AND tm.Status=1
+	) MemberTotal
+FROM
+(
+	SELECT
+		1 Type,
+		t.TeamId Id,
+		t.ObjectTypeId,
+		t.ObjectId,
+		t.ObjectName,
+		t.CreateDate
+	FROM dbo.Team t
+	WHERE t.CompanyId=@CompanyId
+		AND t.Status=1
+		AND t.ObjectTypeId=@OjectTypeId UNION ALL SELECT
+		0 Type,
+		t.MySelfTeamId Id,
+		t.ObjectTypeId,
+		t.ObjectId,
+		t.ObjectName,
+		t.CreateDate
+	FROM dbo.MySelfTeamRelation t
+	WHERE t.CompanyId=@CompanyId
+		AND t.Status=1
+		AND t.ObjectTypeId=@OjectTypeId
+) t
+ORDER BY t.Type ASC, t.CreateDate DESC;
+    ]]>
+  </GetTeamList>
+  <GetTeamFocusMemberUserList>
+    <![CDATA[
+SELECT
+	CASE
+		WHEN m.UserId IS NULL THEN CASE WHEN x.UserId IS NULL THEN '' ELSE CONCAT('[',ISNULL(x.UserId,y.UserId),']','User表数据不存在') END
+		ELSE CONCAT('[', m.UserId, '] ', m.ChnName, ' | ', m.Email)
+	END FocusUser,
+	CASE
+		WHEN n.UserId IS NULL THEN CASE WHEN y.UserId IS NULL THEN '' ELSE CONCAT('[',ISNULL(x.UserId,y.UserId),']','User表数据不存在') END
+		ELSE CONCAT('[', n.UserId, '] ', n.ChnName, ' | ', n.Email)
+	END MemberUser,
+	(
+		SELECT b.RoleTypeName+'/' FROM(
+			SELECT DISTINCT
+				t.RoleTypeId
+			FROM dbo.TeamMember t
+			WHERE t.CompanyId=@CompanyId
+				AND t.ObjectTypeId=@OjectTypeId
+				AND t.ObjectId=@OjectId
+				AND t.Status=1
+				AND t.UserId=ISNULL(x.UserId,y.UserId)
+		) a INNER JOIN dbo.RoleType b ON a.RoleTypeId=b.RoleTypeId
+		FOR XML PATH('')
+	) RoleTypes
+FROM
+(
+	SELECT DISTINCT
+		t.UserId
+	FROM dbo.UserFocus t
+	WHERE t.CompanyId=@CompanyId
+		AND t.ObjectTypeId=@OjectTypeId
+		AND t.ObjectId=@OjectId
+) x
+FULL JOIN
+(
+	SELECT DISTINCT
+		t.UserId
+	FROM dbo.TeamMember t
+	WHERE t.CompanyId=@CompanyId
+		AND t.ObjectTypeId=@OjectTypeId
+		AND t.ObjectId=@OjectId
+		AND t.Status=1
+) y
+	ON x.UserId=y.UserId
+LEFT JOIN dbo.[USER] m
+	ON x.UserId=m.UserId
+LEFT JOIN dbo.[USER] n
+	ON y.UserId=n.UserId
+ORDER BY ISNULL(x.UserId, y.UserId) ASC;
+    ]]>
+  </GetTeamFocusMemberUserList>
+  <GetCompanyManager>
+    SELECT CONCAT('[',u.UserId,']',u.ChnName,'|',u.Email) FROM dbo.[User] u WHERE u.UserId IN(SELECT uc.UserId FROM dbo.UserCompany uc WHERE uc.CompanyId=@CompanyId AND uc.IsManager=1);
+  </GetCompanyManager>
+</HelpMapper>

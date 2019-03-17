@@ -1,0 +1,18 @@
+        private static T GetSqlMapper<T>(string xmlFileName) where T : new()
+        {
+            try
+            {
+                return (T)new YAXLib.YAXSerializer(typeof(T)).DeserializeFromFile($@"{AppDomain.CurrentDomain.BaseDirectory}App_Data/SqlMapper/{xmlFileName}");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Fatal($"É¾³ýÎÄ¼þ Ourtm.Entity.SqlMapper.{xmlFileName.Replace("xml", "cs")} ÊôÐÔ£»{ex.Message}", ex);
+                throw;
+            }
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static HelpMapper HelpMapper { get; set; } = GetSqlMapper<HelpMapper>("HelpMapper.xml");
