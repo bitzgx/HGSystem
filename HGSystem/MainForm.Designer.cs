@@ -129,6 +129,7 @@
             this.m_btn_hgplan.TabIndex = 2;
             this.m_btn_hgplan.Text = "红广计划";
             this.m_btn_hgplan.UseVisualStyleBackColor = true;
+            this.m_btn_hgplan.Click += new System.EventHandler(this.m_btn_hgplan_Click);
             // 
             // m_btn_content
             // 

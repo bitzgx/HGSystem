@@ -69,6 +69,12 @@
       <DependentUpon>FloatWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="GraphicsPathHelper.cs" />
+    <Compile Include="HGPlan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HGPlan.Designer.cs">
+      <DependentUpon>HGPlan.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FloatWindow.resx">
       <DependentUpon>FloatWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HGPlan.resx">
+      <DependentUpon>HGPlan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
