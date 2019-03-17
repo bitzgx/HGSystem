@@ -87,6 +87,7 @@ namespace HGSystem
             */
             
             string strURL = "https://edutest.hongkazhijia.com/platform/login/getImage";
+            /*
             System.Net.HttpWebRequest request;
             request = (System.Net.HttpWebRequest)WebRequest.Create(strURL);
             //Post请求方式
@@ -114,6 +115,10 @@ namespace HGSystem
             string responseText = myreader.ReadToEnd();
             myreader.Close();
             Console.WriteLine(responseText);
+            */
+
+            // String res = HttpHelper.HttpPostData(strURL, null);
+            // Console.WriteLine(res);
 
             HGRestfulAPI.getInstance().getHGCaptcha();
         }

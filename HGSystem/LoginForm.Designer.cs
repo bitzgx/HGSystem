@@ -40,32 +40,36 @@
             // 
             // m_tbx_mobile
             // 
-            this.m_tbx_mobile.Location = new System.Drawing.Point(410, 310);
+            this.m_tbx_mobile.Font = new System.Drawing.Font("宋体", 12F);
+            this.m_tbx_mobile.Location = new System.Drawing.Point(410, 306);
             this.m_tbx_mobile.Name = "m_tbx_mobile";
-            this.m_tbx_mobile.Size = new System.Drawing.Size(244, 21);
+            this.m_tbx_mobile.Size = new System.Drawing.Size(244, 26);
             this.m_tbx_mobile.TabIndex = 0;
             // 
             // m_tbx_password
             // 
-            this.m_tbx_password.Location = new System.Drawing.Point(410, 361);
+            this.m_tbx_password.Font = new System.Drawing.Font("宋体", 12F);
+            this.m_tbx_password.Location = new System.Drawing.Point(410, 356);
             this.m_tbx_password.Name = "m_tbx_password";
-            this.m_tbx_password.Size = new System.Drawing.Size(244, 21);
+            this.m_tbx_password.Size = new System.Drawing.Size(244, 26);
             this.m_tbx_password.TabIndex = 1;
             // 
             // m_tbx_captcha
             // 
-            this.m_tbx_captcha.Location = new System.Drawing.Point(410, 413);
+            this.m_tbx_captcha.Font = new System.Drawing.Font("宋体", 12F);
+            this.m_tbx_captcha.Location = new System.Drawing.Point(410, 411);
             this.m_tbx_captcha.Name = "m_tbx_captcha";
-            this.m_tbx_captcha.Size = new System.Drawing.Size(152, 21);
+            this.m_tbx_captcha.Size = new System.Drawing.Size(140, 26);
             this.m_tbx_captcha.TabIndex = 2;
             // 
             // m_pbx_captcha
             // 
-            this.m_pbx_captcha.Location = new System.Drawing.Point(577, 411);
+            this.m_pbx_captcha.Location = new System.Drawing.Point(556, 408);
             this.m_pbx_captcha.Name = "m_pbx_captcha";
-            this.m_pbx_captcha.Size = new System.Drawing.Size(77, 26);
+            this.m_pbx_captcha.Size = new System.Drawing.Size(98, 32);
             this.m_pbx_captcha.TabIndex = 3;
             this.m_pbx_captcha.TabStop = false;
+            this.m_pbx_captcha.Click += new System.EventHandler(this.m_pbx_captcha_Click);
             // 
             // m_btn_login
             // 

@@ -21,6 +21,8 @@ namespace HGSystem
 
             m_fws_previous = this.WindowState;                
             m_float_window = new FloatWindow(this);
+            // m_pbx_captcha.Image = HGRestfulAPI.getInstance().GetImageFromBase64(HGRestfulAPI.getInstance().getHGCaptcha().Img);
+            m_pbx_captcha.Image = HGRestfulAPI.getInstance().GetBitmapFromBase64(HGRestfulAPI.getInstance().getHGCaptcha().Img);
         }
 
         private void btn_float_Click(object sender, EventArgs e)
@@ -62,6 +64,11 @@ namespace HGSystem
             this.Hide();
             mf.ShowDialog();
             Application.ExitThread(); // mainthread change to MainForm
+        }
+
+        private void m_pbx_captcha_Click(object sender, EventArgs e)
+        {
+            m_pbx_captcha.Image = HGRestfulAPI.getInstance().GetBitmapFromBase64(HGRestfulAPI.getInstance().getHGCaptcha().Img);
         }
     }
 }

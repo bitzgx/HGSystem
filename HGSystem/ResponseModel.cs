@@ -44,7 +44,7 @@ namespace HGSystem
         }
 
     }
-    public class HttpHelper
+    public class HttpHelper2
     {
         private string accept = "application/json,text/javascrip{过滤}t,text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
         private System.Net.CookieContainer cc = new System.Net.CookieContainer();
