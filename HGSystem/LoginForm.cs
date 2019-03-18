@@ -64,15 +64,24 @@ namespace HGSystem
 
         private void m_btn_login_Click(object sender, EventArgs e)
         {
+            String mobile = "15811208494";
+            String password = "hongka1018";
+            String vcode = "8888";
+            String vtoken = m_hg_captcha.Vtoken;
+            HGRestfulAPI.getInstance().login(mobile, password, vcode, vtoken);
+
+            /*
             MainForm mf = new MainForm();
             this.Hide();
             mf.ShowDialog();
             Application.ExitThread(); // mainthread change to MainForm
+             */
         }
 
         private void m_pbx_captcha_Click(object sender, EventArgs e)
         {
             m_hg_captcha = HGRestfulAPI.getInstance().getHGCaptcha();
+            Console.WriteLine("vtoken " + m_hg_captcha.Vtoken);
             if (m_hg_captcha != null)
                 m_pbx_captcha.Image = HGRestfulAPI.getInstance().GetBitmapFromBase64(m_hg_captcha.Img);
         }

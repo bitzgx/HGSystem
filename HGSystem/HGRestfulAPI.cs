@@ -29,7 +29,8 @@ namespace HGSystem
 
     public class HGRestfulAPI
     {
-        private static String BaseUrl = "https://edutest.hongkazhijia.com";
+        private static String BaseUrl = "https://edutest.hongkazhijia.com"; // for test
+        // private static String BaseUrl = "https://edut.hongkazhijia.com"; // for production
         private static HGRestfulAPI m_hg_restfulapi = new HGRestfulAPI();
         private HGRestfulAPI()
         {
@@ -40,9 +41,17 @@ namespace HGSystem
             return m_hg_restfulapi;
         }
 
-        public static void login(string _mobile, string _password, string _vcode, string _vtoken)
+        public void login(string _mobile, string _password, string _vcode, string _vtoken)
         {
-
+            String captchaUrl = "/platform/school/ymsLogin";
+            String postData = "mobile=" + _mobile + "&password=" + _password + "&vcode=" + _vcode + "&vtoken" + _vtoken;
+            // HGCaptcha hgc = new HGCaptcha();
+            postData = "{\"mobile\":\"13488613602\",\"password\":\"7b490bbb31fb36019a941d64d6077e07\",\"vcode\":\"eq32\",\"vtoken\":\"f3697b30-a5c7-46db-ae7b-140e7a1037f1\"}";
+            String res = HttpHelper.HttpPostJsonData(BaseUrl + captchaUrl, postData);
+            if (res != null)
+            {
+                //TODO: HGResponse<HGCaptcha> hgr = JsonNewtonsoft.FromJSON<HGResponse<HGCaptcha>>(res);
+            }
         }
 
         public Bitmap GetBitmapFromBase64(string base64string)

@@ -104,6 +104,45 @@ namespace HGSystem
             }
             return "";
         }
+        /// <summary>
+        /// http请求提交数据
+        /// </summary>
+        /// <param name="strPostUrl"></param>
+        /// <param name="strPostData"></param>
+        /// <returns></returns>
+        public static string HttpPostJsonData(string strPostUrl, string strPostData)
+        {
+            UTF8Encoding encoding = new UTF8Encoding();
+            if (strPostData == null)
+                strPostData = "";
+            byte[] b = encoding.GetBytes(strPostData);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(strPostUrl);
+            request.Method = "POST";
+            request.ContentType = "application/json";
+            request.ContentLength = b.Length;
+            try
+            {
+                using (Stream stream = request.GetRequestStream())
+                {
+                    stream.Write(b, 0, b.Length);
+                }
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        using (StreamReader read = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+                        {
+                            return read.ReadToEnd();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("在HttpHelper类HttpPostData方法出错", ex);
+            }
+            return "";
+        }
 
     }
     public class HTTPClientHelper
