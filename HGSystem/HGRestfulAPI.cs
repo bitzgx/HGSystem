@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HGSystem.Model;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using System.Drawing;
 using System.IO;
@@ -12,6 +13,20 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace HGSystem
 {
+    [Serializable()]
+    public class HGResponse<T>
+    {
+        private int status;
+        private String msg;
+        private long time;
+        private T data;
+
+        public int Status { get; set; }
+        public String Msg { get; set; }
+        public long Time { get; set; }
+        public T Data { get; set; }
+    }
+
     public class HGRestfulAPI
     {
         private static String BaseUrl = "https://edutest.hongkazhijia.com";
@@ -23,6 +38,11 @@ namespace HGSystem
         public static HGRestfulAPI getInstance()
         {
             return m_hg_restfulapi;
+        }
+
+        public static void login(string _mobile, string _password, string _vcode, string _vtoken)
+        {
+
         }
 
         public Bitmap GetBitmapFromBase64(string base64string)
@@ -67,41 +87,15 @@ namespace HGSystem
         public HGCaptcha getHGCaptcha()
         {
             String captchaUrl = "/platform/login/getImage";
-            HGCaptcha hgc = new HGCaptcha();
+            // HGCaptcha hgc = new HGCaptcha();
             String res = HttpHelper.HttpPostData(BaseUrl + captchaUrl, null);
             if (res != null)
             {
-                JavaScriptObject jso = JavaScriptConvert.DeserializeObject<JavaScriptObject>(res);
-                if (jso.ContainsKey("status") && jso["status"] != null)
-                {
-                    Console.WriteLine("status is " + jso["status"]);
-                }
-                if (jso.ContainsKey("msg") && jso["msg"] != null)
-                {
-                    Console.WriteLine("msg is " + jso["msg"]);
-                }
-                if (jso.ContainsKey("time") && jso["time"] != null)
-                {
-                    Console.WriteLine("time is " + jso["time"]);
-                }
-                if (jso.ContainsKey("data") && jso["data"] != null)
-                {
-                    // Console.WriteLine("data is " + jso["data"]);
-                    JavaScriptObject jso2 = (JavaScriptObject)jso["data"];// JavaScriptConvert.DeserializeObject<JavaScriptObject>(jso["data"].ToString());
-
-                    if (jso2.ContainsKey("vtoken") && jso2["vtoken"] != null)
-                    {
-                        Console.WriteLine("vtoken is " + jso2["vtoken"]);
-                        hgc.Vtoken = (string)jso2["vtoken"];
-                    }
-                    if (jso2.ContainsKey("img") && jso2["img"] != null)
-                    {
-                        Console.WriteLine("img is " + jso2["img"]);
-                        hgc.Img = (string)jso2["img"];
-                    }
-                }
+                HGResponse<HGCaptcha> hgr = JsonNewtonsoft.FromJSON<HGResponse<HGCaptcha>>(res);
+                return hgr.Data;
             }
-            return hgc;
+            return null;
         }
     }
+    
 }
