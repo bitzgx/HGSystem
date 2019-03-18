@@ -50,7 +50,7 @@ namespace HGSystem
             String res = HttpHelper.HttpPostJsonData(BaseUrl + captchaUrl, postData);
             if (res != null)
             {
-                //TODO: HGResponse<HGCaptcha> hgr = JsonNewtonsoft.FromJSON<HGResponse<HGCaptcha>>(res);
+                HGResponse<HGUser> hgr = JsonNewtonsoft.FromJSON<HGResponse<HGUser>>(res);
             }
         }
 
