@@ -41,16 +41,60 @@ namespace HGSystem
             return m_hg_restfulapi;
         }
 
+        public string CreateMD5Hash(string input)
+        {
+            // Use input string to calculate MD5 hash
+            System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+            byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+            // Convert the byte array to hexadecimal string
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hashBytes.Length; i++)
+            {
+                sb.Append(hashBytes[i].ToString("x2"));
+                // To force the hex string to lower-case letters instead of
+                // upper-case, use he following line instead:
+                // sb.Append(hashBytes[i].ToString("x2")); 
+            }
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// 32位MD5加密
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static string MD5Encrypt32(string password)
+        {
+            string cl = password;
+            string pwd = "";
+            System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create(); //实例化一个md5对像
+            // 加密后是一个字节类型的数组，这里要注意编码UTF8/Unicode等的选择　
+            byte[] s = md5.ComputeHash(Encoding.UTF8.GetBytes(cl));
+            // 通过使用循环，将字节类型的数组转换为字符串，此字符串是常规字符格式化所得
+            for (int i = 0; i < s.Length; i++)
+            {
+                // 将得到的字符串使用十六进制类型格式。格式后的字符是小写的字母，如果使用大写（X）则格式后的字符是大写字符 
+                pwd = pwd + s[i].ToString("x");
+            }
+            return pwd;
+        }
+
         public void login(string _mobile, string _password, string _vcode, string _vtoken)
         {
             String captchaUrl = "/platform/school/ymsLogin";
-            String postData = "mobile=" + _mobile + "&password=" + _password + "&vcode=" + _vcode + "&vtoken" + _vtoken;
+            String pwd_md5 = CreateMD5Hash(_password);
+            String new_pwd = pwd_md5 + "hongka";
+            String pwd2_md5 = CreateMD5Hash(new_pwd);
+            String postData = "mobile=" + _mobile + "&password=" + pwd2_md5 + "&vcode=" + _vcode + "&vtoken" + _vtoken;
             // HGCaptcha hgc = new HGCaptcha();
-            postData = "{\"mobile\":\"13488613602\",\"password\":\"7b490bbb31fb36019a941d64d6077e07\",\"vcode\":\"eq32\",\"vtoken\":\"f3697b30-a5c7-46db-ae7b-140e7a1037f1\"}";
+            // postData = "{\"mobile\":\"13488613602\",\"password\":\"7b490bbb31fb36019a941d64d6077e07\",\"vcode\":\"eq32\",\"vtoken\":\"f3697b30-a5c7-46db-ae7b-140e7a1037f1\"}";
+            postData = "{\"mobile\":\"" + _mobile + "\",\"password\":\"" + pwd2_md5 + "\",\"vcode\":\"" + _vcode + "\",\"vtoken\":\"" + _vtoken + "\"}";
             String res = HttpHelper.HttpPostJsonData(BaseUrl + captchaUrl, postData);
             if (res != null)
             {
-                HGResponse<HGUser> hgr = JsonNewtonsoft.FromJSON<HGResponse<HGUser>>(res);
+                // HGResponse<HGUser> hgr = JsonNewtonsoft.FromJSON<HGResponse<HGUser>>(res);
             }
         }
 

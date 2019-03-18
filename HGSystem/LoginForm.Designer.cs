@@ -45,6 +45,7 @@
             this.m_tbx_mobile.Name = "m_tbx_mobile";
             this.m_tbx_mobile.Size = new System.Drawing.Size(244, 26);
             this.m_tbx_mobile.TabIndex = 0;
+            this.m_tbx_mobile.Text = "13488613602";
             // 
             // m_tbx_password
             // 
@@ -53,6 +54,7 @@
             this.m_tbx_password.Name = "m_tbx_password";
             this.m_tbx_password.Size = new System.Drawing.Size(244, 26);
             this.m_tbx_password.TabIndex = 1;
+            this.m_tbx_password.Text = "hongka1018";
             // 
             // m_tbx_captcha
             // 

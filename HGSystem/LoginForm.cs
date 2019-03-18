@@ -64,9 +64,9 @@ namespace HGSystem
 
         private void m_btn_login_Click(object sender, EventArgs e)
         {
-            String mobile = "15811208494";
-            String password = "hongka1018";
-            String vcode = "8888";
+            String mobile = m_tbx_mobile.Text; // "13488613602";// "15811208494";
+            String password = m_tbx_password.Text; // "hongka1018";
+            String vcode = m_tbx_captcha.Text;
             String vtoken = m_hg_captcha.Vtoken;
             HGRestfulAPI.getInstance().login(mobile, password, vcode, vtoken);
 
