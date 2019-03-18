@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HGSystem.Model;
 
 namespace HGSystem
 {
@@ -14,6 +15,7 @@ namespace HGSystem
     {
         private FormWindowState m_fws_previous;
         private FloatWindow m_float_window;
+        private HGCaptcha m_hg_captcha;
 
         public LoginForm()
         {
@@ -21,8 +23,10 @@ namespace HGSystem
 
             m_fws_previous = this.WindowState;                
             m_float_window = new FloatWindow(this);
+
+            m_pbx_captcha_Click(this, null);
             // m_pbx_captcha.Image = HGRestfulAPI.getInstance().GetImageFromBase64(HGRestfulAPI.getInstance().getHGCaptcha().Img);
-            m_pbx_captcha.Image = HGRestfulAPI.getInstance().GetBitmapFromBase64(HGRestfulAPI.getInstance().getHGCaptcha().Img);
+            
         }
 
         private void btn_float_Click(object sender, EventArgs e)
@@ -68,7 +72,9 @@ namespace HGSystem
 
         private void m_pbx_captcha_Click(object sender, EventArgs e)
         {
-            m_pbx_captcha.Image = HGRestfulAPI.getInstance().GetBitmapFromBase64(HGRestfulAPI.getInstance().getHGCaptcha().Img);
+            m_hg_captcha = HGRestfulAPI.getInstance().getHGCaptcha();
+            if (m_hg_captcha != null)
+                m_pbx_captcha.Image = HGRestfulAPI.getInstance().GetBitmapFromBase64(m_hg_captcha.Img);
         }
     }
 }
