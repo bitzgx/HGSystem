@@ -66,6 +66,11 @@ namespace HGSystem
             String mobile = m_tbx_mobile.Text; // "13488613602";// "15811208494";
             String password = m_tbx_password.Text; // "hongka1018";
             String vcode = m_tbx_captcha.Text;
+            if (m_hg_captcha == null)
+            {
+                System.Windows.Forms.MessageBox.Show("验证码未更新，请点击验证码图片，重新更新验证码");
+                return;
+            }
             String vtoken = m_hg_captcha.Vtoken;
             HGUser hgu = HGRestfulAPI.getInstance().login(mobile, password, vcode, vtoken);
 
@@ -81,9 +86,15 @@ namespace HGSystem
         private void m_pbx_captcha_Click(object sender, EventArgs e)
         {
             m_hg_captcha = HGRestfulAPI.getInstance().getHGCaptcha();
-            Console.WriteLine("vtoken " + m_hg_captcha.Vtoken);
             if (m_hg_captcha != null)
+            {
+                Console.WriteLine("vtoken " + m_hg_captcha.Vtoken);
                 m_pbx_captcha.Image = Helpers.Base64Helper.GetBitmapFromBase64(m_hg_captcha.Img);
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("验证码更新失败，请联系网站管理员");
+            }
         }
     }
 }

@@ -13,10 +13,21 @@ namespace HGSystem.Helpers
     {
         public static Bitmap GetBitmapFromBase64(string base64string)
         {
-            byte[] b = Convert.FromBase64String(base64string);
-            MemoryStream ms = new MemoryStream(b);
-            Bitmap bitmap = new Bitmap(ms);
-            return bitmap;
+            if (base64string == null)
+                return null;
+            try
+            {
+                byte[] b = Convert.FromBase64String(base64string);
+                MemoryStream ms = new MemoryStream(b);
+                Bitmap bitmap = new Bitmap(ms);
+                return bitmap;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("GetBitmapFromBase64 error: " + e.Message);
+                // TODO: save log to log system
+                return null;
+            }
         }
 
         public static Image GetImageFromBase64(string base64string)
@@ -26,7 +37,6 @@ namespace HGSystem.Helpers
             BinaryFormatter binFormatter = new BinaryFormatter();
             Image img = (Image)binFormatter.Deserialize(memStream);
             return img;
-            // this.pictureBox.Image = img;
         }
 
         public static string GetBase64FromImage(string imagefile)

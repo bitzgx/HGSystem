@@ -120,7 +120,7 @@ namespace HGSystem
             // String res = HttpHelper.HttpPostData(strURL, null);
             // Console.WriteLine(res);
 
-            HGRestfulAPI.getInstance().getHGCaptcha();
+            HGRestfulAPI.getInstance().getHGComCategory();
         }
     }
 }

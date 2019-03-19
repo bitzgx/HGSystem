@@ -66,13 +66,35 @@ namespace HGSystem
         {
             String captchaUrl = "/platform/login/getImage";
             // HGCaptcha hgc = new HGCaptcha();
-            String res = HttpHelper.HttpPostData(BaseUrl + captchaUrl, null);
+            // String res = HttpHelper.HttpPostJsonData(BaseUrl + captchaUrl, null);
+            try
+            {
+                String res = HttpHelper.HttpPostData(BaseUrl + captchaUrl, null);
+                if (res != null)
+                {
+                    HGResponse<HGCaptcha> hgr = JsonNewtonsoft.FromJSON<HGResponse<HGCaptcha>>(res);
+                    return hgr.Data;
+                }
+            }
+            catch (System.Net.WebException we)
+            {
+                System.Windows.Forms.MessageBox.Show(we.Message);
+            }
+            return null;
+        }
+
+        public HGComCategory[] getHGComCategory()
+        {
+            String captchaUrl = "/platform/album/getComCategory";
+            // TODO: no need to add customized headers
+            String res = HttpHelper.HttpPostJsonData(BaseUrl + captchaUrl, null);
             if (res != null)
             {
-                HGResponse<HGCaptcha> hgr = JsonNewtonsoft.FromJSON<HGResponse<HGCaptcha>>(res);
+                HGResponse<HGComCategory[]> hgr = JsonNewtonsoft.FromJSON<HGResponse<HGComCategory[]>>(res);
                 return hgr.Data;
             }
             return null;
+
         }
     }
     

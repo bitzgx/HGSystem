@@ -106,7 +106,7 @@ namespace HGSystem
             {
                 Console.WriteLine("在HttpHelper类HttpPostData方法出错", ex);
             }
-            return "";
+            return null;
         }
         /// <summary>
         /// http请求提交数据
