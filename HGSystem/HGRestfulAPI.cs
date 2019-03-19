@@ -38,6 +38,20 @@ namespace HGSystem
             return m_hg_restfulapi;
         }
 
+        public T parseHGData<T>(String json_data)
+        {
+            if (json_data != null)
+            {
+                JObject jo = JObject.Parse(json_data);
+                int status = jo.ContainsKey("status") ? Convert.ToInt32(jo["status"].ToString()) : 0;
+                if (status == 200) {
+                    HGResponse<T> hgr = JsonNewtonsoft.FromJSON<HGResponse<T>>(json_data);
+                    return hgr.Data;
+                }
+            }
+            return default(T);
+        }
+
         public HGUser login(string _mobile, string _password, string _vcode, string _vtoken)
         {
             String captchaUrl = "/platform/school/ymsLogin";
@@ -50,6 +64,8 @@ namespace HGSystem
             postData = "{\"mobile\":\"" + _mobile + "\",\"password\":\"" + new_pwd_md5 + "\",\"vcode\":\"" + _vcode + "\",\"vtoken\":\"" + _vtoken + "\"}";
             postData = "{\"mobile\":\"" + _mobile + "\",\"password\":\"" + new_pwd_md5 + "\",\"vcode\":\"eq32\",\"vtoken\":\"f3697b30-a5c7-46db-ae7b-140e7a1037f1\"}";
             String res = HttpHelper.HttpPostJsonData(BaseUrl + captchaUrl, postData);
+            return parseHGData<HGUser>(res);
+            /*
             if (res != null)
             {
                 JObject jo = JObject.Parse(res);
@@ -59,14 +75,16 @@ namespace HGSystem
                     return hgr.Data;
                 }
             }
-            return null;
+            return null;*/
         }
 
         public HGCaptcha getHGCaptcha()
         {
             String captchaUrl = "/platform/login/getImage";
-            // HGCaptcha hgc = new HGCaptcha();
             // String res = HttpHelper.HttpPostJsonData(BaseUrl + captchaUrl, null);
+            // return parseHGData<HGCaptcha>(res);
+            return null;
+            /*
             try
             {
                 String res = HttpHelper.HttpPostData(BaseUrl + captchaUrl, null);
@@ -80,7 +98,7 @@ namespace HGSystem
             {
                 System.Windows.Forms.MessageBox.Show(we.Message);
             }
-            return null;
+            return null;*/
         }
 
         public HGComCategory[] getHGComCategory()
@@ -88,13 +106,15 @@ namespace HGSystem
             String captchaUrl = "/platform/album/getComCategory";
             // TODO: no need to add customized headers
             String res = HttpHelper.HttpPostJsonData(BaseUrl + captchaUrl, null);
+            return parseHGData<HGComCategory[]>(res);
+            /*
             if (res != null)
             {
                 HGResponse<HGComCategory[]> hgr = JsonNewtonsoft.FromJSON<HGResponse<HGComCategory[]>>(res);
                 return hgr.Data;
             }
             return null;
-
+            */
         }
     }
     
