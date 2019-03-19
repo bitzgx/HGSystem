@@ -38,7 +38,7 @@ namespace HGSystem
             return m_hg_restfulapi;
         }
 
-        public T parseHGData<T>(String json_data)
+        private T parseHGData<T>(String json_data)
         {
             if (json_data != null)
             {
@@ -103,9 +103,9 @@ namespace HGSystem
 
         public HGComCategory[] getHGComCategory()
         {
-            String captchaUrl = "/platform/album/getComCategory";
+            String resturl = "/platform/album/getComCategory";
             // TODO: no need to add customized headers
-            String res = HttpHelper.HttpPostJsonData(BaseUrl + captchaUrl, null);
+            String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, null);
             return parseHGData<HGComCategory[]>(res);
             /*
             if (res != null)
@@ -115,6 +115,25 @@ namespace HGSystem
             }
             return null;
             */
+        }
+
+        public HGAlbum getHGAlbum(int id, string key, int albumType, long startTime, long endTime, int pageNum, int pageSize)
+        {
+            String resturl = "/platform/album/query";
+            // String json_params = @"{""id"":1,""key"":"""",""albumType"":2,""startTime"":1521738981174,""endTime"":1541738981174,""sliceParams"": {""pageNum"": 1, ""pageSize"": 10}}";
+            
+            String json_params = "{\"id\":" + id
+                + ",\"key\":\"" + key
+                + "\",\"albumType\":" + albumType
+                + ",\"startTime\":" + startTime
+                + ",\"endTime\":" + endTime
+                + ",\"sliceParams\":{\"pageNum\":" + pageNum
+                + ",\"pageSize\":" + pageSize
+                + "}}";
+             
+            // TODO: no need to add customized headers
+            String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, json_params);
+            return parseHGData<HGAlbum>(res);
         }
     }
     

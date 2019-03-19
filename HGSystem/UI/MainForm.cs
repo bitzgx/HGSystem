@@ -120,7 +120,9 @@ namespace HGSystem
             // String res = HttpHelper.HttpPostData(strURL, null);
             // Console.WriteLine(res);
 
-            HGRestfulAPI.getInstance().getHGComCategory();
+            // HGRestfulAPI.getInstance().getHGComCategory();
+            // {""id"":1,""key"":"""",""albumType"":2,""startTime"":1521738981174,""endTime"":1541738981174,""sliceParams"": {""pageNum"": 1, ""pageSize"": 10}}";
+            HGRestfulAPI.getInstance().getHGAlbum(1, "", 2, 1521738981174, 1541738981174, 1, 10);
         }
     }
 }
