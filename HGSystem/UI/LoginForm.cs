@@ -83,7 +83,7 @@ namespace HGSystem
             m_hg_captcha = HGRestfulAPI.getInstance().getHGCaptcha();
             Console.WriteLine("vtoken " + m_hg_captcha.Vtoken);
             if (m_hg_captcha != null)
-                m_pbx_captcha.Image = HGRestfulAPI.getInstance().GetBitmapFromBase64(m_hg_captcha.Img);
+                m_pbx_captcha.Image = Helpers.Base64Helper.GetBitmapFromBase64(m_hg_captcha.Img);
         }
     }
 }

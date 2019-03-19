@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\Base64Helper.cs" />
+    <Compile Include="Helpers\EncryptHelper.cs" />
     <Compile Include="UserControls\AlbumInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
