@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
+// using Newtonsoft.Json.Linq; // This is also OK
 
 namespace HGSystem.Model
 {
@@ -28,7 +28,8 @@ namespace HGSystem.Model
         private String fileId;
         private String token;
         private String orgNames;
-        private JObject orgIds;
+        // private JArray orgIds; // This is also OK
+        private OrgId[] orgIds;
         public String Id { get; set; }
         public String UserType { get; set; }
         public String Userid { get; set; }
@@ -41,7 +42,8 @@ namespace HGSystem.Model
         public String FileId { get; set; }
         public String Token { get; set; }
         public String OrgNames { get; set; }
-        public JObject OrgIds { get; set; }
+        // public JArray OrgIds { get; set; } // This is also OK
+        public OrgId[] OrgIds {get; set;}
         /*
          {
         "id": "180919101033025850632",
@@ -62,7 +64,7 @@ namespace HGSystem.Model
                 "orgid": "180919101033025850632"
             }
         ]
-    },*/
+        },*/
    
     }
 }

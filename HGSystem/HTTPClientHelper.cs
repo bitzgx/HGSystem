@@ -98,6 +98,10 @@ namespace HGSystem
                     }
                 }
             }
+            catch (System.Net.WebException we)
+            {
+                Console.WriteLine("在HttpHelper类HttpPostData方法出错", we);
+            }
             catch (Exception ex)
             {
                 Console.WriteLine("在HttpHelper类HttpPostData方法出错", ex);
@@ -137,9 +141,15 @@ namespace HGSystem
                     }
                 }
             }
+            catch (System.Net.WebException we)
+            {
+                Console.WriteLine("在HttpHelper类HttpPostData方法出错", we);
+                System.Windows.Forms.MessageBox.Show("we:" + we);
+            }
             catch (Exception ex)
             {
                 Console.WriteLine("在HttpHelper类HttpPostData方法出错", ex);
+                System.Windows.Forms.MessageBox.Show("ex:" + ex);
             }
             return "";
         }

@@ -34,6 +34,10 @@ namespace HGSystem
             {
                 return JsonConvert.DeserializeObject<T>(input);
             }
+            catch (Newtonsoft.Json.JsonSerializationException jse)
+            {
+                return default(T);
+            }
             catch (Exception ex)
             {
                 return default(T);

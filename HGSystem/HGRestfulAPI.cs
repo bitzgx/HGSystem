@@ -81,7 +81,7 @@ namespace HGSystem
             return pwd;
         }
 
-        public void login(string _mobile, string _password, string _vcode, string _vtoken)
+        public HGUser login(string _mobile, string _password, string _vcode, string _vtoken)
         {
             String captchaUrl = "/platform/school/ymsLogin";
             String pwd_md5 = CreateMD5Hash(_password);
@@ -91,11 +91,18 @@ namespace HGSystem
             // HGCaptcha hgc = new HGCaptcha();
             // postData = "{\"mobile\":\"13488613602\",\"password\":\"7b490bbb31fb36019a941d64d6077e07\",\"vcode\":\"eq32\",\"vtoken\":\"f3697b30-a5c7-46db-ae7b-140e7a1037f1\"}";
             postData = "{\"mobile\":\"" + _mobile + "\",\"password\":\"" + pwd2_md5 + "\",\"vcode\":\"" + _vcode + "\",\"vtoken\":\"" + _vtoken + "\"}";
+            postData = "{\"mobile\":\"" + _mobile + "\",\"password\":\"" + pwd2_md5 + "\",\"vcode\":\"eq32\",\"vtoken\":\"f3697b30-a5c7-46db-ae7b-140e7a1037f1\"}";
             String res = HttpHelper.HttpPostJsonData(BaseUrl + captchaUrl, postData);
             if (res != null)
             {
-                // HGResponse<HGUser> hgr = JsonNewtonsoft.FromJSON<HGResponse<HGUser>>(res);
+                JObject jo = JObject.Parse(res);
+                int status = jo.ContainsKey("status") ? Convert.ToInt32(jo["status"].ToString()) : 0;
+                if (status == 200) {
+                    HGResponse<HGUser> hgr = JsonNewtonsoft.FromJSON<HGResponse<HGUser>>(res);
+                    return hgr.Data;
+                }
             }
+            return null;
         }
 
         public Bitmap GetBitmapFromBase64(string base64string)

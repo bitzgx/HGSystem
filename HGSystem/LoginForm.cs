@@ -26,7 +26,6 @@ namespace HGSystem
 
             m_pbx_captcha_Click(this, null);
             // m_pbx_captcha.Image = HGRestfulAPI.getInstance().GetImageFromBase64(HGRestfulAPI.getInstance().getHGCaptcha().Img);
-            
         }
 
         private void btn_float_Click(object sender, EventArgs e)
@@ -68,14 +67,15 @@ namespace HGSystem
             String password = m_tbx_password.Text; // "hongka1018";
             String vcode = m_tbx_captcha.Text;
             String vtoken = m_hg_captcha.Vtoken;
-            HGRestfulAPI.getInstance().login(mobile, password, vcode, vtoken);
+            HGUser hgu = HGRestfulAPI.getInstance().login(mobile, password, vcode, vtoken);
 
-            /*
-            MainForm mf = new MainForm();
-            this.Hide();
-            mf.ShowDialog();
-            Application.ExitThread(); // mainthread change to MainForm
-             */
+            if (hgu != null)
+            {
+                MainForm mf = new MainForm();
+                this.Hide();
+                mf.ShowDialog();
+                Application.ExitThread(); // mainthread change to MainForm
+            }
         }
 
         private void m_pbx_captcha_Click(object sender, EventArgs e)
