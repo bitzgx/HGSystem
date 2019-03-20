@@ -8,6 +8,7 @@ using System.Text;
 // using System.Threading.Tasks;
 using System.Windows.Forms;
 using HGSystem.Model;
+using System.Drawing.Drawing2D;
 
 namespace HGSystem
 {
@@ -27,7 +28,7 @@ namespace HGSystem
             // TODO: use captcha and remove login
             // m_pbx_captcha_Click(this, null);
             // m_pbx_captcha.Image = HGRestfulAPI.getInstance().GetImageFromBase64(HGRestfulAPI.getInstance().getHGCaptcha().Img);
-            m_btn_login_Click(this, null);
+            // m_btn_login_Click(this, null);
         }
 
         private void btn_float_Click(object sender, EventArgs e)
@@ -47,6 +48,7 @@ namespace HGSystem
 
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {
+            /* This should belong to MainForm
             if (this.WindowState == FormWindowState.Minimized)
             {
                 // Window minimized
@@ -60,6 +62,7 @@ namespace HGSystem
                 // Save current window state
                 m_fws_previous = this.WindowState;
             }
+             */
 
         }
 
@@ -69,7 +72,7 @@ namespace HGSystem
             String password = m_tbx_password.Text; // "hongka1018";
             String vcode = m_tbx_captcha.Text;
 
-            // TODO: don't do the following, just for debug
+            /*// TODO: don't do the following, just for debug
             if (mobile != null)
             {
                 MainForm mf = new MainForm();
@@ -77,7 +80,7 @@ namespace HGSystem
                 mf.ShowDialog();
                 Application.ExitThread(); // mainthread change to MainForm
                 return;
-            }
+            }*/
 
             if (m_hg_captcha == null)
             {
@@ -108,6 +111,33 @@ namespace HGSystem
             {
                 System.Windows.Forms.MessageBox.Show("验证码更新失败，请联系网站管理员");
             }
+        }
+
+        private void m_pbx_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void m_pbx_minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;            
+        }
+
+        private void m_pnl_bg_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            int cornerRadius = 7;
+            Rectangle rect = this.ClientRectangle;
+            GraphicsPath gp = new GraphicsPath();
+            // 添加圆弧
+            gp.AddArc(0, 0, cornerRadius * 2, cornerRadius * 2, 180, 90);
+            gp.AddArc(rect.Width - cornerRadius * 2 , 0, cornerRadius * 2, cornerRadius * 2, 270, 90);
+            gp.AddArc(rect.Width - cornerRadius * 2 , rect.Height - cornerRadius * 2, cornerRadius * 2, cornerRadius * 2, 0, 90);
+            gp.AddArc(0, rect.Height - cornerRadius * 2 , cornerRadius * 2, cornerRadius * 2, 90, 90);
+            gp.CloseFigure();
+            
+            this.Region = new Region(gp);
         }
     }
 }
