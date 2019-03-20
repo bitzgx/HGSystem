@@ -6,7 +6,7 @@ using System.Text;
 using System.Linq;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
+// using System.Threading.Tasks;
 
 namespace HGSystem
 {
@@ -33,12 +33,13 @@ namespace HGSystem
         /// <returns></returns>
         public static string HttpGetData(string strGetUrl)
         {
+            /*
             if (strGetUrl.StartsWith("https", StringComparison.OrdinalIgnoreCase))///https请求
             {
                 //SSL3协议替换成TLS协议
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
                 ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);
-            }
+            }*/
 
             HttpWebRequest request = WebRequest.Create(strGetUrl) as HttpWebRequest;
 
