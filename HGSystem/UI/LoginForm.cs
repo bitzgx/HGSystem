@@ -24,8 +24,10 @@ namespace HGSystem
             m_fws_previous = this.WindowState;                
             m_float_window = new FloatWindow(this);
 
-            m_pbx_captcha_Click(this, null);
+            // TODO: use captcha and remove login
+            // m_pbx_captcha_Click(this, null);
             // m_pbx_captcha.Image = HGRestfulAPI.getInstance().GetImageFromBase64(HGRestfulAPI.getInstance().getHGCaptcha().Img);
+            m_btn_login_Click(this, null);
         }
 
         private void btn_float_Click(object sender, EventArgs e)
@@ -66,6 +68,17 @@ namespace HGSystem
             String mobile = m_tbx_mobile.Text; // "13488613602";// "15811208494";
             String password = m_tbx_password.Text; // "hongka1018";
             String vcode = m_tbx_captcha.Text;
+
+            // TODO: don't do the following, just for debug
+            if (mobile != null)
+            {
+                MainForm mf = new MainForm();
+                this.Hide();
+                mf.ShowDialog();
+                Application.ExitThread(); // mainthread change to MainForm
+                return;
+            }
+
             if (m_hg_captcha == null)
             {
                 System.Windows.Forms.MessageBox.Show("验证码未更新，请点击验证码图片，重新更新验证码");

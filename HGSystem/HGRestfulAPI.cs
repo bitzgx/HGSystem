@@ -135,6 +135,12 @@ namespace HGSystem
             String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, json_params);
             return parseHGData<HGAlbum>(res);
         }
+
+        public void uploadHGFile(String filename)
+        {
+            String sha256_str = Helpers.EncryptHelper.SHA256(filename, true);
+            Console.WriteLine("SHA256 for " + filename + " is " + sha256_str);
+        }
     }
     
 }

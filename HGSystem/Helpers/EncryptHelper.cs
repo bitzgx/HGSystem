@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Security.Cryptography;
 
 namespace HGSystem.Helpers
 {
@@ -46,6 +48,33 @@ namespace HGSystem.Helpers
                 pwd = pwd + s[i].ToString("x");
             }
             return pwd;
+        }
+
+        public static string SHA256(String file, bool is_file)
+        {
+            if (is_file)
+            {
+                if (file == null || !File.Exists(file))
+                    return null;
+
+                FileStream stream = new FileStream(file, FileMode.Open);
+
+                SHA256Managed Sha256 = new SHA256Managed();
+                byte[] by = Sha256.ComputeHash(stream);
+
+                return BitConverter.ToString(by).Replace("-", "").ToLower(); //64
+                //return Convert.ToBase64String(by);                         //44
+            }
+            else
+            {
+                //如果str有中文，不同Encoding的sha是不同的！！
+                byte[] SHA256Data = Encoding.UTF8.GetBytes(file);
+
+                SHA256Managed Sha256 = new SHA256Managed();
+                byte[] by = Sha256.ComputeHash(SHA256Data);
+
+                return BitConverter.ToString(by).Replace("-", "").ToLower(); //64
+            }
         }
     }
 }
