@@ -56,14 +56,22 @@ namespace HGSystem.Helpers
             {
                 if (file == null || !File.Exists(file))
                     return null;
+                try
+                {
+                    FileStream stream = new FileStream(file, FileMode.Open);
 
-                FileStream stream = new FileStream(file, FileMode.Open);
+                    SHA256Managed Sha256 = new SHA256Managed();
+                    byte[] by = Sha256.ComputeHash(stream);
+                    stream.Close();
 
-                SHA256Managed Sha256 = new SHA256Managed();
-                byte[] by = Sha256.ComputeHash(stream);
-
-                return BitConverter.ToString(by).Replace("-", "").ToLower(); //64
-                //return Convert.ToBase64String(by);                         //44
+                    return BitConverter.ToString(by).Replace("-", "").ToLower(); //64
+                    //return Convert.ToBase64String(by);                         //44
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception " + e.Message);
+                    return null;
+                }
             }
             else
             {

@@ -28,6 +28,7 @@ namespace HGSystem
     {
         private static String BaseUrl = "https://edutest.hongkazhijia.com"; // for test
         // private static String BaseUrl = "https://edut.hongkazhijia.com"; // for production
+        private static String FileServerBaseUrl = "https://filetest.hongkazhijia.com"; // for fileserver test
         private static HGRestfulAPI m_hg_restfulapi = new HGRestfulAPI();
         private HGRestfulAPI()
         {
@@ -140,6 +141,13 @@ namespace HGSystem
         {
             String sha256_str = Helpers.EncryptHelper.SHA256(filename, true);
             Console.WriteLine("SHA256 for " + filename + " is " + sha256_str);
+            System.IO.FileInfo fileInfo = new System.IO.FileInfo(filename);
+            long filelen = fileInfo.Length;
+            long startpos = 0;
+            String filemeta = sha256_str + "." + filelen + "." + startpos;
+
+            String resturl = "/fileServer/ihongka_files/eims/upload";
+            HttpHelper.UploadFileByOffset(FileServerBaseUrl + resturl, filename, 0);
         }
     }
     

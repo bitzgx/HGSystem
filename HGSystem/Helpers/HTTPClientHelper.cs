@@ -153,6 +153,32 @@ namespace HGSystem
             return "";
         }
 
+        public static string UploadFileByOffset(string uristr, string filename, long offset)
+        {
+            if (filename == null || !System.IO.File.Exists(filename))
+                return null;
+
+            String sha256_str = Helpers.EncryptHelper.SHA256(filename, true);
+            Console.WriteLine("SHA256 for " + filename + " is " + sha256_str);
+            System.IO.FileInfo fileInfo = new System.IO.FileInfo(filename);
+            long filelen = fileInfo.Length;
+            long startpos = 0;
+            String filemeta = sha256_str + "." + filelen + "." + startpos;
+
+            String name = System.IO.Path.GetFileName(filename);
+
+            #region 将文件转成二进制
+            byte[] fileContentByte = new byte[filelen]; // 文件内容二进制
+            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
+            fileContentByte = new byte[fs.Length]; // 二进制文件
+            fs.Read(fileContentByte, 0, Convert.ToInt32(fs.Length));
+            fs.Close();
+            #endregion
+
+            // TODO: long to int and need to take care of overflow
+            return Upload(uristr, name, filename, filemeta, fileContentByte, (int)offset, (int)filelen);
+        }
+
         /// <summary>
         /// 上传文件
         /// </summary>
@@ -163,7 +189,7 @@ namespace HGSystem
         /// <param name="offset">文件数据起始位置</param>
         /// <param name="count">文件数据长度</param>
         /// <returns></returns>
-        public static string Upload(string uriStr, string name, string fileName, byte[] data, int offset, int count)
+        public static string Upload(string uriStr, string name, string fileName, string filemeta, byte[] data, int offset, int count)
         {
             try
             {
@@ -172,18 +198,25 @@ namespace HGSystem
                 var boundary = "******"+DateTime.Now.Ticks+"***";
                 request.ContentType = "multipart/form-data; boundary=" + boundary;
                 boundary = "--" + boundary;
+                string request_str = "";
                 using (var requestStream = request.GetRequestStream())
                 {
                     var buffer = Encoding.ASCII.GetBytes(boundary + Environment.NewLine);
+                    request_str += System.Text.Encoding.Default.GetString(buffer);
                     requestStream.Write(buffer, 0, buffer.Length);
-                    buffer = Encoding.ASCII.GetBytes("Content-Disposition: form-data; name=\""+ name +"\"; filename=\"" + fileName +"\"" + Environment.NewLine);
+                    buffer = Encoding.ASCII.GetBytes("Content-Disposition: form-data; name=\""+ name +"\"; filename=\"" + fileName +"\"; filemeta=\"" + filemeta  + "\"" + Environment.NewLine);
+                    request_str += System.Text.Encoding.Default.GetString(buffer);
                     requestStream.Write(buffer, 0, buffer.Length);
                     buffer = Encoding.ASCII.GetBytes("Content-Type: application/octet-stream" + Environment.NewLine + Environment.NewLine);
+                    request_str += System.Text.Encoding.Default.GetString(buffer);
+                    request_str += System.Text.Encoding.Default.GetString(data);
                     requestStream.Write(buffer, 0, buffer.Length);
                     requestStream.Write(data, offset, count);
                     buffer = Encoding.ASCII.GetBytes(Environment.NewLine + boundary + "--");
+                    request_str += System.Text.Encoding.Default.GetString(buffer);
                     requestStream.Write(buffer, 0, buffer.Length);
                 }
+                Console.WriteLine("request:" + request_str);
                 using (var response = request.GetResponse())
                 using (var responseStream = response.GetResponseStream())
                 using (var streamReader = new StreamReader(responseStream))
@@ -191,8 +224,9 @@ namespace HGSystem
                     return streamReader.ReadToEnd();
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine("upload error : " + e.Message);
                 return null;
             }
         }
