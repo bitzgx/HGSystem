@@ -27,7 +27,7 @@ namespace HGSystem
 
             // TODO: use captcha and remove login
             // m_pbx_captcha_Click(this, null);
-            // m_pbx_captcha.Image = HGRestfulAPI.getInstance().GetImageFromBase64(HGRestfulAPI.getInstance().getHGCaptcha().Img);
+            // m_pbx_captcha.Image = Helpers.Base64Helper.GetBitmapFromBase64(HGRestfulAPI.getInstance().getHGCaptcha().Img);
             // m_btn_login_Click(this, null);
         }
 
@@ -125,8 +125,21 @@ namespace HGSystem
 
         private void m_pnl_bg_Paint(object sender, PaintEventArgs e)
         {
+            /*
+            int pen_width = 3;
+            int x_padding = 10;
+            int y_axis = 240;
+            e.Graphics.DrawLine(new Pen(Color.Gray, pen_width), new PointF(x_padding, y_axis), new Point(this.Width - x_padding, y_axis));
+            y_axis += 40;
+            e.Graphics.DrawLine(new Pen(Color.Gray, pen_width), new PointF(x_padding, y_axis), new Point(this.Width - x_padding, y_axis));
+            y_axis += 40;
+            e.Graphics.DrawLine(new Pen(Color.Gray, pen_width), new PointF(x_padding, y_axis), new Point(this.Width - x_padding, y_axis));
+            // TODO: it is not displayed in the bottom part of this window
+            e.Graphics.DrawLine(new Pen(Color.Gray, 3), new PointF(10, 130), new Point(this.Width - 10, 280));
+             */
+            
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-
+            
             int cornerRadius = 7;
             Rectangle rect = this.ClientRectangle;
             GraphicsPath gp = new GraphicsPath();
