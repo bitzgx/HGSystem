@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlbumInfo));
             this.m_pbx_album = new System.Windows.Forms.PictureBox();
             this.m_lbl_album = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_album)).BeginInit();
@@ -35,10 +36,12 @@
             // 
             // m_pbx_album
             // 
+            this.m_pbx_album.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("m_pbx_album.BackgroundImage")));
             this.m_pbx_album.Dock = System.Windows.Forms.DockStyle.Top;
+            this.m_pbx_album.InitialImage = null;
             this.m_pbx_album.Location = new System.Drawing.Point(0, 0);
             this.m_pbx_album.Name = "m_pbx_album";
-            this.m_pbx_album.Size = new System.Drawing.Size(150, 131);
+            this.m_pbx_album.Size = new System.Drawing.Size(180, 180);
             this.m_pbx_album.TabIndex = 0;
             this.m_pbx_album.TabStop = false;
             // 
@@ -46,9 +49,9 @@
             // 
             this.m_lbl_album.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.m_lbl_album.Font = new System.Drawing.Font("宋体", 13F);
-            this.m_lbl_album.Location = new System.Drawing.Point(0, 134);
+            this.m_lbl_album.Location = new System.Drawing.Point(0, 180);
             this.m_lbl_album.Name = "m_lbl_album";
-            this.m_lbl_album.Size = new System.Drawing.Size(150, 23);
+            this.m_lbl_album.Size = new System.Drawing.Size(180, 30);
             this.m_lbl_album.TabIndex = 1;
             this.m_lbl_album.Text = "专辑名";
             this.m_lbl_album.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -60,7 +63,7 @@
             this.Controls.Add(this.m_lbl_album);
             this.Controls.Add(this.m_pbx_album);
             this.Name = "AlbumInfo";
-            this.Size = new System.Drawing.Size(150, 157);
+            this.Size = new System.Drawing.Size(180, 210);
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_album)).EndInit();
             this.ResumeLayout(false);
 
