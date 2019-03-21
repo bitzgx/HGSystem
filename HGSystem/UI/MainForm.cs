@@ -28,7 +28,25 @@ namespace HGSystem
                 m_ctl_contentpublish.Location = new Point(0, 150);
                 this.Controls.Add(m_ctl_contentpublish);
             }
-            if (m_ctl_contentpublish != null) m_ctl_contentpublish.BringToFront();            
+            if (m_ctl_contentpublish != null) m_ctl_contentpublish.BringToFront();
+
+            InitNavigators();
+        }
+
+        private void InitNavigators()
+        {
+            SetButtonExDefault(m_btn_content);
+            SetButtonExDefault(m_btn_hgplan);
+            SetButtonExDefault(m_btn_material);
+        }
+
+        private void SetButtonExDefault(ButtonEx be)
+        {
+            be.Radius = 40;
+            be.Size = new Size(116, 36);
+            be.ForeColor = Color.Black;
+            be.BaseColor = Color.White;
+            be.Font = new Font("宋体", 10f, FontStyle.Bold);
         }
 
         private void MainForm_Paint(object sender, PaintEventArgs e)
