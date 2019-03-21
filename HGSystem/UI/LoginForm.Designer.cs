@@ -88,11 +88,13 @@
             this.m_tbx_captcha.Font = new System.Drawing.Font("宋体", 12F);
             this.m_tbx_captcha.ForeColor = System.Drawing.Color.Gray;
             this.m_tbx_captcha.Location = new System.Drawing.Point(97, 339);
+            this.m_tbx_captcha.MaxLength = 4;
             this.m_tbx_captcha.Name = "m_tbx_captcha";
             this.m_tbx_captcha.Size = new System.Drawing.Size(142, 19);
             this.m_tbx_captcha.TabIndex = 2;
             this.m_tbx_captcha.Text = "请输入验证码";
             this.m_tbx_captcha.TextChanged += new System.EventHandler(this.m_tbx_captcha_TextChanged);
+            this.m_tbx_captcha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_tbx_captcha_KeyPress);
             // 
             // m_tbx_password
             // 
@@ -105,6 +107,7 @@
             this.m_tbx_password.TabIndex = 1;
             this.m_tbx_password.Text = "请输入密码";
             this.m_tbx_password.TextChanged += new System.EventHandler(this.m_tbx_password_TextChanged);
+            this.m_tbx_password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_tbx_password_KeyPress);
             // 
             // m_tbx_mobile
             // 

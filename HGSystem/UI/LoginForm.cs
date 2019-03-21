@@ -26,6 +26,9 @@ namespace HGSystem
             m_float_window = new FloatWindow(this);
 
             m_tbx_mobile.GotFocus += new EventHandler(m_tbx_mobile_GotFocus);
+            m_tbx_password.GotFocus += new EventHandler(m_tbx_password_GotFocus);
+            m_tbx_captcha.GotFocus += new EventHandler(m_tbx_captcha_GotFocus);
+
             // TODO: use captcha and remove login
             if (Model.DebugHelper.IsServerFail)
             {
@@ -259,6 +262,37 @@ namespace HGSystem
         private void m_tbx_mobile_GotFocus(object sender, EventArgs e)
         {
             m_tbx_mobile.Select(m_tbx_mobile.Text.Length, 0);
+        }
+
+        private void m_tbx_password_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            m_tbx_password.UseSystemPasswordChar = true;
+            if (m_tbx_password.Text.Equals("请输入密码"))
+            {
+                // m_tbx_password.Text = "";   
+                m_tbx_password.Text = e.KeyChar.ToString();
+                m_tbx_password.Select(m_tbx_password.Text.Length, 0);
+            }
+            Console.WriteLine(m_tbx_password.Text);            
+        }
+        private void m_tbx_password_GotFocus(object sender, EventArgs e)
+        {
+            m_tbx_password.Select(m_tbx_password.Text.Length, 0);
+        }
+
+        private void m_tbx_captcha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar != '\b') && (!Char.IsLetter(e.KeyChar)) && (!char.IsDigit(e.KeyChar)))
+            {
+                e.Handled = true;
+                return;
+            }
+            if (m_tbx_captcha.Text.Equals("请输入验证码"))
+                m_tbx_captcha.Text = "";   
+        }
+        private void m_tbx_captcha_GotFocus(object sender, EventArgs e)
+        {
+            m_tbx_captcha.Select(m_tbx_captcha.Text.Length, 0);
         }
     }
 }
