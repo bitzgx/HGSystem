@@ -81,6 +81,7 @@
             this.m_pbx_captcha.Size = new System.Drawing.Size(97, 26);
             this.m_pbx_captcha.TabIndex = 9;
             this.m_pbx_captcha.TabStop = false;
+            this.m_pbx_captcha.Click += new System.EventHandler(this.m_pbx_captcha_Click);
             // 
             // m_tbx_captcha
             // 

@@ -201,6 +201,12 @@ namespace HGSystem
         {
             m_tbx_password.ForeColor = SystemColors.WindowText;
             // handleTextChanged(m_tbx_password, "请输入密码");
+
+            if (m_tbx_password.Text.StartsWith("请输入密码"))
+            {
+                m_tbx_password.Text = m_tbx_password.Text.Replace("请输入密码", "");
+                m_tbx_password.Select(m_tbx_password.TextLength, 0);
+            }
             // m_tbx_password.PasswordChar = '*';
             m_tbx_password.UseSystemPasswordChar = true;
         }
@@ -285,21 +291,24 @@ namespace HGSystem
             m_tbx_mobile.Select(m_tbx_mobile.Text.Length, 0);
         }
 
+        // TODO: 密码如果要拷贝进来，需要拷贝两次
         private void m_tbx_password_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
+            if ((int)e.KeyChar == 13)
             {
                 this.SelectNextControl(this.ActiveControl, true, true, true, true);  //需设置textBox的TabIndex顺序属性
                 return;
             }
-            m_tbx_password.UseSystemPasswordChar = true;
-            if (m_tbx_password.Text.Equals("请输入密码") && (int)e.KeyChar != 22)
+            if ((int)e.KeyChar == 22)
             {
-                // m_tbx_password.Text = "";   
+                return;
+            }
+            if (m_tbx_password.Text.Equals("请输入密码"))
+            {                
                 m_tbx_password.Text = e.KeyChar.ToString();
             }
             Console.WriteLine(m_tbx_password.Text);
-            m_tbx_password.Select(m_tbx_password.Text.Length, 0);   
+            m_tbx_password.SelectionStart = m_tbx_password.Text.Length;
         }
         private void m_tbx_password_GotFocus(object sender, EventArgs e)
         {
