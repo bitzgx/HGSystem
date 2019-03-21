@@ -46,7 +46,7 @@ namespace HGSystem
         {
             for (int i = 0; i < 10; i++)
             {
-                AlbumInfo ai = new AlbumInfo();
+                AlbumInfo ai = new AlbumInfo();                
                 if (i == 0)
                     ai.ClickEventHandler += NewAlbum;
                 else
@@ -61,7 +61,7 @@ namespace HGSystem
             {
                 AlbumInfo ai = m_video_albums[i];
                 
-                ai.Location = new Point(50 + 220 * (i % 5), 110 + 220 * (i / 5));                
+                ai.Location = new Point(50 + 220 * (i % 5), 60 + 220 * (i / 5));                
 
                 this.Controls.Add(ai);
             }
@@ -73,7 +73,7 @@ namespace HGSystem
             {
                 AlbumInfo ai = m_audio_albums[i];
 
-                ai.Location = new Point(50 + 220 * (i % 5), 610 + 220 * (i / 5));
+                ai.Location = new Point(50 + 220 * (i % 5), 560 + 220 * (i / 5));
 
                 this.Controls.Add(ai);
             }
@@ -92,6 +92,7 @@ namespace HGSystem
         private void NewAlbum(String id)
         {
             MessageBox.Show("新增专辑");
+            this.Focus();
         }
 
         private void ShowAlbumDetail(String id)

@@ -14,6 +14,7 @@ namespace HGSystem
 {
     public partial class MainForm : Form
     {
+        private ControlBar m_ctl_controlbar;
         private ContentPublish m_ctl_contentpublish;
         private HGPlan m_ctl_hgplan;
         private Material m_ctl_material;
@@ -30,8 +31,15 @@ namespace HGSystem
         {
             m_uc_offset = 110;
 
-            InitNavigators();
+            if (m_ctl_controlbar == null)
+            {
+                m_ctl_controlbar = new ControlBar();
+            }
+            m_ctl_controlbar.Size = new Size(this.Width, 50);
+            m_ctl_controlbar.Location = new Point(0, m_uc_offset);
+            this.Controls.Add(m_ctl_controlbar);
 
+            InitNavigators();
             ButtonExChecked(m_btn_content);
 
             m_btn_content_Click(this, null);
@@ -85,17 +93,18 @@ namespace HGSystem
         {
             if (control == null)
                 return;
-            control.Size = new Size(this.Width, this.Height - m_uc_offset);
-            control.Location = new Point(0, m_uc_offset);
+            control.Size = new Size(this.Width, this.Height - m_uc_offset - m_ctl_controlbar.Height);
+            control.Location = new Point(0, m_uc_offset + m_ctl_controlbar.Height);
+
             control.BringToFront();
         }
 
         private void m_btn_hgplan_Click(object sender, EventArgs e)
         {
             if (m_ctl_hgplan == null) {
-                m_ctl_hgplan = new HGPlan();                
-                this.Controls.Add(m_ctl_hgplan);
+                m_ctl_hgplan = new HGPlan();
             }
+            this.Controls.Add(m_ctl_hgplan);
             BringToFrontUserControl(m_ctl_hgplan);
             ButtonExChecked(m_btn_hgplan);
         }
@@ -105,8 +114,8 @@ namespace HGSystem
             if (m_ctl_material == null)
             {
                 m_ctl_material = new Material();
-                this.Controls.Add(m_ctl_material);
             }
+            this.Controls.Add(m_ctl_material);
             BringToFrontUserControl(m_ctl_material);
             ButtonExChecked(m_btn_material);
             /*
@@ -186,8 +195,8 @@ namespace HGSystem
             if (m_ctl_contentpublish == null)
             {
                 m_ctl_contentpublish = new ContentPublish();
-                this.Controls.Add(m_ctl_contentpublish);
             }
+            this.Controls.Add(m_ctl_contentpublish);
             BringToFrontUserControl(m_ctl_contentpublish);
             ButtonExChecked(m_btn_content);
         }

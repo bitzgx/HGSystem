@@ -70,6 +70,12 @@
     <Compile Include="UserControls\ContentPublish.Designer.cs">
       <DependentUpon>ContentPublish.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ControlBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ControlBar.Designer.cs">
+      <DependentUpon>ControlBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\EllipseButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FloatWindow.resx">
       <DependentUpon>FloatWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ControlBar.resx">
+      <DependentUpon>ControlBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Material.resx">
       <DependentUpon>Material.cs</DependentUpon>
