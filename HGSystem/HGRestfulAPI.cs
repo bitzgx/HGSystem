@@ -45,9 +45,14 @@ namespace HGSystem
             {
                 JObject jo = JObject.Parse(json_data);
                 int status = jo.ContainsKey("status") ? Convert.ToInt32(jo["status"].ToString()) : 0;
-                if (status == 200) {
+                if (status == 200)
+                {
                     HGResponse<T> hgr = JsonNewtonsoft.FromJSON<HGResponse<T>>(json_data);
                     return hgr.Data;
+                }
+                else
+                {
+                    throw new Exception(jo.ContainsKey("msg") ? jo["msg"].ToString() : "未知错误:" + json_data);
                 }
             }
             return default(T);
@@ -65,6 +70,7 @@ namespace HGSystem
             postData = "{\"mobile\":\"" + _mobile + "\",\"password\":\"" + new_pwd_md5 + "\",\"vcode\":\"" + _vcode + "\",\"vtoken\":\"" + _vtoken + "\"}";
             postData = "{\"mobile\":\"" + _mobile + "\",\"password\":\"" + new_pwd_md5 + "\",\"vcode\":\"eq32\",\"vtoken\":\"f3697b30-a5c7-46db-ae7b-140e7a1037f1\"}";
             String res = HttpHelper.HttpPostJsonData(BaseUrl + captchaUrl, postData);
+            // "{\"status\":1404,\"msg\":\"账号或密码错误\",\"data\":{},\"time\":1553098311748}"
             return parseHGData<HGUser>(res);
             /*
             if (res != null)
@@ -82,10 +88,7 @@ namespace HGSystem
         public HGCaptcha getHGCaptcha()
         {
             String captchaUrl = "/platform/login/getImage";
-            // String res = HttpHelper.HttpPostJsonData(BaseUrl + captchaUrl, null);
-            // return parseHGData<HGCaptcha>(res);
-            return null;
-            /*
+                        
             try
             {
                 String res = HttpHelper.HttpPostData(BaseUrl + captchaUrl, null);
@@ -99,7 +102,7 @@ namespace HGSystem
             {
                 System.Windows.Forms.MessageBox.Show(we.Message);
             }
-            return null;*/
+            return null;
         }
 
         public HGComCategory[] getHGComCategory()

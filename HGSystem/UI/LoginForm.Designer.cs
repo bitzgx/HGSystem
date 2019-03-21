@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.m_btn_resetpwd = new System.Windows.Forms.Button();
-            this.m_btn_login = new System.Windows.Forms.Button();
             this.m_pbx_captcha = new System.Windows.Forms.PictureBox();
             this.m_tbx_captcha = new System.Windows.Forms.TextBox();
             this.m_tbx_password = new System.Windows.Forms.TextBox();
@@ -45,6 +44,7 @@
             this.m_lbl_separate1 = new System.Windows.Forms.Label();
             this.m_lbl_separate2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.m_bte_login = new HGSystem.ButtonEx();
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_captcha)).BeginInit();
             this.m_pnl_bg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_close)).BeginInit();
@@ -58,28 +58,25 @@
             // m_btn_resetpwd
             // 
             this.m_btn_resetpwd.BackColor = System.Drawing.Color.Transparent;
+            this.m_btn_resetpwd.FlatAppearance.BorderSize = 0;
+            this.m_btn_resetpwd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.m_btn_resetpwd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.m_btn_resetpwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.m_btn_resetpwd.Font = new System.Drawing.Font("宋体", 10F);
-            this.m_btn_resetpwd.Location = new System.Drawing.Point(227, 470);
+            this.m_btn_resetpwd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(100)))), ((int)(((byte)(92)))));
+            this.m_btn_resetpwd.Location = new System.Drawing.Point(224, 458);
             this.m_btn_resetpwd.Name = "m_btn_resetpwd";
             this.m_btn_resetpwd.Size = new System.Drawing.Size(126, 23);
-            this.m_btn_resetpwd.TabIndex = 11;
+            this.m_btn_resetpwd.TabIndex = 4;
             this.m_btn_resetpwd.Text = "忘记密码?";
             this.m_btn_resetpwd.UseVisualStyleBackColor = false;
-            // 
-            // m_btn_login
-            // 
-            this.m_btn_login.Location = new System.Drawing.Point(54, 399);
-            this.m_btn_login.Name = "m_btn_login";
-            this.m_btn_login.Size = new System.Drawing.Size(281, 27);
-            this.m_btn_login.TabIndex = 10;
-            this.m_btn_login.Text = "登录";
-            this.m_btn_login.UseVisualStyleBackColor = true;
+            this.m_btn_resetpwd.Click += new System.EventHandler(this.m_btn_resetpwd_Click);
             // 
             // m_pbx_captcha
             // 
-            this.m_pbx_captcha.Location = new System.Drawing.Point(221, 336);
+            this.m_pbx_captcha.Location = new System.Drawing.Point(256, 336);
             this.m_pbx_captcha.Name = "m_pbx_captcha";
-            this.m_pbx_captcha.Size = new System.Drawing.Size(132, 26);
+            this.m_pbx_captcha.Size = new System.Drawing.Size(97, 26);
             this.m_pbx_captcha.TabIndex = 9;
             this.m_pbx_captcha.TabStop = false;
             // 
@@ -87,30 +84,37 @@
             // 
             this.m_tbx_captcha.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.m_tbx_captcha.Font = new System.Drawing.Font("宋体", 12F);
+            this.m_tbx_captcha.ForeColor = System.Drawing.Color.Gray;
             this.m_tbx_captcha.Location = new System.Drawing.Point(97, 339);
             this.m_tbx_captcha.Name = "m_tbx_captcha";
-            this.m_tbx_captcha.Size = new System.Drawing.Size(118, 19);
-            this.m_tbx_captcha.TabIndex = 8;
+            this.m_tbx_captcha.Size = new System.Drawing.Size(142, 19);
+            this.m_tbx_captcha.TabIndex = 2;
+            this.m_tbx_captcha.Text = "请输入验证码";
+            this.m_tbx_captcha.TextChanged += new System.EventHandler(this.m_tbx_captcha_TextChanged);
             // 
             // m_tbx_password
             // 
             this.m_tbx_password.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.m_tbx_password.Font = new System.Drawing.Font("宋体", 12F);
+            this.m_tbx_password.ForeColor = System.Drawing.Color.Gray;
             this.m_tbx_password.Location = new System.Drawing.Point(97, 283);
             this.m_tbx_password.Name = "m_tbx_password";
             this.m_tbx_password.Size = new System.Drawing.Size(253, 19);
-            this.m_tbx_password.TabIndex = 7;
-            this.m_tbx_password.Text = "hongka1018";
+            this.m_tbx_password.TabIndex = 1;
+            this.m_tbx_password.Text = "请输入密码";
+            this.m_tbx_password.TextChanged += new System.EventHandler(this.m_tbx_password_TextChanged);
             // 
             // m_tbx_mobile
             // 
             this.m_tbx_mobile.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.m_tbx_mobile.Font = new System.Drawing.Font("宋体", 12F);
+            this.m_tbx_mobile.ForeColor = System.Drawing.Color.Gray;
             this.m_tbx_mobile.Location = new System.Drawing.Point(97, 225);
             this.m_tbx_mobile.Name = "m_tbx_mobile";
             this.m_tbx_mobile.Size = new System.Drawing.Size(253, 19);
-            this.m_tbx_mobile.TabIndex = 6;
-            this.m_tbx_mobile.Text = "13488613602";
+            this.m_tbx_mobile.TabIndex = 0;
+            this.m_tbx_mobile.Text = "请输入手机号";
+            this.m_tbx_mobile.TextChanged += new System.EventHandler(this.m_tbx_mobile_TextChanged);
             // 
             // m_pnl_bg
             // 
@@ -190,7 +194,7 @@
             this.m_lbl_separate1.Location = new System.Drawing.Point(43, 258);
             this.m_lbl_separate1.Name = "m_lbl_separate1";
             this.m_lbl_separate1.Size = new System.Drawing.Size(310, 2);
-            this.m_lbl_separate1.TabIndex = 16;
+            this.m_lbl_separate1.TabIndex = 0;
             // 
             // m_lbl_separate2
             // 
@@ -198,7 +202,7 @@
             this.m_lbl_separate2.Location = new System.Drawing.Point(43, 316);
             this.m_lbl_separate2.Name = "m_lbl_separate2";
             this.m_lbl_separate2.Size = new System.Drawing.Size(310, 2);
-            this.m_lbl_separate2.TabIndex = 17;
+            this.m_lbl_separate2.TabIndex = 1;
             // 
             // label1
             // 
@@ -206,7 +210,20 @@
             this.label1.Location = new System.Drawing.Point(43, 372);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(310, 2);
-            this.label1.TabIndex = 18;
+            this.label1.TabIndex = 2;
+            // 
+            // m_bte_login
+            // 
+            this.m_bte_login.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(100)))), ((int)(((byte)(92)))));
+            this.m_bte_login.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.m_bte_login.ForeColor = System.Drawing.Color.White;
+            this.m_bte_login.Location = new System.Drawing.Point(43, 394);
+            this.m_bte_login.Name = "m_bte_login";
+            this.m_bte_login.Size = new System.Drawing.Size(307, 46);
+            this.m_bte_login.TabIndex = 3;
+            this.m_bte_login.Text = "登录";
+            this.m_bte_login.UseVisualStyleBackColor = true;
+            this.m_bte_login.Click += new System.EventHandler(this.m_bte_login_Click);
             // 
             // LoginForm
             // 
@@ -215,6 +232,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(396, 518);
+            this.Controls.Add(this.m_bte_login);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.m_lbl_separate2);
             this.Controls.Add(this.m_lbl_separate1);
@@ -223,7 +241,6 @@
             this.Controls.Add(this.m_pbx_mobileno);
             this.Controls.Add(this.m_pnl_bg);
             this.Controls.Add(this.m_btn_resetpwd);
-            this.Controls.Add(this.m_btn_login);
             this.Controls.Add(this.m_pbx_captcha);
             this.Controls.Add(this.m_tbx_captcha);
             this.Controls.Add(this.m_tbx_password);
@@ -250,7 +267,6 @@
         #endregion
 
         private System.Windows.Forms.Button m_btn_resetpwd;
-        private System.Windows.Forms.Button m_btn_login;
         private System.Windows.Forms.PictureBox m_pbx_captcha;
         private System.Windows.Forms.TextBox m_tbx_captcha;
         private System.Windows.Forms.TextBox m_tbx_password;
@@ -265,6 +281,7 @@
         private System.Windows.Forms.Label m_lbl_separate1;
         private System.Windows.Forms.Label m_lbl_separate2;
         private System.Windows.Forms.Label label1;
+        private ButtonEx m_bte_login;
 
 
     }

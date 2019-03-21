@@ -26,9 +26,12 @@ namespace HGSystem
             m_float_window = new FloatWindow(this);
 
             // TODO: use captcha and remove login
-            // m_pbx_captcha_Click(this, null);
+            m_pbx_captcha_Click(this, null);
             // m_pbx_captcha.Image = Helpers.Base64Helper.GetBitmapFromBase64(HGRestfulAPI.getInstance().getHGCaptcha().Img);
             // m_btn_login_Click(this, null);
+
+            // 13488613602
+            // hongka1018
         }
 
         private void btn_float_Click(object sender, EventArgs e)
@@ -151,6 +154,80 @@ namespace HGSystem
             gp.CloseFigure();
             
             this.Region = new Region(gp);
+        }
+
+        private void handleTextChanged(TextBox tbx, String prompt)
+        {
+            tbx.ForeColor = SystemColors.WindowText;
+            if (tbx.Text.StartsWith(prompt))
+            {
+                tbx.Text = tbx.Text.Replace(prompt, "");
+                tbx.Select(tbx.TextLength, 0);
+            }
+        }
+        private void m_tbx_mobile_TextChanged(object sender, EventArgs e)
+        {
+            handleTextChanged(m_tbx_mobile, "请输入手机号");
+        }
+
+        private void m_tbx_password_TextChanged(object sender, EventArgs e)
+        {
+            handleTextChanged(m_tbx_password, "请输入密码");
+            // m_tbx_password.PasswordChar = '*';
+            m_tbx_password.UseSystemPasswordChar = true;
+        }
+
+        private void m_tbx_captcha_TextChanged(object sender, EventArgs e)
+        {
+            handleTextChanged(m_tbx_captcha, "请输入验证码");
+        }
+
+        private bool isValidMobileNo(String mobile)
+        {
+            string path = @"((^13[0-9]{1}[0-9]{8}|^15[0-9]{1}[0-9]{8}|^14[0-9]{1}[0-9]{8}|^16[0-9]{1}[0-9]{8}|^17[0-9]{1}[0-9]{8}|^18[0-9]{1}[0-9]{8}|^19[0-9]{1}[0-9]{8})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)";
+            return (mobile.Length == 11) && System.Text.RegularExpressions.Regex.IsMatch(mobile, path);
+        }
+
+        private void m_bte_login_Click(object sender, EventArgs e)
+        {
+            String mobile = m_tbx_mobile.Text; // "13488613602";// "15811208494";
+            String password = m_tbx_password.Text; // "hongka1018";
+            String vcode = m_tbx_captcha.Text;
+
+            if (!isValidMobileNo(mobile))
+            {
+                MessageBox.Show("请输入正确的手机号，为11位数字");
+                m_tbx_mobile.Focus();
+                return;
+            }
+
+            if (m_hg_captcha == null)
+            {
+                MessageBox.Show("验证码未更新，请点击验证码图片，重新更新验证码");
+                return;
+            }
+            String vtoken = m_hg_captcha.Vtoken;
+            try
+            {
+                HGUser hgu = HGRestfulAPI.getInstance().login(mobile, password, vcode, vtoken);
+
+                if (hgu != null)
+                {
+                    MainForm mf = new MainForm();
+                    this.Hide();
+                    mf.ShowDialog();
+                    Application.ExitThread(); // mainthread change to MainForm
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void m_btn_resetpwd_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("forget pwd");
         }
     }
 }
