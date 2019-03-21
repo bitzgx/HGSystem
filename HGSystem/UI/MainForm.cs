@@ -8,6 +8,7 @@ using System.Text;
 // using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
+using HGSystem.UserControls;
 
 namespace HGSystem
 {
@@ -15,6 +16,8 @@ namespace HGSystem
     {
         ContentPublish m_ctl_contentpublish;
         HGPlan m_ctl_hgplan;
+        Material m_ctl_material;
+
         private ButtonEx m_buttonex_checked;
 
         public MainForm()
@@ -24,16 +27,11 @@ namespace HGSystem
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if (m_ctl_contentpublish == null) {
-                m_ctl_contentpublish = new ContentPublish();
-                m_ctl_contentpublish.Location = new Point(0, 150);
-                this.Controls.Add(m_ctl_contentpublish);
-            }
-            if (m_ctl_contentpublish != null) m_ctl_contentpublish.BringToFront();
-            
             InitNavigators();
 
             ButtonExChecked(m_btn_content);
+
+            m_btn_content_Click(this, null);
         }
 
         private void InitNavigators()
@@ -94,6 +92,13 @@ namespace HGSystem
 
         private void m_btn_material_Click(object sender, EventArgs e)
         {
+            if (m_ctl_material == null)
+            {
+                m_ctl_material = new Material();
+                m_ctl_material.Location = new Point(0, 150);
+                this.Controls.Add(m_ctl_material);
+            }
+            if (m_ctl_material != null) m_ctl_material.BringToFront();
             ButtonExChecked(m_btn_material);
             /*
             string url="Http://www.baidu.com";
@@ -168,7 +173,15 @@ namespace HGSystem
         }
 
         private void m_btn_content_Click(object sender, EventArgs e)
-        {            
+        {
+            if (m_ctl_contentpublish == null)
+            {
+                m_ctl_contentpublish = new ContentPublish();
+                m_ctl_contentpublish.Location = new Point(0, 150);
+                this.Controls.Add(m_ctl_contentpublish);
+            }
+            if (m_ctl_contentpublish != null) m_ctl_contentpublish.BringToFront();
+
             ButtonExChecked(m_btn_content);
         }
 

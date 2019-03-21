@@ -1,6 +1,6 @@
-﻿namespace HGSystem
+﻿namespace HGSystem.UserControls
 {
-    partial class HGPlan
+    partial class Material
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -34,19 +34,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 26);
+            this.label1.Location = new System.Drawing.Point(39, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(173, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "红广计划正在建设中，敬请期待";
+            this.label1.Text = "素材专栏正在建设中，敬请期待";
             // 
-            // HGPlan
+            // Material
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label1);
-            this.Name = "HGPlan";
-            this.Size = new System.Drawing.Size(603, 370);
+            this.Name = "Material";
+            this.Size = new System.Drawing.Size(560, 411);
             this.ResumeLayout(false);
             this.PerformLayout();
 
