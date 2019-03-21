@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.m_pbx_logo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.m_btn_close = new HGSystem.ButtonEx();
             this.m_btn_minimize = new HGSystem.ButtonEx();
@@ -39,17 +39,17 @@
             this.m_btn_material = new HGSystem.ButtonEx();
             this.m_btn_hgplan = new HGSystem.ButtonEx();
             this.m_btn_content = new HGSystem.ButtonEx();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.m_pbx_logo)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // m_pbx_logo
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(50, 21);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(180, 38);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.m_pbx_logo.Image = ((System.Drawing.Image)(resources.GetObject("m_pbx_logo.Image")));
+            this.m_pbx_logo.Location = new System.Drawing.Point(50, 21);
+            this.m_pbx_logo.Name = "m_pbx_logo";
+            this.m_pbx_logo.Size = new System.Drawing.Size(180, 38);
+            this.m_pbx_logo.TabIndex = 1;
+            this.m_pbx_logo.TabStop = false;
             // 
             // label1
             // 
@@ -170,7 +170,7 @@
             this.Controls.Add(this.m_btn_profile);
             this.Controls.Add(this.m_btn_material);
             this.Controls.Add(this.m_btn_hgplan);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.m_pbx_logo);
             this.Controls.Add(this.m_btn_content);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -179,7 +179,7 @@
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.m_pbx_logo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -187,7 +187,7 @@
         #endregion
 
         private ButtonEx m_btn_content;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox m_pbx_logo;
         private ButtonEx m_btn_hgplan;
         private ButtonEx m_btn_material;
         private ButtonEx m_btn_profile;

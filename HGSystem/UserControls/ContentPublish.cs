@@ -22,6 +22,7 @@ namespace HGSystem
             AlbumInfo ai = new AlbumInfo();
             ai.Location = new Point(10, 150);
             this.Controls.Add(ai);
+
         }
     }
 }

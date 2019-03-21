@@ -28,7 +28,7 @@ namespace HGSystem
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            m_uc_offset = 150;
+            m_uc_offset = 110;
 
             InitNavigators();
 
