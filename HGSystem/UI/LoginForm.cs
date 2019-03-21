@@ -263,7 +263,8 @@ namespace HGSystem
 
         private void m_btn_resetpwd_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("forget pwd");
+            // MessageBox.Show("forget pwd");
+            System.Diagnostics.Process.Start("https://edutest.hongkazhijia.com/#/homePage");  
         }
 
         private void m_tbx_mobile_KeyPress(object sender, KeyPressEventArgs e)
