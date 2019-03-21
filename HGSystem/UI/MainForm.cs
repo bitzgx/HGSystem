@@ -14,10 +14,11 @@ namespace HGSystem
 {
     public partial class MainForm : Form
     {
-        ContentPublish m_ctl_contentpublish;
-        HGPlan m_ctl_hgplan;
-        Material m_ctl_material;
+        private ContentPublish m_ctl_contentpublish;
+        private HGPlan m_ctl_hgplan;
+        private Material m_ctl_material;
 
+        private int m_uc_offset;
         private ButtonEx m_buttonex_checked;
 
         public MainForm()
@@ -27,6 +28,8 @@ namespace HGSystem
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            m_uc_offset = 150;
+
             InitNavigators();
 
             ButtonExChecked(m_btn_content);
@@ -78,15 +81,22 @@ namespace HGSystem
             this.Close();
         }
 
+        private void BringToFrontUserControl(Control control)
+        {
+            if (control == null)
+                return;
+            control.Size = new Size(this.Width, this.Height - m_uc_offset);
+            control.Location = new Point(0, m_uc_offset);
+            control.BringToFront();
+        }
+
         private void m_btn_hgplan_Click(object sender, EventArgs e)
         {
             if (m_ctl_hgplan == null) {
-                m_ctl_hgplan = new HGPlan();
-                m_ctl_hgplan.Location = new Point(0, 150);
+                m_ctl_hgplan = new HGPlan();                
                 this.Controls.Add(m_ctl_hgplan);
             }
-            if (m_ctl_hgplan != null) m_ctl_hgplan.BringToFront();
-
+            BringToFrontUserControl(m_ctl_hgplan);
             ButtonExChecked(m_btn_hgplan);
         }
 
@@ -95,10 +105,9 @@ namespace HGSystem
             if (m_ctl_material == null)
             {
                 m_ctl_material = new Material();
-                m_ctl_material.Location = new Point(0, 150);
                 this.Controls.Add(m_ctl_material);
             }
-            if (m_ctl_material != null) m_ctl_material.BringToFront();
+            BringToFrontUserControl(m_ctl_material);
             ButtonExChecked(m_btn_material);
             /*
             string url="Http://www.baidu.com";
@@ -177,11 +186,9 @@ namespace HGSystem
             if (m_ctl_contentpublish == null)
             {
                 m_ctl_contentpublish = new ContentPublish();
-                m_ctl_contentpublish.Location = new Point(0, 150);
                 this.Controls.Add(m_ctl_contentpublish);
             }
-            if (m_ctl_contentpublish != null) m_ctl_contentpublish.BringToFront();
-
+            BringToFrontUserControl(m_ctl_contentpublish);
             ButtonExChecked(m_btn_content);
         }
 
