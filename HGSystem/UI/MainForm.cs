@@ -15,6 +15,7 @@ namespace HGSystem
     {
         ContentPublish m_ctl_contentpublish;
         HGPlan m_ctl_hgplan;
+        private ButtonEx m_buttonex_checked;
 
         public MainForm()
         {
@@ -29,8 +30,10 @@ namespace HGSystem
                 this.Controls.Add(m_ctl_contentpublish);
             }
             if (m_ctl_contentpublish != null) m_ctl_contentpublish.BringToFront();
-
+            
             InitNavigators();
+
+            ButtonExChecked(m_btn_content);
         }
 
         private void InitNavigators()
@@ -40,6 +43,13 @@ namespace HGSystem
             SetButtonExDefault(m_btn_material);
         }
 
+        private void ButtonExChecked(ButtonEx be)
+        {
+            if (m_buttonex_checked != null) SetButtonExDefault(m_buttonex_checked);
+            if (be == null) return;
+            m_buttonex_checked = be;
+            SetButtonExChecked(m_buttonex_checked);
+        }
         private void SetButtonExDefault(ButtonEx be)
         {
             be.Radius = 40;
@@ -47,6 +57,12 @@ namespace HGSystem
             be.ForeColor = Color.Black;
             be.BaseColor = Color.White;
             be.Font = new Font("宋体", 10f, FontStyle.Bold);
+        }
+
+        private void SetButtonExChecked(ButtonEx be)
+        {
+            be.ForeColor = Color.White;
+            be.BaseColor = Color.FromArgb(255, 100, 92);
         }
 
         private void MainForm_Paint(object sender, PaintEventArgs e)
@@ -72,10 +88,13 @@ namespace HGSystem
                 this.Controls.Add(m_ctl_hgplan);
             }
             if (m_ctl_hgplan != null) m_ctl_hgplan.BringToFront();
+
+            ButtonExChecked(m_btn_hgplan);
         }
 
         private void m_btn_material_Click(object sender, EventArgs e)
         {
+            ButtonExChecked(m_btn_material);
             /*
             string url="Http://www.baidu.com";
             string res = HTTPClientHelper.GetHttpResponse(url, 6000);
@@ -106,7 +125,7 @@ namespace HGSystem
             }
             */
             
-            string strURL = "https://edutest.hongkazhijia.com/platform/login/getImage";
+            //string strURL = "https://edutest.hongkazhijia.com/platform/login/getImage";
             /*
             System.Net.HttpWebRequest request;
             request = (System.Net.HttpWebRequest)WebRequest.Create(strURL);
@@ -144,8 +163,14 @@ namespace HGSystem
             // {""id"":1,""key"":"""",""albumType"":2,""startTime"":1521738981174,""endTime"":1541738981174,""sliceParams"": {""pageNum"": 1, ""pageSize"": 10}}";
             // HGRestfulAPI.getInstance().getHGAlbum(1, "", 2, 1521738981174, 1541738981174, 1, 10);
             
-            HGRestfulAPI.getInstance().uploadHGFile(@"D:\zhangguixin\myapps\HGSystem\res\minimize.png");
+            //HGRestfulAPI.getInstance().uploadHGFile(@"D:\zhangguixin\myapps\HGSystem\res\minimize.png");
 
         }
+
+        private void m_btn_content_Click(object sender, EventArgs e)
+        {            
+            ButtonExChecked(m_btn_content);
+        }
+
     }
 }

@@ -62,6 +62,7 @@ namespace HGSystem
                 ControlStyles.OptimizedDoubleBuffer |//在缓冲区上绘制，不直接绘制到屏幕上，减少闪烁。
                 ControlStyles.ResizeRedraw | //控件大小发生变化时，重绘。                  
                 ControlStyles.SupportsTransparentBackColor, true);//支持透明背景颜色
+            this.ControlState = HGSystem.ControlState.Normal;
         }
 
         [DefaultValue(typeof(Color), "51, 161, 224")]

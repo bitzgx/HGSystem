@@ -154,6 +154,7 @@
             this.m_btn_content.TabIndex = 0;
             this.m_btn_content.Text = "内容发布";
             this.m_btn_content.UseVisualStyleBackColor = true;
+            this.m_btn_content.Click += new System.EventHandler(this.m_btn_content_Click);
             // 
             // MainForm
             // 
