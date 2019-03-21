@@ -202,6 +202,7 @@ namespace HGSystem
             {
                 mobile = "13488613602";
                 password = "hongka1018";
+                vcode = "eq32";
             }
 
             if (mobile.Equals("请输入手机号"))
