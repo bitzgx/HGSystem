@@ -58,17 +58,19 @@
             // m_btn_resetpwd
             // 
             this.m_btn_resetpwd.BackColor = System.Drawing.Color.Transparent;
+            this.m_btn_resetpwd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.m_btn_resetpwd.FlatAppearance.BorderSize = 0;
             this.m_btn_resetpwd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.m_btn_resetpwd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.m_btn_resetpwd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.m_btn_resetpwd.Font = new System.Drawing.Font("宋体", 10F);
             this.m_btn_resetpwd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(100)))), ((int)(((byte)(92)))));
-            this.m_btn_resetpwd.Location = new System.Drawing.Point(224, 458);
+            this.m_btn_resetpwd.Location = new System.Drawing.Point(270, 458);
             this.m_btn_resetpwd.Name = "m_btn_resetpwd";
-            this.m_btn_resetpwd.Size = new System.Drawing.Size(126, 23);
+            this.m_btn_resetpwd.Size = new System.Drawing.Size(80, 23);
             this.m_btn_resetpwd.TabIndex = 4;
             this.m_btn_resetpwd.Text = "忘记密码?";
+            this.m_btn_resetpwd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.m_btn_resetpwd.UseVisualStyleBackColor = false;
             this.m_btn_resetpwd.Click += new System.EventHandler(this.m_btn_resetpwd_Click);
             // 
@@ -110,11 +112,13 @@
             this.m_tbx_mobile.Font = new System.Drawing.Font("宋体", 12F);
             this.m_tbx_mobile.ForeColor = System.Drawing.Color.Gray;
             this.m_tbx_mobile.Location = new System.Drawing.Point(97, 225);
+            this.m_tbx_mobile.MaxLength = 11;
             this.m_tbx_mobile.Name = "m_tbx_mobile";
             this.m_tbx_mobile.Size = new System.Drawing.Size(253, 19);
             this.m_tbx_mobile.TabIndex = 0;
             this.m_tbx_mobile.Text = "请输入手机号";
             this.m_tbx_mobile.TextChanged += new System.EventHandler(this.m_tbx_mobile_TextChanged);
+            this.m_tbx_mobile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_tbx_mobile_KeyPress);
             // 
             // m_pnl_bg
             // 

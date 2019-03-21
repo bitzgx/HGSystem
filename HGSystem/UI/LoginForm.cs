@@ -25,10 +25,15 @@ namespace HGSystem
             m_fws_previous = this.WindowState;                
             m_float_window = new FloatWindow(this);
 
+            m_tbx_mobile.GotFocus += new EventHandler(m_tbx_mobile_GotFocus);
             // TODO: use captcha and remove login
+            if (Model.DebugHelper.IsServerFail)
+            {
+                m_btn_login_Click(this, null);
+                return;
+            }
+
             m_pbx_captcha_Click(this, null);
-            // m_pbx_captcha.Image = Helpers.Base64Helper.GetBitmapFromBase64(HGRestfulAPI.getInstance().getHGCaptcha().Img);
-            // m_btn_login_Click(this, null);
 
             // 13488613602
             // hongka1018
@@ -75,15 +80,15 @@ namespace HGSystem
             String password = m_tbx_password.Text; // "hongka1018";
             String vcode = m_tbx_captcha.Text;
 
-            /*// TODO: don't do the following, just for debug
-            if (mobile != null)
+            // TODO: don't do the following, just for debug
+            if (Model.DebugHelper.IsServerFail && mobile != null)
             {
                 MainForm mf = new MainForm();
                 this.Hide();
                 mf.ShowDialog();
                 Application.ExitThread(); // mainthread change to MainForm
                 return;
-            }*/
+            }
 
             if (m_hg_captcha == null)
             {
@@ -95,6 +100,7 @@ namespace HGSystem
 
             if (hgu != null)
             {
+                // TODO: save hgu mobile no to local storage
                 MainForm mf = new MainForm();
                 this.Hide();
                 mf.ShowDialog();
@@ -156,6 +162,7 @@ namespace HGSystem
             this.Region = new Region(gp);
         }
 
+        /*
         private void handleTextChanged(TextBox tbx, String prompt)
         {
             tbx.ForeColor = SystemColors.WindowText;
@@ -165,21 +172,25 @@ namespace HGSystem
                 tbx.Select(tbx.TextLength, 0);
             }
         }
+         * */
         private void m_tbx_mobile_TextChanged(object sender, EventArgs e)
         {
-            handleTextChanged(m_tbx_mobile, "请输入手机号");
+            // handleTextChanged(m_tbx_mobile, "请输入手机号");
+            m_tbx_mobile.ForeColor = SystemColors.WindowText;
         }
 
         private void m_tbx_password_TextChanged(object sender, EventArgs e)
         {
-            handleTextChanged(m_tbx_password, "请输入密码");
+            m_tbx_password.ForeColor = SystemColors.WindowText;
+            // handleTextChanged(m_tbx_password, "请输入密码");
             // m_tbx_password.PasswordChar = '*';
             m_tbx_password.UseSystemPasswordChar = true;
         }
 
         private void m_tbx_captcha_TextChanged(object sender, EventArgs e)
         {
-            handleTextChanged(m_tbx_captcha, "请输入验证码");
+            m_tbx_captcha.ForeColor = SystemColors.WindowText;
+            // handleTextChanged(m_tbx_captcha, "请输入验证码");
         }
 
         private bool isValidMobileNo(String mobile)
@@ -196,7 +207,7 @@ namespace HGSystem
 
             if (!isValidMobileNo(mobile))
             {
-                MessageBox.Show("请输入正确的手机号，为11位数字");
+                MessageBox.Show("请输入正确的手机号");
                 m_tbx_mobile.Focus();
                 return;
             }
@@ -206,6 +217,7 @@ namespace HGSystem
                 MessageBox.Show("验证码未更新，请点击验证码图片，重新更新验证码");
                 return;
             }
+
             String vtoken = m_hg_captcha.Vtoken;
             try
             {
@@ -228,6 +240,25 @@ namespace HGSystem
         private void m_btn_resetpwd_Click(object sender, EventArgs e)
         {
             MessageBox.Show("forget pwd");
+        }
+
+        private void m_tbx_mobile_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Console.WriteLine("text is " + m_tbx_mobile.Text);
+            //判断按键是不是要输入的类型。
+            if (((int)e.KeyChar < 48 || (int)e.KeyChar > 57) && (int)e.KeyChar != 8 && (int)e.KeyChar != 127)
+            {
+                MessageBox.Show("手机号只支持数字");
+                e.Handled = true;
+                return;
+            }
+            if (m_tbx_mobile.Text.Equals("请输入手机号"))
+                m_tbx_mobile.Text = "";            
+        }
+
+        private void m_tbx_mobile_GotFocus(object sender, EventArgs e)
+        {
+            m_tbx_mobile.Select(m_tbx_mobile.Text.Length, 0);
         }
     }
 }
