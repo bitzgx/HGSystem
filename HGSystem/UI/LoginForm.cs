@@ -248,6 +248,11 @@ namespace HGSystem
         private void m_tbx_mobile_KeyPress(object sender, KeyPressEventArgs e)
         {
             Console.WriteLine("text is " + m_tbx_mobile.Text);
+            if (e.KeyChar == 13)  
+            {
+                this.SelectNextControl(this.ActiveControl, true, true, true, true);  //需设置textBox的TabIndex顺序属性
+                return;
+            }
             //判断按键是不是要输入的类型。
             if (((int)e.KeyChar < 48 || (int)e.KeyChar > 57) && (int)e.KeyChar != 8 && (int)e.KeyChar != 127)
             {
@@ -266,6 +271,11 @@ namespace HGSystem
 
         private void m_tbx_password_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == 13)
+            {
+                this.SelectNextControl(this.ActiveControl, true, true, true, true);  //需设置textBox的TabIndex顺序属性
+                return;
+            }
             m_tbx_password.UseSystemPasswordChar = true;
             if (m_tbx_password.Text.Equals("请输入密码"))
             {
@@ -282,6 +292,11 @@ namespace HGSystem
 
         private void m_tbx_captcha_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == 13)
+            {
+                this.SelectNextControl(this.ActiveControl, true, true, true, true);  //需设置textBox的TabIndex顺序属性
+                return;
+            }
             if ((e.KeyChar != '\b') && (!Char.IsLetter(e.KeyChar)) && (!char.IsDigit(e.KeyChar)))
             {
                 e.Handled = true;
