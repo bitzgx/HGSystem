@@ -22,8 +22,12 @@ namespace HGSystem
 
         private void ContentPublish_Load(object sender, EventArgs e)
         {
+            // this.AutoScroll = true;
+            // this.VerticalScroll.Maximum = 1200;
             loadVideoAlbums();
+            loadAudioAlbums();
             displayVideoAlbums();
+            displayAudioAlbums();
         }
 
         private void loadVideoAlbums()
@@ -61,7 +65,7 @@ namespace HGSystem
             {
                 AlbumInfo ai = m_audio_albums[i];
 
-                ai.Location = new Point(50 + 220 * (i % 5), 410 + 220 * (i / 5));
+                ai.Location = new Point(50 + 220 * (i % 5), 610 + 220 * (i / 5));
 
                 this.Controls.Add(ai);
             }
