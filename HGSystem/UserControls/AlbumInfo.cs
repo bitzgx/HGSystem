@@ -22,5 +22,14 @@ namespace HGSystem
             m_pbx_album.Image = img;
             m_lbl_album.Text = text;
         }
+
+        public delegate void ClickEventHandlerDelegate(String id);
+        public ClickEventHandlerDelegate ClickEventHandler { get; set; }
+
+        private void m_pbx_album_Click(object sender, EventArgs e)
+        {
+            if (ClickEventHandler != null)
+                ClickEventHandler("hello");
+        }
     }
 }

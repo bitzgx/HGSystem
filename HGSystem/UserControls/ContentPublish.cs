@@ -35,6 +35,10 @@ namespace HGSystem
             for (int i = 0; i < 10; i++)
             {
                 AlbumInfo ai = new AlbumInfo();
+                if (i == 0)
+                    ai.ClickEventHandler += NewAlbum;
+                else
+                    ai.ClickEventHandler += ShowAlbumDetail;
                 m_video_albums.Add(ai);
             }
         }
@@ -43,6 +47,10 @@ namespace HGSystem
             for (int i = 0; i < 10; i++)
             {
                 AlbumInfo ai = new AlbumInfo();
+                if (i == 0)
+                    ai.ClickEventHandler += NewAlbum;
+                else
+                    ai.ClickEventHandler += ShowAlbumDetail;
                 m_audio_albums.Add(ai);
             }
         }
@@ -79,6 +87,16 @@ namespace HGSystem
         private void m_lbl_moreaudio_Click(object sender, EventArgs e)
         {
             MessageBox.Show("更多音频");
+        }
+
+        private void NewAlbum(String id)
+        {
+            MessageBox.Show("新增专辑");
+        }
+
+        private void ShowAlbumDetail(String id)
+        {
+            MessageBox.Show("显示专辑");
         }
     }
 }

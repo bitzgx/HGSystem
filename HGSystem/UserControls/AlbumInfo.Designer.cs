@@ -37,6 +37,7 @@
             // m_pbx_album
             // 
             this.m_pbx_album.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("m_pbx_album.BackgroundImage")));
+            this.m_pbx_album.Cursor = System.Windows.Forms.Cursors.Hand;
             this.m_pbx_album.Dock = System.Windows.Forms.DockStyle.Top;
             this.m_pbx_album.InitialImage = null;
             this.m_pbx_album.Location = new System.Drawing.Point(0, 0);
@@ -44,6 +45,7 @@
             this.m_pbx_album.Size = new System.Drawing.Size(180, 180);
             this.m_pbx_album.TabIndex = 0;
             this.m_pbx_album.TabStop = false;
+            this.m_pbx_album.Click += new System.EventHandler(this.m_pbx_album_Click);
             // 
             // m_lbl_album
             // 
