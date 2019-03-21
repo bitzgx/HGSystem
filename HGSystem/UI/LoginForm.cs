@@ -180,6 +180,21 @@ namespace HGSystem
         {
             // handleTextChanged(m_tbx_mobile, "请输入手机号");
             m_tbx_mobile.ForeColor = SystemColors.WindowText;
+            var reg = new System.Text.RegularExpressions.Regex("^[0-9]*$");
+            var str = m_tbx_mobile.Text.Trim();
+            var sb = new StringBuilder();
+            if (!reg.IsMatch(str))
+            {
+                for (int i = 0; i < str.Length; i++)
+                {
+                    if (reg.IsMatch(str[i].ToString()))
+                    {
+                        sb.Append(str[i].ToString());
+                    }
+                }
+                m_tbx_mobile.Text = sb.ToString();
+                m_tbx_mobile.SelectionStart = m_tbx_mobile.Text.Length;    //定义输入焦点在最后一个字符
+            }
         }
 
         private void m_tbx_password_TextChanged(object sender, EventArgs e)
@@ -248,13 +263,14 @@ namespace HGSystem
         private void m_tbx_mobile_KeyPress(object sender, KeyPressEventArgs e)
         {
             Console.WriteLine("text is " + m_tbx_mobile.Text);
-            if (e.KeyChar == 13)  
+            if ((int)e.KeyChar == 13)  
             {
                 this.SelectNextControl(this.ActiveControl, true, true, true, true);  //需设置textBox的TabIndex顺序属性
                 return;
             }
+
             //判断按键是不是要输入的类型。
-            if (((int)e.KeyChar < 48 || (int)e.KeyChar > 57) && (int)e.KeyChar != 8 && (int)e.KeyChar != 127)
+            if (((int)e.KeyChar < 48 || (int)e.KeyChar > 57) && (int)e.KeyChar != 8 && (int)e.KeyChar != 127 && (int)e.KeyChar != 22)
             {
                 MessageBox.Show("手机号只支持数字");
                 e.Handled = true;
@@ -277,13 +293,13 @@ namespace HGSystem
                 return;
             }
             m_tbx_password.UseSystemPasswordChar = true;
-            if (m_tbx_password.Text.Equals("请输入密码"))
+            if (m_tbx_password.Text.Equals("请输入密码") && (int)e.KeyChar != 22)
             {
                 // m_tbx_password.Text = "";   
                 m_tbx_password.Text = e.KeyChar.ToString();
-                m_tbx_password.Select(m_tbx_password.Text.Length, 0);
             }
-            Console.WriteLine(m_tbx_password.Text);            
+            Console.WriteLine(m_tbx_password.Text);
+            m_tbx_password.Select(m_tbx_password.Text.Length, 0);   
         }
         private void m_tbx_password_GotFocus(object sender, EventArgs e)
         {
@@ -297,7 +313,7 @@ namespace HGSystem
                 this.SelectNextControl(this.ActiveControl, true, true, true, true);  //需设置textBox的TabIndex顺序属性
                 return;
             }
-            if ((e.KeyChar != '\b') && (!Char.IsLetter(e.KeyChar)) && (!char.IsDigit(e.KeyChar)))
+            if ((e.KeyChar != '\b') && (!Char.IsLetter(e.KeyChar)) && (!char.IsDigit(e.KeyChar)) && (int)e.KeyChar != 22)
             {
                 e.Handled = true;
                 return;
