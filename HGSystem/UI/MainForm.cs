@@ -33,10 +33,12 @@ namespace HGSystem
 
         private void MainForm_Paint(object sender, PaintEventArgs e)
         {
+            /*
             Graphics g = e.Graphics;
             PointF p1 = new PointF(10, 75);
             PointF p2 = new PointF(this.Width - 10, 75);            
             g.DrawLine(new Pen(Color.Gray, 2), p1, p2);
+             */
         }
 
         private void m_btn_close_Click(object sender, EventArgs e)
