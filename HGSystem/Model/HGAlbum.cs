@@ -8,6 +8,7 @@ namespace HGSystem.Model
 {
     public class HGAlbumItem
     {
+        /*
         private int albumId;
         private String albumName;
         private String albumLabel;
@@ -39,6 +40,7 @@ namespace HGSystem.Model
         private String albumCounty;
         private String albumVillages;
         private String albumStatus;
+         */
 
         public int AlbumId { get; set; }
         public String AlbumName { get; set; }
@@ -74,8 +76,10 @@ namespace HGSystem.Model
     }
     public class HGAlbum
     {
+        /*
         private int total;
         private HGAlbumItem[] data;
+         */
 
         public int Total { get; set; }
         public HGAlbumItem[] Data { get; set; }

@@ -25,6 +25,9 @@ namespace HGSystem
             m_fws_previous = this.WindowState;                
             m_float_window = new FloatWindow(this);
 
+            DebugHelper.IsServerFail = false;
+            DebugHelper.FastUserLogin = true;
+
             m_tbx_mobile.GotFocus += new EventHandler(m_tbx_mobile_GotFocus);
             m_tbx_password.GotFocus += new EventHandler(m_tbx_password_GotFocus);
             m_tbx_captcha.GotFocus += new EventHandler(m_tbx_captcha_GotFocus);
@@ -32,7 +35,7 @@ namespace HGSystem
             // TODO: use captcha and remove login
             if (Model.DebugHelper.IsServerFail)
             {
-                m_btn_login_Click(this, null);
+                m_bte_login_Click(this, null);
                 return;
             }
 
@@ -75,40 +78,6 @@ namespace HGSystem
             }
              */
 
-        }
-
-        private void m_btn_login_Click(object sender, EventArgs e)
-        {
-            String mobile = m_tbx_mobile.Text; // "13488613602";// "15811208494";
-            String password = m_tbx_password.Text; // "hongka1018";
-            String vcode = m_tbx_captcha.Text;
-
-            // TODO: don't do the following, just for debug
-            if (Model.DebugHelper.IsServerFail && mobile != null)
-            {
-                MainForm mf = new MainForm();
-                this.Hide();
-                mf.ShowDialog();
-                Application.ExitThread(); // mainthread change to MainForm
-                return;
-            }
-
-            if (m_hg_captcha == null)
-            {
-                System.Windows.Forms.MessageBox.Show("验证码未更新，请点击验证码图片，重新更新验证码");
-                return;
-            }
-            String vtoken = m_hg_captcha.Vtoken;
-            HGUser hgu = HGRestfulAPI.getInstance().login(mobile, password, vcode, vtoken);
-
-            if (hgu != null)
-            {
-                // TODO: save hgu mobile no to local storage
-                MainForm mf = new MainForm();
-                this.Hide();
-                mf.ShowDialog();
-                Application.ExitThread(); // mainthread change to MainForm
-            }
         }
 
         private void m_pbx_captcha_Click(object sender, EventArgs e)
@@ -228,6 +197,34 @@ namespace HGSystem
             String mobile = m_tbx_mobile.Text; // "13488613602";// "15811208494";
             String password = m_tbx_password.Text; // "hongka1018";
             String vcode = m_tbx_captcha.Text;
+
+            if (DebugHelper.FastUserLogin)
+            {
+                mobile = "13488613602";
+                password = "hongka1018";
+            }
+
+            if (mobile.Equals("请输入手机号"))
+            {
+                MessageBox.Show("手机号不能为空");
+            }
+            if (password.Equals("请输入密码"))
+            {
+                MessageBox.Show("密码不能为空");
+            }
+            if (vcode.Equals("请输入验证码"))
+            {
+                MessageBox.Show("验证码不能为空");
+            }
+            // TODO: don't do the following, just for debug
+            if (Model.DebugHelper.IsServerFail && mobile != null)
+            {
+                MainForm mf = new MainForm();
+                this.Hide();
+                mf.ShowDialog();
+                Application.ExitThread(); // mainthread change to MainForm
+                return;
+            }
 
             if (!isValidMobileNo(mobile))
             {

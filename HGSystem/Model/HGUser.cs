@@ -9,13 +9,16 @@ namespace HGSystem.Model
 {
     public class OrgId
     {
+        /*
         private String orgName;
         private String orgid;
+         */
         public String OrgName { get; set; }
         public String Orgid { get; set; }
     }
     public class HGUser
     {
+        /*
         private String id;
         private String userType;
         private String userid;
@@ -30,6 +33,8 @@ namespace HGSystem.Model
         private String orgNames;
         // private JArray orgIds; // This is also OK
         private OrgId[] orgIds;
+         */
+
         public String Id { get; set; }
         public String UserType { get; set; }
         public String Userid { get; set; }
@@ -44,6 +49,7 @@ namespace HGSystem.Model
         public String OrgNames { get; set; }
         // public JArray OrgIds { get; set; } // This is also OK
         public OrgId[] OrgIds {get; set;}
+         
         /*
          {
         "id": "180919101033025850632",

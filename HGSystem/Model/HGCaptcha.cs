@@ -8,13 +8,15 @@ namespace HGSystem.Model
 {
     public class HGCaptcha
     {
+        /*
         private String vtoken;
         private String img;
+         */
 
         public String Vtoken { get; set; }
         public String Img { get; set; }
 
-        public HGCaptcha(String _vtoken, String _img) { vtoken = _vtoken; img = _img; }
+        public HGCaptcha(String _vtoken, String _img) { Vtoken = _vtoken; Img = _img; }
         public HGCaptcha() { }
     }
 }

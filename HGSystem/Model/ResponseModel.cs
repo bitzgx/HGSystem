@@ -15,33 +15,39 @@ namespace HGSystem
 {
     public class ResponseModel
     {
-        private WebHeaderCollection header;
+        // private WebHeaderCollection header;
         /// <summary>
         /// 返回的头部信息集合
         /// </summary>
-        public WebHeaderCollection Header
+        public WebHeaderCollection Header { get; set; }
+        /*
         {
             get { return header; }
             set { header = value; }
         }
-        private string html;
+         */
+        // private string html;
         /// <summary>
         /// 返回的文本内容
         /// </summary>
-        public string Html
+        public string Html { get; set; }
+        /*
         {
             get { return html; }
             set { html = value; }
         }
-        private Stream stream;
+         * */
+        // private Stream stream;
         /// <summary>
         /// 返回的流内容
         /// </summary>
-        public Stream Stream
+        public Stream Stream { get; set; }
+        /*
         {
             get { return stream; }
             set { stream = value; }
         }
+         */
 
     }
     public class HttpHelper2
