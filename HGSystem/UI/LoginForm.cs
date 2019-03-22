@@ -248,6 +248,7 @@ namespace HGSystem
 
                 if (hgu != null)
                 {
+                    HGData.getInstance().User = hgu;
                     MainForm mf = new MainForm();
                     this.Hide();
                     mf.ShowDialog();

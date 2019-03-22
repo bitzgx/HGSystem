@@ -36,6 +36,8 @@ namespace HGSystem
             ButtonExChecked(m_btn_content);
 
             m_btn_content_Click(this, null);
+
+            HGData.getInstance().ComCategory = HGRestfulAPI.getInstance().getHGComCategory();
         }
 
         private void InitNavigators()

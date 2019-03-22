@@ -115,7 +115,8 @@ namespace HGSystem
             String resturl = "/platform/album/getComCategory";
             // TODO: no need to add customized headers
             String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, null);
-            return parseHGData<HGComCategory[]>(res);
+            HGComCategory[] hgcc = parseHGData<HGComCategory[]>(res);
+            return hgcc;
             /*
             if (res != null)
             {
