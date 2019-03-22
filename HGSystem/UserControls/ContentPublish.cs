@@ -57,7 +57,8 @@ namespace HGSystem
 
         private void displayVideoAlbums()
         {
-            for (int i = 0; i < m_video_albums.Count; i++)
+            int video_albums_count = m_video_albums.Count > 10 ? 10 : m_video_albums.Count;
+            for (int i = 0; i < video_albums_count; i++)
             {
                 AlbumInfo ai = m_video_albums[i];
                 
@@ -69,7 +70,8 @@ namespace HGSystem
 
         private void displayAudioAlbums()
         {
-            for (int i = 0; i < m_audio_albums.Count; i++)
+            int audio_albums_count = m_audio_albums.Count > 10 ? 10 : m_audio_albums.Count;
+            for (int i = 0; i < audio_albums_count; i++)
             {
                 AlbumInfo ai = m_audio_albums[i];
 
