@@ -35,12 +35,14 @@
             // m_lbl_morealbum
             // 
             this.m_lbl_morealbum.AutoSize = true;
+            this.m_lbl_morealbum.Cursor = System.Windows.Forms.Cursors.Hand;
             this.m_lbl_morealbum.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.m_lbl_morealbum.Location = new System.Drawing.Point(1050, 25);
             this.m_lbl_morealbum.Name = "m_lbl_morealbum";
             this.m_lbl_morealbum.Size = new System.Drawing.Size(56, 16);
             this.m_lbl_morealbum.TabIndex = 6;
             this.m_lbl_morealbum.Text = "更多 >";
+            this.m_lbl_morealbum.Click += new System.EventHandler(this.m_lbl_morealbum_Click);
             // 
             // m_lbl_albumtypename
             // 

@@ -118,11 +118,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\ResponseModel.cs" />
-    <Compile Include="UserControls\MoreAlbums.cs">
+    <Compile Include="UserControls\MoreAlbumsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\MoreAlbums.Designer.cs">
-      <DependentUpon>MoreAlbums.cs</DependentUpon>
+    <Compile Include="UserControls\MoreAlbumsPanel.Designer.cs">
+      <DependentUpon>MoreAlbumsPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SearchBar.cs">
       <SubType>UserControl</SubType>
@@ -164,8 +164,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserControls\MoreAlbums.resx">
-      <DependentUpon>MoreAlbums.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\MoreAlbumsPanel.resx">
+      <DependentUpon>MoreAlbumsPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchBar.resx">
       <DependentUpon>SearchBar.cs</DependentUpon>

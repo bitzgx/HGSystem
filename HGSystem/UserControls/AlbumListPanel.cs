@@ -6,22 +6,24 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using HGSystem.UserControls;
 
 namespace HGSystem.UserControls
 {
     public partial class AlbumListPanel : UserControl
     {
         private IList<AlbumInfo> m_albums = new List<AlbumInfo>();
-        private AlbumType m_album_type = 0;
-        public enum AlbumType { VideoAlbum, AudioAlbum }
+        private ContentPublish.AlbumType m_album_type = ContentPublish.AlbumType.VideoAlbum;
 
-        public AlbumType PanelAlbumType 
+        public ContentPublish.SwitchToMoreAlbumsPanel SwitchToMAP {get; set;}
+
+        public ContentPublish.AlbumType PanelAlbumType 
         { 
             get { return m_album_type; }
             set
             {
                 m_album_type = value;
-                if (m_album_type == 0)
+                if (m_album_type == ContentPublish.AlbumType.VideoAlbum)
                 {
                     m_lbl_albumtypename.Text = "视频专辑";
                 }
@@ -31,7 +33,7 @@ namespace HGSystem.UserControls
                 }
             }
         }
-        public AlbumListPanel(AlbumType album_type)
+        public AlbumListPanel(ContentPublish.AlbumType album_type)
         {
             InitializeComponent();
             this.PanelAlbumType = album_type;
@@ -68,6 +70,12 @@ namespace HGSystem.UserControls
         {
             LoadAlbums();
             ShowAlbums();
+        }
+
+        private void m_lbl_morealbum_Click(object sender, EventArgs e)
+        {
+            if (SwitchToMAP != null)
+                SwitchToMAP(m_album_type);
         }
     }
 }
