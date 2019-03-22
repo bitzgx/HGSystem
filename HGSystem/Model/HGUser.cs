@@ -21,7 +21,7 @@ namespace HGSystem.Model
         /*
         private String id;
         private String userType;
-        private String userid;
+        private String orgid;
         private String orgType;
         private String status;
         private String orgIntro;
@@ -37,7 +37,7 @@ namespace HGSystem.Model
 
         public String Id { get; set; }
         public String UserType { get; set; }
-        public String Userid { get; set; }
+        public String Orgid { get; set; }
         public String OrgType { get; set; }
         public String Status { get; set; }
         public String OrgIntro { get; set; }

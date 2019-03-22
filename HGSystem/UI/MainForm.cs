@@ -192,5 +192,10 @@ namespace HGSystem
             ButtonExChecked(m_btn_content);
         }
 
+        private void m_btn_profile_Click(object sender, EventArgs e)
+        {
+            HGRestfulAPI.getInstance().getHGAlbum(1, "", 1, 1, 1, 1, 1);
+        }
+
     }
 }

@@ -114,6 +114,7 @@
             this.m_btn_profile.Size = new System.Drawing.Size(27, 30);
             this.m_btn_profile.TabIndex = 4;
             this.m_btn_profile.UseVisualStyleBackColor = true;
+            this.m_btn_profile.Click += new System.EventHandler(this.m_btn_profile_Click);
             // 
             // m_btn_material
             // 

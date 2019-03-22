@@ -125,6 +125,33 @@ namespace HGSystem
             */
         }
 
+        private IList<KeyValuePair<String, String>> buildHeaderParams(HGUser hgu)
+        {
+            IList<KeyValuePair<String, String>> headers = new List<KeyValuePair<String, String>>();
+            headers.Add(new KeyValuePair<string,string>("Content-Type", "application/json"));
+            if (Helpers.DebugHelper.FastUserLogin)
+            {
+                // headers.Add(new KeyValuePair<string,string>("Content-Type", "application/json"));
+                headers.Add(new KeyValuePair<string, string>("id", "180919101033025850632"));
+                headers.Add(new KeyValuePair<string, string>("userType", "2"));
+                headers.Add(new KeyValuePair<string, string>("orgid", "18091910104183120964"));
+                headers.Add(new KeyValuePair<string, string>("orgType", "2"));
+                headers.Add(new KeyValuePair<string, string>("token", "9a893d4d-a80f-4d68-ab30-10f4a5b6193c"));
+                return headers;
+            }
+            else if (hgu != null)
+            {
+                // headers.Add(new KeyValuePair<string, string>("Content-Type", "application/json"));
+                headers.Add(new KeyValuePair<string, string>("id", hgu.Id));
+                headers.Add(new KeyValuePair<string, string>("userType", hgu.UserType));
+                headers.Add(new KeyValuePair<string, string>("orgid", hgu.Orgid));
+                headers.Add(new KeyValuePair<string, string>("orgType", hgu.OrgType));
+                headers.Add(new KeyValuePair<string, string>("token", hgu.Token));
+                return headers;
+            }
+            return null;
+        }
+
         public HGAlbum getHGAlbum(int id, string key, int albumType, long startTime, long endTime, int pageNum, int pageSize)
         {
             String resturl = "/platform/album/query";
@@ -138,9 +165,13 @@ namespace HGSystem
                 + ",\"sliceParams\":{\"pageNum\":" + pageNum
                 + ",\"pageSize\":" + pageSize
                 + "}}";
+            if (DebugHelper.FastUserLogin)
+            {
+                json_params = "{\"orgName\": \"\",\"albumCategory\": [],\"albumId\": null,\"albumName\": null,\"albumStatus\": null,\"createTimeBeginTime\": null,\"createTimeEndTime\": null,\"sliceParams\": {\"pageNum\": 1,\"pageSize\": 10},\"direction\": null,\"orderBy\": null}";
+            }
              
             // TODO: no need to add customized headers
-            String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, json_params);
+            String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, json_params, buildHeaderParams(null));
             return parseHGData<HGAlbum>(res);
         }
 

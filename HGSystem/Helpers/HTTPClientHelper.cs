@@ -7,6 +7,8 @@ using System.Linq;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 // using System.Threading.Tasks;
+using System.Collections.Specialized;
+using System.Reflection;
 
 namespace HGSystem
 {
@@ -108,13 +110,35 @@ namespace HGSystem
             }
             return null;
         }
+
+        private static void SetHeaderValue(WebHeaderCollection header, string name, string value)
+        {
+            var property = typeof(WebHeaderCollection).GetProperty("InnerCollection", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (property != null)
+            {
+                var collection = property.GetValue(header, null) as NameValueCollection;
+                collection[name] = value;
+            }
+        }
+
+        private static void SetHeaderValues(HttpWebRequest rq, IList<KeyValuePair<String, String>> headers)
+        {
+            if (headers != null)
+            {
+                foreach(KeyValuePair<String, String> kvp in headers)
+                {
+                    SetHeaderValue(rq.Headers, kvp.Key, kvp.Value);
+                }
+            }
+        }
+
         /// <summary>
         /// http请求提交数据
         /// </summary>
         /// <param name="strPostUrl"></param>
         /// <param name="strPostData"></param>
         /// <returns></returns>
-        public static string HttpPostJsonData(string strPostUrl, string strPostData)
+        public static string HttpPostJsonData(string strPostUrl, string strPostData, IList<KeyValuePair<String, String>> headers = null)
         {
             UTF8Encoding encoding = new UTF8Encoding();
             if (strPostData == null)
@@ -122,6 +146,7 @@ namespace HGSystem
             byte[] b = encoding.GetBytes(strPostData);
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(strPostUrl);
             request.Method = "POST";
+            SetHeaderValues(request, headers);
             request.ContentType = "application/json";
             request.ContentLength = b.Length;
             try
