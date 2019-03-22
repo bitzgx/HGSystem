@@ -118,6 +118,12 @@
     <Compile Include="UserControls\MoreAlbums.Designer.cs">
       <DependentUpon>MoreAlbums.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SearchBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SearchBar.Designer.cs">
+      <DependentUpon>SearchBar.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UserControls\AlbumInfo.resx">
       <DependentUpon>AlbumInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +157,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\MoreAlbums.resx">
       <DependentUpon>MoreAlbums.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SearchBar.resx">
+      <DependentUpon>SearchBar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
