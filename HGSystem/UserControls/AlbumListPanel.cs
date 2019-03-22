@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using HGSystem.UserControls;
+using HGSystem.UI;
 
 namespace HGSystem.UserControls
 {
@@ -44,14 +45,28 @@ namespace HGSystem.UserControls
             for (int i = 0; i < 10; i++)
             {
                 AlbumInfo ai = new AlbumInfo();
-                /*
+                
                 if (i == 0)
                     ai.ClickEventHandler += NewAlbum;
                 else
                     ai.ClickEventHandler += ShowAlbumDetail;
-                 */
+                
                 m_albums.Add(ai);
             }
+        }
+
+        private void NewAlbum(String id)
+        {
+            // MessageBox.Show("新建专辑");
+            this.Enabled = false;
+            NewAlbumForm naf = new NewAlbumForm();
+            naf.ShowDialog();
+            this.Enabled = true;
+        }
+
+        private void ShowAlbumDetail(String id)
+        {
+            MessageBox.Show("显示专辑详情");
         }
         private void ShowAlbums()
         {
