@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using HGSystem.UserControls;
+using HGSystem.Model;
 
 namespace HGSystem
 {
@@ -194,7 +195,7 @@ namespace HGSystem
 
         private void m_btn_profile_Click(object sender, EventArgs e)
         {
-            HGRestfulAPI.getInstance().getHGAlbum(1, "", 1, 1, 1, 1, 1);
+            HGAlbum hga = HGRestfulAPI.getInstance().getHGAlbum(1, "", 1, 1, 1, 1, 1);
         }
 
     }

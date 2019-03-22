@@ -42,6 +42,7 @@ namespace HGSystem.Model
         private String albumStatus;
          */
 
+        /* doc V1.0
         public int AlbumId { get; set; }
         public String AlbumName { get; set; }
         public String AlbumLabel { get; set; }
@@ -73,6 +74,20 @@ namespace HGSystem.Model
         public String AlbumCounty { get; set; }
         public String AlbumVillages { get; set; }
         public String AlbumStatus { get; set; }
+         */
+ 
+        public String AlbumName { get; set; }
+        public String AlbumUpcount { get; set; }
+        public long AlbumCreateTime { get; set; }
+        public String AlbumCategoryName { get; set; }
+        public String AlbumId { get; set; }
+        public int AlbumIsup { get; set; }
+        public int AlbumCategoryId { get; set; }
+        public int AlbumType { get; set; }
+        public int AlbumOpencount { get; set; }
+        public String FileUrl { get; set; }
+        public long AlbumUpdateTime { get; set; }        
+        public String FileId { get; set; }
     }
     public class HGAlbum
     {
