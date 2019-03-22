@@ -195,7 +195,15 @@ namespace HGSystem
 
         private void m_btn_profile_Click(object sender, EventArgs e)
         {
-            HGAlbum hga = HGRestfulAPI.getInstance().getHGAlbum(1, "", 1, 1, 1, 1, 1);
+            // HGAlbum hga = HGRestfulAPI.getInstance().getHGAlbum(1, "", 1, 1, 1, 1, 1);
+            try
+            {
+                bool newOK = HGRestfulAPI.getInstance().newHGAlbum();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
     }

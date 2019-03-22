@@ -175,6 +175,19 @@ namespace HGSystem
             return parseHGData<HGAlbum>(res);
         }
 
+        public bool newHGAlbum()
+        {
+            String resturl = "/platform/album/add";
+            String json_params = "";
+            if (DebugHelper.FastUserLogin)
+            {
+                json_params = "{\"albumName\": \"70周年大阅兵7\",\"albumType\": 1,\"intro\": \"70周年大阅兵，简介\",\"fileUrl\": \"https://filetest.hongkazhijia.com/cb/cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2.jpg\",	\"albumFileId\": \"cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2\",\"albumLabel\": \"70周年\",\"albumCategoryId\": [10000000, 10001000, 10001001]}";
+            }
+            String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, json_params, buildHeaderParams(null));
+            Object newOK = parseHGData<Object>(res);
+            return true;
+        }
+
         public void uploadHGFile(String filename)
         {
             String sha256_str = Helpers.EncryptHelper.SHA256(filename, true);
