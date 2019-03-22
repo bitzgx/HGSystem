@@ -198,7 +198,8 @@ namespace HGSystem
             // HGAlbum hga = HGRestfulAPI.getInstance().getHGAlbum(1, "", 1, 1, 1, 1, 1);
             try
             {
-                bool newOK = HGRestfulAPI.getInstance().newHGAlbum();
+                // bool newOK = HGRestfulAPI.getInstance().newHGAlbum();
+                bool newOK = HGRestfulAPI.getInstance().newHGProgram();
             }
             catch (Exception ex)
             {

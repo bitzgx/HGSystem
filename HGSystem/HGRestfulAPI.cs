@@ -183,6 +183,28 @@ namespace HGSystem
             {
                 json_params = "{\"albumName\": \"70周年大阅兵7\",\"albumType\": 1,\"intro\": \"70周年大阅兵，简介\",\"fileUrl\": \"https://filetest.hongkazhijia.com/cb/cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2.jpg\",	\"albumFileId\": \"cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2\",\"albumLabel\": \"70周年\",\"albumCategoryId\": [10000000, 10001000, 10001001]}";
             }
+            else
+            {
+
+            }
+            String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, json_params, buildHeaderParams(null));
+            Object newOK = parseHGData<Object>(res);
+            return true;
+        }
+
+        public bool newHGProgram()
+        {
+            String resturl = "/platform/material/eims/add";
+            String json_params = "";
+            if (DebugHelper.FastUserLogin)
+            {
+                json_params = "{\"materials\": [{\"fileId\": \"00790707ef3ff682fd0d4688ff1350fb1c516bae1f1f2c3df6e76200266af9e0\", \"realUrl\": \"https://filetest.hongkazhijia.com/00/00790707ef3ff682fd0d4688ff1350fb1c516bae1f1f2c3df6e76200266af9e0.mp3\", \"fileName\": \"00790707ef3ff682fd0d\", \"duration\": 197, \"wh\": [], \"thumbnail\": \"\", \"albumId\": \"190321013159480064266\", \"coverId\": \"\", \"imageUrl\": \"\", \"name\": \"00790707ef3ff682fd0d\", \"sort\": \"\", \"publisher\": \"1\", \"type\": 1 }] }";
+                Console.WriteLine("json_params : " + json_params);
+            }
+            else
+            {
+
+            }
             String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, json_params, buildHeaderParams(null));
             Object newOK = parseHGData<Object>(res);
             return true;
