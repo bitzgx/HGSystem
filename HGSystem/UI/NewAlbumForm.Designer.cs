@@ -254,6 +254,7 @@
             this.Controls.Add(this.m_lbl_caption);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NewAlbumForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NewAlbumForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

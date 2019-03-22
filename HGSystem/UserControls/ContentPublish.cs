@@ -69,25 +69,5 @@ namespace HGSystem
             // this.AutoScroll = true;
             // this.VerticalScroll.Maximum = 1200;
         }
-
-        private void m_lbl_morevideo_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("更多视频");
-        }
-
-        private void m_lbl_moreaudio_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("更多音频");
-        }
-
-        private void NewAlbum(String id)
-        {
-            MessageBox.Show("新增专辑");
-        }
-
-        private void ShowAlbumDetail(String id)
-        {
-            MessageBox.Show("显示专辑");
-        }
     }
 }

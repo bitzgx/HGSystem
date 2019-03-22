@@ -57,11 +57,11 @@ namespace HGSystem.UserControls
 
         private void NewAlbum(String id)
         {
-            // MessageBox.Show("新建专辑");
-            this.Enabled = false;
+            OpacityWindow naf2 = new OpacityWindow();
+            naf2.Show();
             NewAlbumForm naf = new NewAlbumForm();
             naf.ShowDialog();
-            this.Enabled = true;
+            naf2.Close();
         }
 
         private void ShowAlbumDetail(String id)
