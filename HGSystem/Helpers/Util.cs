@@ -127,6 +127,7 @@ namespace HGSystem.Helpers
             {
                 var formdata = string.Format(formdataTemplate, typeName, fileName);
                 var formdataBytes = Encoding.ASCII.GetBytes(postStream.Length == 0 ? formdata.Substring(2, formdata.Length - 2) : formdata);//第一行不需要换行
+                Console.WriteLine("formdata:" + formdata);
                 postStream.Write(formdataBytes, 0, formdataBytes.Length);
 
                 //写入文件

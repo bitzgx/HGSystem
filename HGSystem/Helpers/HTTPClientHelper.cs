@@ -217,32 +217,52 @@ namespace HGSystem
         /// <returns></returns>
         public static string Upload(string uriStr, string name, string fileName, string filemeta, byte[] data, int offset, int count)
         {
+            Console.WriteLine("uriStr " + uriStr);
+            Console.WriteLine("name " + name);
+            Console.WriteLine("fileName " + fileName);
+            Console.WriteLine("filemeta " + filemeta);
+            Console.WriteLine("offset " + offset);
+            Console.WriteLine("count " + count);
             try
             {
-                var request = WebRequest.Create(uriStr);
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uriStr);
+ 
                 request.Method = "POST";
+                request.Timeout = 10000;
                 var boundary = "******"+DateTime.Now.Ticks+"***";
                 request.ContentType = "multipart/form-data; boundary=" + boundary;
                 boundary = "--" + boundary;
                 string request_str = "";
+                long request_len = 0;
                 using (var requestStream = request.GetRequestStream())
                 {
                     var buffer = Encoding.ASCII.GetBytes(boundary + Environment.NewLine);
                     request_str += System.Text.Encoding.Default.GetString(buffer);
+                    request_len += buffer.Length;
                     requestStream.Write(buffer, 0, buffer.Length);
-                    buffer = Encoding.ASCII.GetBytes("Content-Disposition: form-data; name=\""+ name +"\"; filename=\"" + fileName +"\"; filemeta=\"" + filemeta  + "\"" + Environment.NewLine);
+                    buffer = Encoding.ASCII.GetBytes("Content-Disposition: form-data; name=\""+ name +"\"; filename=\"" + fileName /*+ "\"; filemeta=\"" + filemeta  + "\""*/ + Environment.NewLine);
                     request_str += System.Text.Encoding.Default.GetString(buffer);
+                    request_len += buffer.Length;
                     requestStream.Write(buffer, 0, buffer.Length);
                     buffer = Encoding.ASCII.GetBytes("Content-Type: application/octet-stream" + Environment.NewLine + Environment.NewLine);
                     request_str += System.Text.Encoding.Default.GetString(buffer);
+                    request_len += buffer.Length;
                     request_str += System.Text.Encoding.Default.GetString(data);
+                    request_len += data.Length;
                     requestStream.Write(buffer, 0, buffer.Length);
                     requestStream.Write(data, offset, count);
                     buffer = Encoding.ASCII.GetBytes(Environment.NewLine + boundary + "--");
                     request_str += System.Text.Encoding.Default.GetString(buffer);
+                    request_len += buffer.Length;
                     requestStream.Write(buffer, 0, buffer.Length);
+                    Console.WriteLine("request:" + request_str);
+                    
+                    //request.ContentLength = request_len;
+                    //request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+                    //request.KeepAlive = true;
+                    //request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36";
+                    
                 }
-                Console.WriteLine("request:" + request_str);
                 using (var response = request.GetResponse())
                 using (var responseStream = response.GetResponseStream())
                 using (var streamReader = new StreamReader(responseStream))
