@@ -44,7 +44,7 @@ namespace HGSystem
                     m_map = new MoreAlbumsPanel();
                     m_map.SwitchToMAP = SwitchToMAP;
                     this.Controls.Add(m_map);
-                    m_map.Size = new Size(1200, 600);
+                    m_map.Size = new Size(1160, 600);
                     m_map.Location = new Point(0, 50);
                     m_map.BringToFront();
                 }
@@ -61,9 +61,9 @@ namespace HGSystem
             m_alp_audio = new AlbumListPanel(ContentPublish.AlbumType.AudioAlbum);
             m_alp_audio.SwitchToMAP = SwitchToMAP;
             this.Controls.Add(m_alp_audio);
-            m_alp_video.Size = new Size(1200, 500);
+            m_alp_video.Size = new Size(1160, 500);
             m_alp_video.Location = new Point(0, 50);
-            m_alp_audio.Size = new Size(1200, 500);
+            m_alp_audio.Size = new Size(1160, 500);
             m_alp_audio.Location = new Point(0, 550);
 
             // this.AutoScroll = true;

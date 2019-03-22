@@ -27,7 +27,7 @@ namespace HGSystem
             m_float_window = new FloatWindow(this);
 
             DebugHelper.IsServerFail = false;
-            DebugHelper.FastUserLogin = true;
+            DebugHelper.FastUserLogin = false;
 
             m_tbx_mobile.GotFocus += new EventHandler(m_tbx_mobile_GotFocus);
             m_tbx_password.GotFocus += new EventHandler(m_tbx_password_GotFocus);
@@ -209,14 +209,17 @@ namespace HGSystem
             if (mobile.Equals("请输入手机号"))
             {
                 MessageBox.Show("手机号不能为空");
+                return;
             }
             if (password.Equals("请输入密码"))
             {
                 MessageBox.Show("密码不能为空");
+                return;
             }
             if (vcode.Equals("请输入验证码"))
             {
                 MessageBox.Show("验证码不能为空");
+                return;
             }
             // TODO: don't do the following, just for debug
             if (DebugHelper.IsServerFail && mobile != null)

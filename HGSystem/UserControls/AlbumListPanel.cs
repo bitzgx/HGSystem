@@ -45,9 +45,12 @@ namespace HGSystem.UserControls
             for (int i = 0; i < 10; i++)
             {
                 AlbumInfo ai = new AlbumInfo();
-                
+
                 if (i == 0)
+                {
                     ai.ClickEventHandler += NewAlbum;
+                    ai.AlbumName = "新建专辑";
+                }
                 else
                     ai.ClickEventHandler += ShowAlbumDetail;
                 

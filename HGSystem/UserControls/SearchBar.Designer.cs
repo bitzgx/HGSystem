@@ -90,7 +90,7 @@
             this.Controls.Add(this.m_tbx_albumname);
             this.Controls.Add(this.m_tbx_albumno);
             this.Name = "SearchBar";
-            this.Size = new System.Drawing.Size(1200, 50);
+            this.Size = new System.Drawing.Size(1160, 50);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -17,12 +17,9 @@ namespace HGSystem
             InitializeComponent();
         }
 
-        public void Init(Image img, String text)
-        {
-            m_pbx_album.Image = img;
-            m_lbl_album.Text = text;
-        }
-
+        public Image AlbumImage { set { if (value != null) m_pbx_album.Image = value; } }
+        public String AlbumName { set { if (value != null) m_lbl_album.Text = value; } }
+        
         public delegate void ClickEventHandlerDelegate(String id);
         public ClickEventHandlerDelegate ClickEventHandler { get; set; }
 
