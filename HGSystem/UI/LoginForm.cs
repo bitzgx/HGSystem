@@ -8,6 +8,7 @@ using System.Text;
 // using System.Threading.Tasks;
 using System.Windows.Forms;
 using HGSystem.Model;
+using HGSystem.Helpers;
 using System.Drawing.Drawing2D;
 
 namespace HGSystem
@@ -33,7 +34,7 @@ namespace HGSystem
             m_tbx_captcha.GotFocus += new EventHandler(m_tbx_captcha_GotFocus);
 
             // TODO: use captcha and remove login
-            if (Model.DebugHelper.IsServerFail)
+            if (DebugHelper.IsServerFail)
             {
                 m_bte_login_Click(this, null);
                 return;
@@ -218,7 +219,7 @@ namespace HGSystem
                 MessageBox.Show("验证码不能为空");
             }
             // TODO: don't do the following, just for debug
-            if (Model.DebugHelper.IsServerFail && mobile != null)
+            if (DebugHelper.IsServerFail && mobile != null)
             {
                 MainForm mf = new MainForm();
                 this.Hide();

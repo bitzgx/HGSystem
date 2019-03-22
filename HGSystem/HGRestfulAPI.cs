@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 // using System.Threading.Tasks;
 using HGSystem.Model;
+using HGSystem.Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
@@ -13,10 +14,12 @@ namespace HGSystem
     [Serializable()]
     public class HGResponse<T>
     {
+        /*
         private int status;
         private String msg;
         private long time;
         private T data;
+         */
 
         public int Status { get; set; }
         public String Msg { get; set; }
