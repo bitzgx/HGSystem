@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 // using System.Threading.Tasks;
 using System.Windows.Forms;
+using HGSystem.UserControls;
 
 namespace HGSystem
 {
     public partial class ContentPublish : UserControl
     {
-        private IList<AlbumInfo> m_video_albums = new List<AlbumInfo>();
-        private IList<AlbumInfo> m_audio_albums = new List<AlbumInfo>();
+        private AlbumListPanel m_alp_video;
+        private AlbumListPanel m_alp_audio;
 
         public ContentPublish()
         {
@@ -22,63 +23,17 @@ namespace HGSystem
 
         private void ContentPublish_Load(object sender, EventArgs e)
         {
+            m_alp_video = new AlbumListPanel(AlbumListPanel.AlbumType.VideoAlbum);            
+            this.Controls.Add(m_alp_video);
+            m_alp_audio = new AlbumListPanel(AlbumListPanel.AlbumType.AudioAlbum);
+            this.Controls.Add(m_alp_audio);
+            m_alp_video.Size = new Size(1200, 500);
+            m_alp_video.Location = new Point(0, 50);
+            m_alp_audio.Size = new Size(1200, 500);
+            m_alp_audio.Location = new Point(0, 550);
+
             // this.AutoScroll = true;
             // this.VerticalScroll.Maximum = 1200;
-            loadVideoAlbums();
-            loadAudioAlbums();
-            displayVideoAlbums();
-            displayAudioAlbums();
-        }
-
-        private void loadVideoAlbums()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                AlbumInfo ai = new AlbumInfo();
-                if (i == 0)
-                    ai.ClickEventHandler += NewAlbum;
-                else
-                    ai.ClickEventHandler += ShowAlbumDetail;
-                m_video_albums.Add(ai);
-            }
-        }
-        private void loadAudioAlbums()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                AlbumInfo ai = new AlbumInfo();
-                if (i == 0)
-                    ai.ClickEventHandler += NewAlbum;
-                else
-                    ai.ClickEventHandler += ShowAlbumDetail;
-                m_audio_albums.Add(ai);
-            }
-        }
-
-        private void displayVideoAlbums()
-        {
-            int video_albums_count = m_video_albums.Count > 10 ? 10 : m_video_albums.Count;
-            for (int i = 0; i < video_albums_count; i++)
-            {
-                AlbumInfo ai = m_video_albums[i];
-                
-                ai.Location = new Point(50 + 220 * (i % 5), 110 + 220 * (i / 5));                
-
-                this.Controls.Add(ai);
-            }
-        }
-
-        private void displayAudioAlbums()
-        {
-            int audio_albums_count = m_audio_albums.Count > 10 ? 10 : m_audio_albums.Count;
-            for (int i = 0; i < audio_albums_count; i++)
-            {
-                AlbumInfo ai = m_audio_albums[i];
-
-                ai.Location = new Point(50 + 220 * (i % 5), 610 + 220 * (i / 5));
-
-                this.Controls.Add(ai);
-            }
         }
 
         private void m_lbl_morevideo_Click(object sender, EventArgs e)
