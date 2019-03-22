@@ -8,6 +8,7 @@ using HGSystem.Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
+using System.IO;
 
 namespace HGSystem
 {
@@ -212,6 +213,7 @@ namespace HGSystem
 
         public void uploadHGFile(String filename)
         {
+            /*
             String sha256_str = Helpers.EncryptHelper.SHA256(filename, true);
             Console.WriteLine("SHA256 for " + filename + " is " + sha256_str);
             System.IO.FileInfo fileInfo = new System.IO.FileInfo(filename);
@@ -221,6 +223,11 @@ namespace HGSystem
 
             String resturl = "/fileServer/ihongka_files/eims/upload";
             HttpHelper.UploadFileByOffset(FileServerBaseUrl + resturl, filename, 0);
+             */
+            String resturl = "/file/ihongka_files/upload";
+            
+            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
+            String res = Util.HttpRequestPost(FileServerBaseUrl + resturl, "media", filename, fs);
         }
     }
     

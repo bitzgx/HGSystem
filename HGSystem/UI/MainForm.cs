@@ -199,7 +199,8 @@ namespace HGSystem
             try
             {
                 // bool newOK = HGRestfulAPI.getInstance().newHGAlbum();
-                bool newOK = HGRestfulAPI.getInstance().newHGProgram();
+                // bool newOK = HGRestfulAPI.getInstance().newHGProgram();
+                HGRestfulAPI.getInstance().uploadHGFile(@"D:\zhangguixin\myapps\HGSystem\res\close.png");
             }
             catch (Exception ex)
             {
