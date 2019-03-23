@@ -37,7 +37,15 @@ namespace HGSystem
 
             m_btn_content_Click(this, null);
 
-            HGData.getInstance().ComCategory = HGRestfulAPI.getInstance().getHGComCategory();
+            try {
+                HGData.getInstance().ComCategory = HGRestfulAPI.getInstance().getHGComCategory();
+                if (HGData.getInstance().ComCategory == null)
+                    MessageBox.Show("获取专辑分类失败，如服务器原因，请联系管理员。");
+            } catch (Exception ex)
+            {
+                MessageBox.Show("获取专辑分类失败，如服务器原因，请联系管理员。错误：" + ex.Message);
+                HGData.getInstance().ComCategory = null;
+            }
         }
 
         private void InitNavigators()
