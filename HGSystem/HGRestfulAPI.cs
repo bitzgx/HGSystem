@@ -177,10 +177,25 @@ namespace HGSystem
             return parseHGData<HGAlbum>(res);
         }
 
-        public bool newHGAlbum()
+        public bool newHGAlbum(String albumName, int albumType, String albumIntro, String fileUrl, String albumFileId, String albumLabel, String albumCategoryId)
         {
             String resturl = "/platform/album/add";
-            String json_params = "";
+        
+            //String albumName = "";
+            //int albumType = 0;
+            //String albumIntro = "";
+            //String fileUrl = "";
+            //String albumFileId = "";
+            //String albumLabel = "";
+            //String albumCategoryId = "";
+            String json_params = "{\"albumName\": \"" + albumName 
+                + "\",\"albumType\":" + albumType
+                + "\"intro\": \"" + albumIntro
+                + "\",\"fileUrl\": \"" + fileUrl
+                + "\",\"albumFileId\": \"" + albumFileId
+                + "\",\"albumLabel\": \"" + albumLabel
+                + ",\"albumCategoryId\":" + albumCategoryId
+                + "}";
             if (DebugHelper.FastUserLogin)
             {
                 json_params = "{\"albumName\": \"70周年大阅兵7\",\"albumType\": 1,\"intro\": \"70周年大阅兵，简介\",\"fileUrl\": \"https://filetest.hongkazhijia.com/cb/cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2.jpg\",	\"albumFileId\": \"cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2\",\"albumLabel\": \"70周年\",\"albumCategoryId\": [10000000, 10001000, 10001001]}";

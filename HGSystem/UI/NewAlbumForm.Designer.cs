@@ -198,12 +198,17 @@
             // 
             // m_pbx_albumcover
             // 
-            this.m_pbx_albumcover.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("m_pbx_albumcover.BackgroundImage")));
+            this.m_pbx_albumcover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.m_pbx_albumcover.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.m_pbx_albumcover.Image = ((System.Drawing.Image)(resources.GetObject("m_pbx_albumcover.Image")));
+            this.m_pbx_albumcover.InitialImage = null;
             this.m_pbx_albumcover.Location = new System.Drawing.Point(124, 333);
             this.m_pbx_albumcover.Name = "m_pbx_albumcover";
             this.m_pbx_albumcover.Size = new System.Drawing.Size(180, 180);
+            this.m_pbx_albumcover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.m_pbx_albumcover.TabIndex = 16;
             this.m_pbx_albumcover.TabStop = false;
+            this.m_pbx_albumcover.Click += new System.EventHandler(this.m_pbx_albumcover_Click);
             // 
             // label8
             // 
@@ -306,7 +311,6 @@
             this.Controls.Add(this.m_lbl_caption);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NewAlbumForm";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "NewAlbumForm";
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_albumcover)).EndInit();
