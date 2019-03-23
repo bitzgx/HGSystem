@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace HGSystem.UserControls
 {
-    class ContentPublishPanel: PanelWithoutAutoScroll
+    public class ContentPublishPanel: PanelWithoutAutoScroll
     {
         public enum AlbumType { AllAlbum, VideoAlbum, AudioAlbum }
 
@@ -20,16 +20,16 @@ namespace HGSystem.UserControls
         private int m_alp_height = 500;
         private int m_map_height = 600;
 
-        public delegate void SwitchToMoreAlbumsPanel(ContentPublish.AlbumType at);
+        public delegate void SwitchToMoreAlbumsPanel(ContentPublishPanel.AlbumType at);
 
         public ContentPublishPanel()
         {
             ContentPublishPanel_Load();
         }
 
-        private void SwitchToMAP(ContentPublish.AlbumType at)
+        private void SwitchToMAP(ContentPublishPanel.AlbumType at)
         {
-            if (at == ContentPublish.AlbumType.AllAlbum)
+            if (at == ContentPublishPanel.AlbumType.AllAlbum)
             {
                 if (m_map != null) m_map.Hide();
                 if (m_alp_video != null) m_alp_video.Show();
@@ -62,10 +62,10 @@ namespace HGSystem.UserControls
             m_searchbar.Size = new Size(m_subcontrol_width, m_searchbar.Height);
             m_searchbar.Location = new Point(0, m_searchbar_y);
 
-            m_alp_video = new AlbumListPanel(ContentPublish.AlbumType.VideoAlbum);
+            m_alp_video = new AlbumListPanel(ContentPublishPanel.AlbumType.VideoAlbum);
             m_alp_video.SwitchToMAP = SwitchToMAP;
             this.Controls.Add(m_alp_video);
-            m_alp_audio = new AlbumListPanel(ContentPublish.AlbumType.AudioAlbum);
+            m_alp_audio = new AlbumListPanel(ContentPublishPanel.AlbumType.AudioAlbum);
             m_alp_audio.SwitchToMAP = SwitchToMAP;
             this.Controls.Add(m_alp_audio);
             m_alp_video.Size = new Size(m_subcontrol_width, m_alp_height);

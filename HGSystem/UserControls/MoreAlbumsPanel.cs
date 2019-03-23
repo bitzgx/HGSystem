@@ -12,15 +12,15 @@ namespace HGSystem.UserControls
 {
     public partial class MoreAlbumsPanel : UserControl
     {
-        public ContentPublish.SwitchToMoreAlbumsPanel SwitchToMAP { get; set; }
-        private ContentPublish.AlbumType m_album_type = ContentPublish.AlbumType.VideoAlbum;
-        public ContentPublish.AlbumType PanelAlbumType
+        public ContentPublishPanel.SwitchToMoreAlbumsPanel SwitchToMAP { get; set; }
+        private ContentPublishPanel.AlbumType m_album_type = ContentPublishPanel.AlbumType.VideoAlbum;
+        public ContentPublishPanel.AlbumType PanelAlbumType
         {
             get { return m_album_type; }
             set
             {
                 m_album_type = value;
-                if (m_album_type == ContentPublish.AlbumType.VideoAlbum)
+                if (m_album_type == ContentPublishPanel.AlbumType.VideoAlbum)
                 {
                     m_lbl_albumtypename.Text = "视频专辑";
                 }
@@ -38,7 +38,7 @@ namespace HGSystem.UserControls
         private void m_lbl_back_Click(object sender, EventArgs e)
         {
             if (SwitchToMAP != null)
-                SwitchToMAP(ContentPublish.AlbumType.AllAlbum);
+                SwitchToMAP(ContentPublishPanel.AlbumType.AllAlbum);
         }
     }
 }

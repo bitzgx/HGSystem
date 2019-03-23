@@ -14,17 +14,17 @@ namespace HGSystem.UserControls
     public partial class AlbumListPanel : UserControl
     {
         private IList<AlbumInfo> m_albums = new List<AlbumInfo>();
-        private ContentPublish.AlbumType m_album_type = ContentPublish.AlbumType.VideoAlbum;
+        private ContentPublishPanel.AlbumType m_album_type = ContentPublishPanel.AlbumType.VideoAlbum;
 
-        public ContentPublish.SwitchToMoreAlbumsPanel SwitchToMAP {get; set;}
+        public ContentPublishPanel.SwitchToMoreAlbumsPanel SwitchToMAP {get; set;}
 
-        public ContentPublish.AlbumType PanelAlbumType 
+        public ContentPublishPanel.AlbumType PanelAlbumType 
         { 
             get { return m_album_type; }
             set
             {
                 m_album_type = value;
-                if (m_album_type == ContentPublish.AlbumType.VideoAlbum)
+                if (m_album_type == ContentPublishPanel.AlbumType.VideoAlbum)
                 {
                     m_lbl_albumtypename.Text = "视频专辑";
                 }
@@ -34,7 +34,7 @@ namespace HGSystem.UserControls
                 }
             }
         }
-        public AlbumListPanel(ContentPublish.AlbumType album_type)
+        public AlbumListPanel(ContentPublishPanel.AlbumType album_type)
         {
             InitializeComponent();
             this.PanelAlbumType = album_type;

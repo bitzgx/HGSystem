@@ -84,12 +84,6 @@
     <Compile Include="UserControls\ButtonEx.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UserControls\ContentPublish.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\ContentPublish.Designer.cs">
-      <DependentUpon>ContentPublish.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\ContentPublishPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -161,9 +155,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\AlbumListPanel.resx">
       <DependentUpon>AlbumListPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ContentPublish.resx">
-      <DependentUpon>ContentPublish.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FloatWindow.resx">
       <DependentUpon>FloatWindow.cs</DependentUpon>
