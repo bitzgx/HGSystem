@@ -190,19 +190,16 @@ namespace HGSystem
             //String albumCategoryId = "";
             String json_params = "{\"albumName\": \"" + albumName 
                 + "\",\"albumType\":" + albumType
-                + "\"intro\": \"" + albumIntro
+                + ",\"intro\": \"" + albumIntro
                 + "\",\"fileUrl\": \"" + fileUrl
                 + "\",\"albumFileId\": \"" + albumFileId
                 + "\",\"albumLabel\": \"" + albumLabel
-                + ",\"albumCategoryId\":" + albumCategoryId
+                + "\",\"albumCategoryId\":" + albumCategoryId
                 + "}";
-            if (DebugHelper.FastUserLogin)
+            Console.WriteLine(json_params);
+            if (DebugHelper.FakeNewAlbum)
             {
                 json_params = "{\"albumName\": \"70周年大阅兵7\",\"albumType\": 1,\"intro\": \"70周年大阅兵，简介\",\"fileUrl\": \"https://filetest.hongkazhijia.com/cb/cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2.jpg\",	\"albumFileId\": \"cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2\",\"albumLabel\": \"70周年\",\"albumCategoryId\": [10000000, 10001000, 10001001]}";
-            }
-            else
-            {
-
             }
             String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, json_params, buildHeaderParams(null));
             Object newOK = parseHGData<Object>(res);

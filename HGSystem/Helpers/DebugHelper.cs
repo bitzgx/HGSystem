@@ -10,5 +10,6 @@ namespace HGSystem.Helpers
         // private static bool isServerFail = true;
         public static bool IsServerFail { get; set; }
         public static bool FastUserLogin { get; set; }
+        public static bool FakeNewAlbum { get; set; }
     }
 }

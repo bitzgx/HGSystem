@@ -26,7 +26,6 @@ namespace HGSystem.UI
 
         private void m_bte_add_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("创建专辑");
             String albumName = m_tbx_albumname.Text;
             String albumLabel = m_tbx_albumtags.Text;
             String albumIntro = m_tbx_albumintro.Text;
@@ -42,14 +41,23 @@ namespace HGSystem.UI
             if (m_hg_iur == null)
             {
                 MessageBox.Show("请上传专辑封面");
+                return;
             }
             String albumCoverUrl = HGRestfulAPI.FileServerBaseUrl + m_hg_iur.Url;
             String albumFileId = m_hg_iur.Data.FileId;
-            bool newAlbumOK = HGRestfulAPI.getInstance().newHGAlbum(albumName, 1, albumIntro, albumCoverUrl, albumFileId, albumLabel, albumCategoryId);
-            if (newAlbumOK)
-                MessageBox.Show("专辑《" + albumName + "》创建成功");
-            else
-                MessageBox.Show("专辑《" + albumName + "》创建失败");
+            try
+            {
+                bool newAlbumOK = HGRestfulAPI.getInstance().newHGAlbum(albumName, 1, albumIntro, albumCoverUrl, albumFileId, albumLabel, albumCategoryId);
+                if (newAlbumOK)
+                    MessageBox.Show("专辑《" + albumName + "》创建成功");
+                else
+                    MessageBox.Show("专辑《" + albumName + "》创建失败");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
             this.Close();
         }
 

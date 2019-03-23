@@ -28,6 +28,7 @@ namespace HGSystem
 
             DebugHelper.IsServerFail = true;
             DebugHelper.FastUserLogin = true;
+            DebugHelper.FakeNewAlbum = false;
 
             m_tbx_mobile.GotFocus += new EventHandler(m_tbx_mobile_GotFocus);
             m_tbx_password.GotFocus += new EventHandler(m_tbx_password_GotFocus);
