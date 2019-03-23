@@ -56,6 +56,7 @@
     <Compile Include="Helpers\Util.cs" />
     <Compile Include="Model\HGAlbum.cs" />
     <Compile Include="Model\HGComCategory.cs" />
+    <Compile Include="Model\HGData.cs" />
     <Compile Include="UI\NewAlbumForm.cs">
       <SubType>Form</SubType>
     </Compile>
