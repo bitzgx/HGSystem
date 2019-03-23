@@ -25,6 +25,7 @@ namespace HGSystem.UI
         private void m_bte_add_Click(object sender, EventArgs e)
         {
             MessageBox.Show("创建专辑");
+            
 
             this.Close();
         }

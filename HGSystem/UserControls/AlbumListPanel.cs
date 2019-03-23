@@ -60,11 +60,11 @@ namespace HGSystem.UserControls
 
         private void NewAlbum(String id)
         {
-            OpacityWindow naf2 = new OpacityWindow();
-            naf2.Show();
             NewAlbumForm naf = new NewAlbumForm();
+            // OpacityWindow naf2 = new OpacityWindow(naf);
+            // naf2.ShowDialog();
             naf.ShowDialog();
-            naf2.Close();
+            // naf2.Close();
         }
 
         private void ShowAlbumDetail(String id)
