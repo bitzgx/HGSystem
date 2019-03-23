@@ -227,7 +227,7 @@ namespace HGSystem
             return true;
         }
 
-        public void uploadHGFile(String filename)
+        public HGImageUploadRes uploadHGFile(String filename)
         {
             // TODO: seems fail
             //String sha256_str = Helpers.EncryptHelper.SHA256(filename, true);
@@ -243,7 +243,28 @@ namespace HGSystem
             
             String resturl = "/file/ihongka_files/upload";            
             FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
-            String res = Util.HttpRequestPost(FileServerBaseUrl + resturl, "media", filename, fs);         
+            String res = Util.HttpRequestPost(FileServerBaseUrl + resturl, "media", filename, fs);
+            HGImageUploadRes hgiur = parseHGImageUploadResponse(res);
+            return hgiur;
+        }
+
+        private HGImageUploadRes parseHGImageUploadResponse(String json_data)
+        {
+            if (json_data != null)
+            {
+                JObject jo = JObject.Parse(json_data);
+                int status = jo.ContainsKey("status") ? Convert.ToInt32(jo["status"].ToString()) : 0;
+                if (status == 200)
+                {
+                    HGImageUploadRes hgiur = JsonNewtonsoft.FromJSON<HGImageUploadRes>(json_data);
+                    return hgiur;
+                }
+                else
+                {
+                    throw new Exception(jo.ContainsKey("msg") ? jo["msg"].ToString() : "未知错误:" + json_data);
+                }
+            }
+            return null;
         }
     }
     

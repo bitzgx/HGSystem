@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using HGSystem.Model;
 
 namespace HGSystem.UI
 {
     public partial class NewAlbumForm : Form
     {
+        private HGImageUploadRes m_hg_iur;
         public NewAlbumForm()
         {
             InitializeComponent();
@@ -25,7 +27,7 @@ namespace HGSystem.UI
         private void m_bte_add_Click(object sender, EventArgs e)
         {
             MessageBox.Show("创建专辑");
-            
+            // String albumName 
 
             this.Close();
         }
@@ -54,9 +56,17 @@ namespace HGSystem.UI
                     MessageBox.Show("图片分辨率不得低于300x300");
                     return;
                 }
-                m_pbx_albumcover.BorderStyle = BorderStyle.FixedSingle;
-                m_pbx_albumcover.Load(file);
-                // TODO: HGRestfulAPI.getInstance().uploadHGFile(file);
+                m_hg_iur = HGRestfulAPI.getInstance().uploadHGFile(file);
+                if (m_hg_iur == null || m_hg_iur.Status != 200)
+                {
+                    MessageBox.Show("图片上传失败");
+                    m_hg_iur = null;
+                }
+                else
+                {
+                    m_pbx_albumcover.BorderStyle = BorderStyle.FixedSingle;
+                    m_pbx_albumcover.Load(file);
+                }
             }
         }
         
