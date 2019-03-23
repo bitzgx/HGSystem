@@ -116,6 +116,7 @@ namespace HGSystem
             String resturl = "/platform/album/getComCategory";
             // TODO: no need to add customized headers
             String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, null);
+            // String res = "{ \"msg\": \"执行成功！\", \"data\": [{ \"children\": [{ \"children\": [{ \"label\": \"认识自我\", \"value\": 10001001 }], \"label\": \"品德素质\", \"value\": 10001000 }], \"label\": \"学生\", \"value\": 10000000 }, { \"children\": [{ \"children\": [{ \"label\": \"身体健康\", \"value\": 11001001 }], \"label\": \"自我提升\", \"value\": 11003000 }], \"label\": \"家长\", \"value\": 11000000 } ], \"time\": 1553329855958, \"status\": 200 }";
             HGComCategory[] hgcc = parseHGData<HGComCategory[]>(res);
             return hgcc;
             /*

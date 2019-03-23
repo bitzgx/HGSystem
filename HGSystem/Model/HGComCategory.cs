@@ -12,8 +12,8 @@ namespace HGSystem.Model
         protected String label;
         protected int value;
          */
-        public String Label { get; protected set; }
-        public int Value { get; protected set; }
+        public String Label { get; set; }
+        public int Value { get; set; }
     }
 
     public class HGComCategoryItem : HGComCategorySubItem
