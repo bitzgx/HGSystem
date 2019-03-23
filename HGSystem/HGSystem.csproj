@@ -90,6 +90,9 @@
     <Compile Include="UserControls\ContentPublish.Designer.cs">
       <DependentUpon>ContentPublish.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ContentPublishPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\EllipseButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -137,6 +140,9 @@
     </Compile>
     <Compile Include="UserControls\MoreAlbumsPanel.Designer.cs">
       <DependentUpon>MoreAlbumsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PanelWithoutAutoScroll.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControls\SearchBar.cs">
       <SubType>UserControl</SubType>

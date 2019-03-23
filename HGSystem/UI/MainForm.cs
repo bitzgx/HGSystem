@@ -15,7 +15,7 @@ namespace HGSystem
 {
     public partial class MainForm : Form
     {
-        private ContentPublish m_ctl_contentpublish;
+        // private ContentPublishPanel m_ctl_contentpublish;
         private HGPlan m_ctl_hgplan;
         private Material m_ctl_material;
 
@@ -29,7 +29,7 @@ namespace HGSystem
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            m_uc_offset = 110;
+            m_uc_offset = 90;
 
             InitNavigators();
 
@@ -188,7 +188,7 @@ namespace HGSystem
         {
             if (m_ctl_contentpublish == null)
             {
-                m_ctl_contentpublish = new ContentPublish();
+                m_ctl_contentpublish = new ContentPublishPanel();
                 this.Controls.Add(m_ctl_contentpublish);
             }
             BringToFrontUserControl(m_ctl_contentpublish);

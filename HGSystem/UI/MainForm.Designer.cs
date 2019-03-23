@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.m_pbx_logo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.m_ctl_contentpublish = new HGSystem.UserControls.ContentPublishPanel();
             this.m_btn_close = new HGSystem.ButtonEx();
             this.m_btn_minimize = new HGSystem.ButtonEx();
             this.m_btn_notifications = new HGSystem.ButtonEx();
@@ -58,6 +59,16 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1200, 3);
             this.label1.TabIndex = 10;
+            // 
+            // m_ctl_contentpublish
+            // 
+            this.m_ctl_contentpublish.AutoScroll = true;
+            this.m_ctl_contentpublish.AutoScrollMinSize = new System.Drawing.Size(200, 100);
+            this.m_ctl_contentpublish.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.m_ctl_contentpublish.Location = new System.Drawing.Point(0, 86);
+            this.m_ctl_contentpublish.Name = "m_ctl_contentpublish";
+            this.m_ctl_contentpublish.Size = new System.Drawing.Size(1200, 700);
+            this.m_ctl_contentpublish.TabIndex = 11;
             // 
             // m_btn_close
             // 
@@ -163,6 +174,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1200, 786);
+            this.Controls.Add(this.m_ctl_contentpublish);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.m_btn_close);
             this.Controls.Add(this.m_btn_minimize);
@@ -197,6 +209,7 @@
         private ButtonEx m_btn_minimize;
         private ButtonEx m_btn_close;
         private System.Windows.Forms.Label label1;
+        private UserControls.ContentPublishPanel m_ctl_contentpublish;
 
 
     }
