@@ -44,7 +44,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.Controls.Add(this.searchBar1);
             this.Name = "ContentPublish";
             this.Size = new System.Drawing.Size(1200, 618);

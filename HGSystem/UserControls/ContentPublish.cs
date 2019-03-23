@@ -66,7 +66,10 @@ namespace HGSystem
             m_alp_audio.Size = new Size(1160, 500);
             m_alp_audio.Location = new Point(0, 550);
 
+            // Use AutoScrollMinSize instead of AutoScroll可以帮助优化弹出MessageBox之后直接往上跳的情况，但是不能完全解决。
+            this.AutoScrollMinSize = new Size(ClientRectangle.Width, ClientRectangle.Height);
             // this.AutoScroll = true;
+
             // this.VerticalScroll.Maximum = 1200;
         }
     }

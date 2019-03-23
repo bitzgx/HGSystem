@@ -26,8 +26,8 @@ namespace HGSystem
             m_fws_previous = this.WindowState;                
             m_float_window = new FloatWindow(this);
 
-            DebugHelper.IsServerFail = false;
-            DebugHelper.FastUserLogin = false;
+            DebugHelper.IsServerFail = true;
+            DebugHelper.FastUserLogin = true;
 
             m_tbx_mobile.GotFocus += new EventHandler(m_tbx_mobile_GotFocus);
             m_tbx_password.GotFocus += new EventHandler(m_tbx_password_GotFocus);
