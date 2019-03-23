@@ -30,9 +30,9 @@ namespace HGSystem
 
     public class HGRestfulAPI
     {
-        private static String BaseUrl = "https://edutest.hongkazhijia.com"; // for test
+        public static String BaseUrl = "https://edutest.hongkazhijia.com"; // for test
         // private static String BaseUrl = "https://edut.hongkazhijia.com"; // for production
-        private static String FileServerBaseUrl = "https://filetest.hongkazhijia.com"; // for fileserver test
+        public static String FileServerBaseUrl = "https://filetest.hongkazhijia.com"; // for fileserver test
         private static HGRestfulAPI m_hg_restfulapi = new HGRestfulAPI();
         private HGRestfulAPI()
         {
