@@ -44,7 +44,7 @@ namespace HGSystem.UserControls
         {
             for (int i = 0; i < 10; i++)
             {
-                AlbumInfo ai = new AlbumInfo();
+                AlbumInfo ai = new AlbumInfo(m_album_type);
 
                 if (i == 0)
                 {
@@ -58,16 +58,16 @@ namespace HGSystem.UserControls
             }
         }
 
-        private void NewAlbum(String id)
+        private void NewAlbum(ContentPublishPanel.AlbumType album_type)
         {
-            NewAlbumForm naf = new NewAlbumForm();
+            NewAlbumForm naf = new NewAlbumForm(album_type);
             // OpacityWindow naf2 = new OpacityWindow(naf);
             // naf2.ShowDialog();
             naf.ShowDialog();
             // naf2.Close();
         }
 
-        private void ShowAlbumDetail(String id)
+        private void ShowAlbumDetail(ContentPublishPanel.AlbumType album_type)
         {
             MessageBox.Show("显示专辑详情");
         }

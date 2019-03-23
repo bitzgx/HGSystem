@@ -8,15 +8,18 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using HGSystem.Model;
+using HGSystem.UserControls;
 
 namespace HGSystem.UI
 {
     public partial class NewAlbumForm : Form
     {
         private HGImageUploadRes m_hg_iur;
-        public NewAlbumForm()
+        private ContentPublishPanel.AlbumType m_album_type;
+        public NewAlbumForm(ContentPublishPanel.AlbumType album_type)
         {
             InitializeComponent();
+            m_album_type = album_type;
         }
 
         private void m_bte_cancel_Click(object sender, EventArgs e)
@@ -45,10 +48,10 @@ namespace HGSystem.UI
             }
             String albumCoverUrl = HGRestfulAPI.FileServerBaseUrl + m_hg_iur.Url;
             String albumFileId = m_hg_iur.Data.FileId;
-            Model.HGAlbumParams hgap = new HGAlbumParams(albumName, 1, albumIntro, albumCoverUrl, albumFileId, albumLabel, 10000000, 10001000, 10000001);
+            Model.HGAlbumParams hgap = new HGAlbumParams(albumName, (int)m_album_type, albumIntro, albumCoverUrl, albumFileId, albumLabel, 10000000, 10001000, 10000001);
             if (Helpers.DebugHelper.getInstance().FakeNewAlbum)
-            {                
-                hgap = new HGAlbumParams("70周年大阅兵7", 1, "70周年大阅兵，简介", "https://filetest.hongkazhijia.com/cb/cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2.jpg", "cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2", "70周年", 10000000, 10001000, 10000001);
+            {
+                hgap = new HGAlbumParams("70周年大阅兵7", (int)m_album_type, "70周年大阅兵，简介", "https://filetest.hongkazhijia.com/cb/cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2.jpg", "cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2", "70周年", 10000000, 10001000, 10000001);
             }
             try
             {

@@ -9,7 +9,7 @@ namespace HGSystem.UserControls
 {
     public class ContentPublishPanel: PanelWithoutAutoScroll
     {
-        public enum AlbumType { AllAlbum, VideoAlbum, AudioAlbum }
+        public enum AlbumType { AllAlbum = 0, AudioAlbum = 1, VideoAlbum = 2 }
 
         private SearchBar m_searchbar;
         private AlbumListPanel m_alp_video;
