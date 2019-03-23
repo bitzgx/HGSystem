@@ -45,9 +45,15 @@ namespace HGSystem.UI
             }
             String albumCoverUrl = HGRestfulAPI.FileServerBaseUrl + m_hg_iur.Url;
             String albumFileId = m_hg_iur.Data.FileId;
+            Model.HGAlbumParams hgap = new HGAlbumParams(albumName, 1, albumIntro, albumCoverUrl, albumFileId, albumLabel, 10000000, 10001000, 10000001);
+            if (Helpers.DebugHelper.getInstance().FakeNewAlbum)
+            {                
+                hgap = new HGAlbumParams("70周年大阅兵7", 1, "70周年大阅兵，简介", "https://filetest.hongkazhijia.com/cb/cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2.jpg", "cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2", "70周年", 10000000, 10001000, 10000001);
+            }
             try
             {
-                bool newAlbumOK = HGRestfulAPI.getInstance().newHGAlbum(albumName, 1, albumIntro, albumCoverUrl, albumFileId, albumLabel, albumCategoryId);
+                // bool newAlbumOK = HGRestfulAPI.getInstance().newHGAlbum(albumName, 1, albumIntro, albumCoverUrl, albumFileId, albumLabel, albumCategoryId);
+                bool newAlbumOK = HGRestfulAPI.getInstance().newHGAlbum(hgap);
                 if (newAlbumOK)
                     MessageBox.Show("专辑《" + albumName + "》创建成功");
                 else

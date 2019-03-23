@@ -6,6 +6,30 @@ using System.Text;
 
 namespace HGSystem.Model
 {
+    public class HGAlbumParams
+    {
+        public HGAlbumParams(String albumName, int albumType, String albumIntro, String fileUrl, String albumFileId, String albumLabel, int albumCategoryIdL1, int albumCategoryIdL2, int albumCategoryIdL3)
+        {
+            this.albumName = albumName;
+            this.albumType = albumType;
+            this.albumIntro = albumIntro;
+            this.fileUrl = fileUrl;
+            this.albumFileId = albumFileId;
+            this.albumLabel = albumLabel;
+            this.albumCategoryId = new int[3];
+            this.albumCategoryId[0] = albumCategoryIdL1;
+            this.albumCategoryId[1] = albumCategoryIdL2;
+            this.albumCategoryId[2] = albumCategoryIdL3;
+        }
+        public String albumName { get; set; }
+        public int albumType { get; set; }
+        public String albumIntro { get; set; }
+        public String fileUrl { get; set; }
+        public String albumFileId { get; set; }
+        public String albumLabel { get; set; }
+        public int[] albumCategoryId { get; set; }
+    }
+
     public class HGAlbumItem
     {
         /*

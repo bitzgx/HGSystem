@@ -25,17 +25,13 @@ namespace HGSystem
 
             m_fws_previous = this.WindowState;                
             m_float_window = new FloatWindow(this);
-
-            DebugHelper.IsServerFail = true;
-            DebugHelper.FastUserLogin = true;
-            DebugHelper.FakeNewAlbum = false;
-
+            
             m_tbx_mobile.GotFocus += new EventHandler(m_tbx_mobile_GotFocus);
             m_tbx_password.GotFocus += new EventHandler(m_tbx_password_GotFocus);
             m_tbx_captcha.GotFocus += new EventHandler(m_tbx_captcha_GotFocus);
 
             // TODO: use captcha and remove login
-            if (DebugHelper.IsServerFail)
+            if (DebugHelper.getInstance().IsServerFail)
             {
                 m_bte_login_Click(this, null);
                 return;
@@ -200,7 +196,7 @@ namespace HGSystem
             String password = m_tbx_password.Text; // "hongka1018";
             String vcode = m_tbx_captcha.Text;
 
-            if (DebugHelper.FastUserLogin)
+            if (DebugHelper.getInstance().FastUserLogin)
             {
                 mobile = "13488613602";
                 password = "hongka1018";
@@ -223,7 +219,7 @@ namespace HGSystem
                 return;
             }
             // TODO: don't do the following, just for debug
-            if (DebugHelper.IsServerFail && mobile != null)
+            if (DebugHelper.getInstance().IsServerFail && mobile != null)
             {
                 MainForm mf = new MainForm();
                 this.Hide();

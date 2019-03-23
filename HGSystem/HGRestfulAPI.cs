@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
 using System.IO;
+using HGSystem.Helpers;
 
 namespace HGSystem
 {
@@ -72,7 +73,7 @@ namespace HGSystem
             // HGCaptcha hgc = new HGCaptcha();
             // postData = "{\"mobile\":\"13488613602\",\"password\":\"7b490bbb31fb36019a941d64d6077e07\",\"vcode\":\"eq32\",\"vtoken\":\"f3697b30-a5c7-46db-ae7b-140e7a1037f1\"}";
             postData = "{\"mobile\":\"" + _mobile + "\",\"password\":\"" + new_pwd_md5 + "\",\"vcode\":\"" + _vcode + "\",\"vtoken\":\"" + _vtoken + "\"}";
-            if (DebugHelper.FastUserLogin)
+            if (DebugHelper.getInstance().FastUserLogin)
                 postData = "{\"mobile\":\"" + _mobile + "\",\"password\":\"" + new_pwd_md5 + "\",\"vcode\":\"eq32\",\"vtoken\":\"f3697b30-a5c7-46db-ae7b-140e7a1037f1\"}";
             String res = HttpHelper.HttpPostJsonData(BaseUrl + captchaUrl, postData);
             // TODO: need to handle "{\"status\":1404,\"msg\":\"账号或密码错误\",\"data\":{},\"time\":1553098311748}"
@@ -131,7 +132,7 @@ namespace HGSystem
         {
             IList<KeyValuePair<String, String>> headers = new List<KeyValuePair<String, String>>();
             headers.Add(new KeyValuePair<string,string>("Content-Type", "application/json"));
-            if (Helpers.DebugHelper.FastUserLogin)
+            if (DebugHelper.getInstance().FastUserLogin)
             {
                 // headers.Add(new KeyValuePair<string,string>("Content-Type", "application/json"));
                 headers.Add(new KeyValuePair<string, string>("id", "180919101033025850632"));
@@ -167,7 +168,7 @@ namespace HGSystem
                 + ",\"sliceParams\":{\"pageNum\":" + pageNum
                 + ",\"pageSize\":" + pageSize
                 + "}}";
-            if (DebugHelper.FastUserLogin)
+            if (DebugHelper.getInstance().FastUserLogin)
             {
                 json_params = "{\"orgName\": \"\",\"albumCategory\": [],\"albumId\": null,\"albumName\": null,\"albumStatus\": null,\"createTimeBeginTime\": null,\"createTimeEndTime\": null,\"sliceParams\": {\"pageNum\": 1,\"pageSize\": 10},\"direction\": null,\"orderBy\": null}";
             }
@@ -176,7 +177,17 @@ namespace HGSystem
             String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, json_params, buildHeaderParams(null));
             return parseHGData<HGAlbum>(res);
         }
-
+        public bool newHGAlbum(HGAlbumParams hgap)
+        {
+            String resturl = "/platform/album/add";
+            if (hgap == null)
+                throw new Exception("新建专辑传递的参数为空");
+            string json_params = JsonConvert.SerializeObject(hgap);
+            Console.WriteLine(json_params);
+            String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, json_params, buildHeaderParams(null));
+            Object newOK = parseHGData<Object>(res);
+            return true;
+        }
         public bool newHGAlbum(String albumName, int albumType, String albumIntro, String fileUrl, String albumFileId, String albumLabel, String albumCategoryId)
         {
             String resturl = "/platform/album/add";
@@ -197,7 +208,7 @@ namespace HGSystem
                 + "\",\"albumCategoryId\":" + albumCategoryId
                 + "}";
             Console.WriteLine(json_params);
-            if (DebugHelper.FakeNewAlbum)
+            if (DebugHelper.getInstance().FakeNewAlbum)
             {
                 json_params = "{\"albumName\": \"70周年大阅兵7\",\"albumType\": 1,\"intro\": \"70周年大阅兵，简介\",\"fileUrl\": \"https://filetest.hongkazhijia.com/cb/cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2.jpg\",	\"albumFileId\": \"cb7a88314621ad93ce4f9c5fe0495c942953197489e01f925162314153baa0a2\",\"albumLabel\": \"70周年\",\"albumCategoryId\": [10000000, 10001000, 10001001]}";
             }
@@ -210,7 +221,7 @@ namespace HGSystem
         {
             String resturl = "/platform/material/eims/add";
             String json_params = "";
-            if (DebugHelper.FastUserLogin)
+            if (DebugHelper.getInstance().FastUserLogin)
             {
                 json_params = "{\"materials\": [{\"fileId\": \"00790707ef3ff682fd0d4688ff1350fb1c516bae1f1f2c3df6e76200266af9e0\", \"realUrl\": \"https://filetest.hongkazhijia.com/00/00790707ef3ff682fd0d4688ff1350fb1c516bae1f1f2c3df6e76200266af9e0.mp3\", \"fileName\": \"00790707ef3ff682fd0d\", \"duration\": 197, \"wh\": [], \"thumbnail\": \"\", \"albumId\": \"190321013159480064266\", \"coverId\": \"\", \"imageUrl\": \"\", \"name\": \"00790707ef3ff682fd0d\", \"sort\": \"\", \"publisher\": \"1\", \"type\": 1 }] }";
                 Console.WriteLine("json_params : " + json_params);
