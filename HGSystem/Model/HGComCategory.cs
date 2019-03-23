@@ -14,6 +14,8 @@ namespace HGSystem.Model
          */
         public String Label { get; set; }
         public int Value { get; set; }
+
+        public override String ToString() { return Label; }
     }
 
     public class HGComCategoryItem : HGComCategorySubItem

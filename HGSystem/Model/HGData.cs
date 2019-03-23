@@ -5,6 +5,11 @@ using System.Text;
 
 namespace HGSystem.Model
 {
+    public class ComCategory
+    {
+        public String Label { get; set; }
+        public int Value { get; set; }
+    }
     public class HGData
     {
         private static HGData m_hg_data = new HGData();

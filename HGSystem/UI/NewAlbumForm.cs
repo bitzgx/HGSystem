@@ -20,6 +20,10 @@ namespace HGSystem.UI
         {
             InitializeComponent();
             m_album_type = album_type;
+
+            m_cbx_albumcat1.Items.AddRange(HGData.getInstance().ComCategory);
+            if(m_cbx_albumcat1.Items.Count > 0)
+                m_cbx_albumcat1.SelectedItem = m_cbx_albumcat1.Items[0];
         }
 
         private void m_bte_cancel_Click(object sender, EventArgs e)
@@ -39,7 +43,14 @@ namespace HGSystem.UI
                 return;
             }
             // TODO: 判断是否选择了category
-            String albumCategoryId = "[10000000, 10001000, 10001001]";
+            // String albumCategoryId = "[10000000, 10001000, 10001001]";
+            HGComCategory hgcc = HGData.getInstance().ComCategory[m_cbx_albumcat1.SelectedIndex];
+            int cat1 = hgcc.Value;
+            HGComCategoryItem hgcci = hgcc.Children[m_cbx_albumcat2.SelectedIndex];
+            int cat2 = hgcci.Value;
+            HGComCategorySubItem hgccsi = hgcci.Children[m_cbx_albumcat3.SelectedIndex];
+            int cat3 = hgccsi.Value;
+            Console.WriteLine("cat1 " + cat1 + " cat2 " + cat2 + "cat3 " + cat3);
             // TODO: 是否一定要封面？
             if (m_hg_iur == null)
             {
@@ -119,6 +130,26 @@ namespace HGSystem.UI
             double length = Convert.ToDouble(fileInfo.Length);
             double Size = length / 1024 / 1024;
             return Size;
+        }
+
+        private void m_cbx_albumcat1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(m_cbx_albumcat1.SelectedIndex);
+            object[] cat2 = HGData.getInstance().ComCategory[m_cbx_albumcat1.SelectedIndex].Children;
+            m_cbx_albumcat2.Items.Clear();
+            m_cbx_albumcat2.Items.AddRange(cat2);
+            if (m_cbx_albumcat2.Items.Count > 0)
+                m_cbx_albumcat2.SelectedItem = m_cbx_albumcat2.Items[0];
+        }
+
+        private void m_cbx_albumcat2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(m_cbx_albumcat1.SelectedIndex);
+            object[] cat3 = HGData.getInstance().ComCategory[m_cbx_albumcat1.SelectedIndex].Children[m_cbx_albumcat2.SelectedIndex].Children;
+            m_cbx_albumcat3.Items.Clear();
+            m_cbx_albumcat3.Items.AddRange(cat3);
+            if (m_cbx_albumcat3.Items.Count > 0)
+                m_cbx_albumcat3.SelectedItem = m_cbx_albumcat3.Items[0];
         }
     }
 }

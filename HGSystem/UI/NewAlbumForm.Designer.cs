@@ -179,6 +179,7 @@
             this.m_cbx_albumcat1.Name = "m_cbx_albumcat1";
             this.m_cbx_albumcat1.Size = new System.Drawing.Size(134, 24);
             this.m_cbx_albumcat1.TabIndex = 2;
+            this.m_cbx_albumcat1.SelectedIndexChanged += new System.EventHandler(this.m_cbx_albumcat1_SelectedIndexChanged);
             // 
             // m_cbx_albumcat2
             // 
@@ -188,6 +189,7 @@
             this.m_cbx_albumcat2.Name = "m_cbx_albumcat2";
             this.m_cbx_albumcat2.Size = new System.Drawing.Size(134, 24);
             this.m_cbx_albumcat2.TabIndex = 3;
+            this.m_cbx_albumcat2.SelectedIndexChanged += new System.EventHandler(this.m_cbx_albumcat2_SelectedIndexChanged);
             // 
             // m_cbx_albumcat3
             // 
