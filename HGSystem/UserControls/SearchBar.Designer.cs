@@ -45,6 +45,7 @@
             this.m_btn_search.TabIndex = 7;
             this.m_btn_search.Text = "搜索";
             this.m_btn_search.UseVisualStyleBackColor = true;
+            this.m_btn_search.Click += new System.EventHandler(this.m_btn_search_Click);
             // 
             // m_cbx_category
             // 
@@ -91,6 +92,7 @@
             this.Controls.Add(this.m_tbx_albumno);
             this.Name = "SearchBar";
             this.Size = new System.Drawing.Size(1160, 50);
+            this.Load += new System.EventHandler(this.SearchBar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -6,6 +6,55 @@ using System.Text;
 
 namespace HGSystem.Model
 {
+    // 搜索专辑的参数
+    public class HGAlbumSearchParams
+    {
+        public class SliceParams
+        {
+            public int pageNum { get; set; }
+            public int pageSize { get; set; }
+        } 
+        public HGAlbumSearchParams(String on, int[] ac, String ai, String an, String abs, String ctbt, String ctet, int pn, int ps, String dir, String ob)
+        {
+            orgName = on;
+            albumCategory = ac;
+            albumId = ai;
+            albumName = an;
+            albumStatus = abs;
+            createTimeBeginTime = ctbt;
+            createTimeEndTime = ctet;
+            sliceParams = new SliceParams();
+            sliceParams.pageNum = pn;
+            sliceParams.pageSize = ps;
+            direction = dir;
+            orderBy = ob;
+        }
+        
+        public HGAlbumSearchParams( int pn, int ps, String ai = null, String an = null):
+            this(pn, ps, ai, an, new int[0])
+        {
+        }
+
+        public HGAlbumSearchParams(int pn, int ps, String ai, String an, int[] ac, String on = null, String abs = null, String ctbt = null, String ctet = null, String dir = null, String ob = null) :
+            this(on, ac, ai, an, abs, ctbt, ctet, pn, ps, dir, ob)
+        {
+        }
+
+        public String orgName {get; set;}
+        public int[] albumCategory {get; set;}
+        public String albumId {get; set;}
+        public String albumName {get; set;}
+        public String albumStatus {get; set;}
+        public String createTimeBeginTime {get; set;}
+        public String createTimeEndTime {get; set;}
+        public SliceParams sliceParams {get; set;}
+        public String direction {get; set;}
+        public String orderBy {get; set;}
+        /*"{\"orgName\": \"\",\"albumCategory\": [],\"albumId\": null,\"albumName\": null,\"albumStatus\": null
+        ,\"createTimeBeginTime\": null,\"createTimeEndTime\": null,\"sliceParams\": {\"pageNum\": 1,\"pageSize\": 10},\"direction\": null,\"orderBy\": null}";*/
+    }
+
+    // 新建专辑的参数
     public class HGAlbumParams
     {
         public HGAlbumParams(String albumName, int albumType, String albumIntro, String fileUrl, String albumFileId, String albumLabel, int albumCategoryIdL1, int albumCategoryIdL2, int albumCategoryIdL3)

@@ -21,5 +21,7 @@ namespace HGSystem.Model
         }
         public HGComCategory[] ComCategory { get; set; }
         public HGUser User { get; set; }
+        // 暂时不考虑缓存Album
+        public HGAlbum Album { get; set; }
     }
 }

@@ -156,6 +156,19 @@ namespace HGSystem
             return null;
         }
 
+        public HGAlbum getHGAlbum(HGAlbumSearchParams hgasp)
+        {
+            String resturl = "/platform/album/query";
+            if (hgasp == null)
+                throw new Exception("查询专辑传递的参数为空");
+            string json_params = JsonConvert.SerializeObject(hgasp);
+            Console.WriteLine(json_params);
+            String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, json_params, buildHeaderParams(null));
+            HGAlbum hgalbum = parseHGData<HGAlbum>(res);
+            return hgalbum;
+        }
+
+        // deprecated
         public HGAlbum getHGAlbum(int id, string key, int albumType, long startTime, long endTime, int pageNum, int pageSize)
         {
             String resturl = "/platform/album/query";
@@ -169,9 +182,9 @@ namespace HGSystem
                 + ",\"sliceParams\":{\"pageNum\":" + pageNum
                 + ",\"pageSize\":" + pageSize
                 + "}}";
-            if (DebugHelper.getInstance().FastUserLogin)
+            if (DebugHelper.getInstance().SampleAlbums)
             {
-                json_params = "{\"orgName\": \"\",\"albumCategory\": [],\"albumId\": null,\"albumName\": null,\"albumStatus\": null,\"createTimeBeginTime\": null,\"createTimeEndTime\": null,\"sliceParams\": {\"pageNum\": 1,\"pageSize\": 10},\"direction\": null,\"orderBy\": null}";
+                json_params = "{\"orgName\": \"\",\"albumCategory\": [],\"albumId\": null,\"albumName\": null,\"albumStatus\": null,\"createTimeBeginTime\": null,\"createTimeEndTime\": null,\"sliceParams\": {\"pageNum\": 1,\"pageSize\": 30},\"direction\": null,\"orderBy\": null}";
             }
              
             // TODO: no need to add customized headers
@@ -189,6 +202,7 @@ namespace HGSystem
             Object newOK = parseHGData<Object>(res);
             return true;
         }
+        // deprecated
         public bool newHGAlbum(String albumName, int albumType, String albumIntro, String fileUrl, String albumFileId, String albumLabel, String albumCategoryId)
         {
             String resturl = "/platform/album/add";

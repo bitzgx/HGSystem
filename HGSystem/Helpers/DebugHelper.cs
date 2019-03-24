@@ -13,6 +13,7 @@ namespace HGSystem.Helpers
             IsServerFail = true;
             FastUserLogin = true;
             FakeNewAlbum = false;
+            SampleAlbums = true;
         }
 
         public static DebugHelper getInstance()
@@ -23,5 +24,7 @@ namespace HGSystem.Helpers
         public bool IsServerFail { get; set; }
         public bool FastUserLogin { get; set; }
         public bool FakeNewAlbum { get; set; }
+
+        public bool SampleAlbums { get; set; }
     }
 }
