@@ -34,9 +34,6 @@
             this.m_lbl_cat = new System.Windows.Forms.Label();
             this.m_pnl_albuminfo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.m_tbl_programs = new XPTable.Models.Table();
-            this.m_clm_program = new XPTable.Models.ColumnModel();
-            this.m_tbm_program = new XPTable.Models.TableModel();
             this.m_tc_no = new XPTable.Models.TextColumn();
             this.m_bc_name = new XPTable.Models.ButtonColumn();
             this.m_tc_timelen = new XPTable.Models.TextColumn();
@@ -47,7 +44,6 @@
             this.m_bt_operations = new XPTable.Models.ButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_cover)).BeginInit();
             this.m_pnl_albuminfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.m_tbl_programs)).BeginInit();
             this.SuspendLayout();
             // 
             // m_pbx_cover
@@ -112,35 +108,6 @@
             this.label1.Text = "简介：回不去的故乡 暖暖的心，贴近彼此 今冬无雪 年少当有为 一念起，天涯咫尺 永远不落的追忆。乡村炊烟，让人魂牵梦萦 孤岛山城，后会无期 清风不扰客，留香等人寻" +
     " 曾经 芳华当惜取 忘不掉和记不起";
             // 
-            // m_tbl_programs
-            // 
-            this.m_tbl_programs.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.m_tbl_programs.ColumnModel = this.m_clm_program;
-            this.m_tbl_programs.GridLines = XPTable.Models.GridLines.Rows;
-            this.m_tbl_programs.Location = new System.Drawing.Point(0, 178);
-            this.m_tbl_programs.Name = "m_tbl_programs";
-            this.m_tbl_programs.Size = new System.Drawing.Size(1200, 430);
-            this.m_tbl_programs.TabIndex = 6;
-            this.m_tbl_programs.TableModel = this.m_tbm_program;
-            this.m_tbl_programs.Click += new System.EventHandler(this.m_tbx_programs_Click);
-            // 
-            // m_clm_program
-            // 
-            this.m_clm_program.Columns.AddRange(new XPTable.Models.Column[] {
-            this.m_tc_no,
-            this.m_bc_name,
-            this.m_tc_timelen,
-            this.m_tc_cat,
-            this.m_tc_createat,
-            this.m_tc_play_times,
-            this.m_tc_share_times,
-            this.m_bt_operations});
-            this.m_clm_program.HeaderHeight = 50;
-            // 
-            // m_tbm_program
-            // 
-            this.m_tbm_program.RowHeight = 35;
-            // 
             // m_tc_no
             // 
             this.m_tc_no.Editable = false;
@@ -182,7 +149,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.m_tbl_programs);
             this.Controls.Add(this.m_pnl_albuminfo);
             this.Enabled = false;
             this.Name = "ProgramPanel";
@@ -191,7 +157,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_cover)).EndInit();
             this.m_pnl_albuminfo.ResumeLayout(false);
             this.m_pnl_albuminfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.m_tbl_programs)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -204,9 +169,6 @@
         private System.Windows.Forms.Label m_lbl_cat;
         private System.Windows.Forms.Panel m_pnl_albuminfo;
         private System.Windows.Forms.Label label1;
-        private XPTable.Models.Table m_tbl_programs;
-        private XPTable.Models.TableModel m_tbm_program;
-        private XPTable.Models.ColumnModel m_clm_program;
         private XPTable.Models.TextColumn m_tc_no;
         private XPTable.Models.ButtonColumn m_bc_name;
         private XPTable.Models.TextColumn m_tc_timelen;
