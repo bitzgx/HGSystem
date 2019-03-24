@@ -63,6 +63,7 @@
             this.Controls.Add(this.m_lbl_albumtypename);
             this.Name = "MoreAlbumsPanel";
             this.Size = new System.Drawing.Size(1200, 618);
+            this.Load += new System.EventHandler(this.MoreAlbumsPanel_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
