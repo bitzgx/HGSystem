@@ -34,15 +34,17 @@
             this.m_lbl_cat = new System.Windows.Forms.Label();
             this.m_pnl_albuminfo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.table1 = new XPTable.Models.Table();
+            this.m_tbl_programs = new XPTable.Models.Table();
+            this.m_tbm_program = new XPTable.Models.TableModel();
+            this.m_clm_program = new XPTable.Models.ColumnModel();
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_cover)).BeginInit();
             this.m_pnl_albuminfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.m_tbl_programs)).BeginInit();
             this.SuspendLayout();
             // 
             // m_pbx_cover
             // 
-            this.m_pbx_cover.Location = new System.Drawing.Point(54, 20);
+            this.m_pbx_cover.Location = new System.Drawing.Point(44, -1);
             this.m_pbx_cover.Name = "m_pbx_cover";
             this.m_pbx_cover.Size = new System.Drawing.Size(167, 155);
             this.m_pbx_cover.TabIndex = 0;
@@ -52,7 +54,7 @@
             // 
             this.m_lbl_albumname.AutoSize = true;
             this.m_lbl_albumname.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Bold);
-            this.m_lbl_albumname.Location = new System.Drawing.Point(244, 20);
+            this.m_lbl_albumname.Location = new System.Drawing.Point(234, -1);
             this.m_lbl_albumname.Name = "m_lbl_albumname";
             this.m_lbl_albumname.Size = new System.Drawing.Size(102, 22);
             this.m_lbl_albumname.TabIndex = 1;
@@ -62,7 +64,7 @@
             // 
             this.m_lbl_albumlabel.AutoSize = true;
             this.m_lbl_albumlabel.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_lbl_albumlabel.Location = new System.Drawing.Point(245, 56);
+            this.m_lbl_albumlabel.Location = new System.Drawing.Point(235, 35);
             this.m_lbl_albumlabel.Name = "m_lbl_albumlabel";
             this.m_lbl_albumlabel.Size = new System.Drawing.Size(52, 15);
             this.m_lbl_albumlabel.TabIndex = 2;
@@ -72,7 +74,7 @@
             // 
             this.m_lbl_cat.AutoSize = true;
             this.m_lbl_cat.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_lbl_cat.Location = new System.Drawing.Point(245, 85);
+            this.m_lbl_cat.Location = new System.Drawing.Point(235, 64);
             this.m_lbl_cat.Name = "m_lbl_cat";
             this.m_lbl_cat.Size = new System.Drawing.Size(52, 15);
             this.m_lbl_cat.TabIndex = 3;
@@ -89,40 +91,53 @@
             this.m_pnl_albuminfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.m_pnl_albuminfo.Location = new System.Drawing.Point(0, 0);
             this.m_pnl_albuminfo.Name = "m_pnl_albuminfo";
-            this.m_pnl_albuminfo.Size = new System.Drawing.Size(1200, 206);
+            this.m_pnl_albuminfo.Size = new System.Drawing.Size(1200, 172);
             this.m_pnl_albuminfo.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("宋体", 11F);
-            this.label1.Location = new System.Drawing.Point(245, 110);
+            this.label1.Location = new System.Drawing.Point(235, 89);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(454, 65);
             this.label1.TabIndex = 4;
             this.label1.Text = "简介：回不去的故乡 暖暖的心，贴近彼此 今冬无雪 年少当有为 一念起，天涯咫尺 永远不落的追忆。乡村炊烟，让人魂牵梦萦 孤岛山城，后会无期 清风不扰客，留香等人寻" +
     " 曾经 芳华当惜取 忘不掉和记不起";
             // 
-            // table1
+            // m_tbl_programs
             // 
-            this.table1.Location = new System.Drawing.Point(3, 232);
-            this.table1.Name = "table1";
-            this.table1.Size = new System.Drawing.Size(1197, 430);
-            this.table1.TabIndex = 6;
-            this.table1.Text = "table1";
+            this.m_tbl_programs.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.m_tbl_programs.ColumnModel = this.m_clm_program;
+            this.m_tbl_programs.GridLines = XPTable.Models.GridLines.Rows;
+            this.m_tbl_programs.Location = new System.Drawing.Point(0, 178);
+            this.m_tbl_programs.Name = "m_tbl_programs";
+            this.m_tbl_programs.Size = new System.Drawing.Size(1200, 430);
+            this.m_tbl_programs.TabIndex = 6;
+            this.m_tbl_programs.TableModel = this.m_tbm_program;
+            this.m_tbl_programs.Click += new System.EventHandler(this.m_tbx_programs_Click);
+            // 
+            // m_tbm_program
+            // 
+            this.m_tbm_program.RowHeight = 35;
+            // 
+            // m_clm_program
+            // 
+            this.m_clm_program.HeaderHeight = 50;
             // 
             // ProgramPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.table1);
+            this.Controls.Add(this.m_tbl_programs);
             this.Controls.Add(this.m_pnl_albuminfo);
             this.Enabled = false;
             this.Name = "ProgramPanel";
             this.Size = new System.Drawing.Size(1200, 768);
+            this.Load += new System.EventHandler(this.ProgramPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_cover)).EndInit();
             this.m_pnl_albuminfo.ResumeLayout(false);
             this.m_pnl_albuminfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.table1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.m_tbl_programs)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -135,6 +150,8 @@
         private System.Windows.Forms.Label m_lbl_cat;
         private System.Windows.Forms.Panel m_pnl_albuminfo;
         private System.Windows.Forms.Label label1;
-        private XPTable.Models.Table table1;
+        private XPTable.Models.Table m_tbl_programs;
+        private XPTable.Models.TableModel m_tbm_program;
+        private XPTable.Models.ColumnModel m_clm_program;
     }
 }
