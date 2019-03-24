@@ -151,6 +151,12 @@
     <Compile Include="UserControls\PanelWithoutAutoScroll.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UserControls\ProgramItemRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ProgramItemRow.Designer.cs">
+      <DependentUpon>ProgramItemRow.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ProgramPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PagerControl.resx">
       <DependentUpon>PagerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ProgramItemRow.resx">
+      <DependentUpon>ProgramItemRow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ProgramPanel.resx">
       <DependentUpon>ProgramPanel.cs</DependentUpon>

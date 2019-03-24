@@ -54,6 +54,7 @@
             this.m_lbl_updatetime = new System.Windows.Forms.Label();
             this.m_lbl_op = new System.Windows.Forms.Label();
             this.m_lbl_sep3 = new System.Windows.Forms.Label();
+            this.programItemRow1 = new HGSystem.UserControls.ProgramItemRow();
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_cover)).BeginInit();
             this.m_pnl_albuminfo.SuspendLayout();
             this.m_pnl_header.SuspendLayout();
@@ -206,7 +207,7 @@
             // 
             this.m_lbl_name.AutoSize = true;
             this.m_lbl_name.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_lbl_name.Location = new System.Drawing.Point(144, 7);
+            this.m_lbl_name.Location = new System.Drawing.Point(152, 7);
             this.m_lbl_name.Name = "m_lbl_name";
             this.m_lbl_name.Size = new System.Drawing.Size(67, 15);
             this.m_lbl_name.TabIndex = 1;
@@ -216,7 +217,7 @@
             // 
             this.m_lbl_header_cat.AutoSize = true;
             this.m_lbl_header_cat.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_lbl_header_cat.Location = new System.Drawing.Point(373, 7);
+            this.m_lbl_header_cat.Location = new System.Drawing.Point(470, 7);
             this.m_lbl_header_cat.Name = "m_lbl_header_cat";
             this.m_lbl_header_cat.Size = new System.Drawing.Size(37, 15);
             this.m_lbl_header_cat.TabIndex = 3;
@@ -226,7 +227,7 @@
             // 
             this.m_lbl_timelen.AutoSize = true;
             this.m_lbl_timelen.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_lbl_timelen.Location = new System.Drawing.Point(291, 7);
+            this.m_lbl_timelen.Location = new System.Drawing.Point(338, 7);
             this.m_lbl_timelen.Name = "m_lbl_timelen";
             this.m_lbl_timelen.Size = new System.Drawing.Size(37, 15);
             this.m_lbl_timelen.TabIndex = 2;
@@ -236,7 +237,7 @@
             // 
             this.m_lbl_share_times.AutoSize = true;
             this.m_lbl_share_times.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_lbl_share_times.Location = new System.Drawing.Point(740, 7);
+            this.m_lbl_share_times.Location = new System.Drawing.Point(837, 7);
             this.m_lbl_share_times.Name = "m_lbl_share_times";
             this.m_lbl_share_times.Size = new System.Drawing.Size(52, 15);
             this.m_lbl_share_times.TabIndex = 6;
@@ -246,7 +247,7 @@
             // 
             this.m_lbl_play_times.AutoSize = true;
             this.m_lbl_play_times.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_lbl_play_times.Location = new System.Drawing.Point(639, 7);
+            this.m_lbl_play_times.Location = new System.Drawing.Point(736, 7);
             this.m_lbl_play_times.Name = "m_lbl_play_times";
             this.m_lbl_play_times.Size = new System.Drawing.Size(52, 15);
             this.m_lbl_play_times.TabIndex = 5;
@@ -256,7 +257,7 @@
             // 
             this.m_lbl_updatetime.AutoSize = true;
             this.m_lbl_updatetime.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_lbl_updatetime.Location = new System.Drawing.Point(492, 7);
+            this.m_lbl_updatetime.Location = new System.Drawing.Point(589, 7);
             this.m_lbl_updatetime.Name = "m_lbl_updatetime";
             this.m_lbl_updatetime.Size = new System.Drawing.Size(67, 15);
             this.m_lbl_updatetime.TabIndex = 4;
@@ -266,7 +267,7 @@
             // 
             this.m_lbl_op.AutoSize = true;
             this.m_lbl_op.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_lbl_op.Location = new System.Drawing.Point(872, 7);
+            this.m_lbl_op.Location = new System.Drawing.Point(969, 7);
             this.m_lbl_op.Name = "m_lbl_op";
             this.m_lbl_op.Size = new System.Drawing.Size(37, 15);
             this.m_lbl_op.TabIndex = 7;
@@ -281,10 +282,20 @@
             this.m_lbl_sep3.Size = new System.Drawing.Size(1200, 3);
             this.m_lbl_sep3.TabIndex = 8;
             // 
+            // programItemRow1
+            // 
+            this.programItemRow1.Font = new System.Drawing.Font("宋体", 11F);
+            this.programItemRow1.Location = new System.Drawing.Point(0, 226);
+            this.programItemRow1.Margin = new System.Windows.Forms.Padding(4);
+            this.programItemRow1.Name = "programItemRow1";
+            this.programItemRow1.Size = new System.Drawing.Size(1200, 38);
+            this.programItemRow1.TabIndex = 9;
+            // 
             // ProgramPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.programItemRow1);
             this.Controls.Add(this.m_lbl_sep3);
             this.Controls.Add(this.m_pnl_header);
             this.Controls.Add(this.m_lbl_sep2);
@@ -330,5 +341,6 @@
         private System.Windows.Forms.Label m_lbl_updatetime;
         private System.Windows.Forms.Label m_lbl_op;
         private System.Windows.Forms.Label m_lbl_sep3;
+        private ProgramItemRow programItemRow1;
     }
 }
