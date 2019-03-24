@@ -34,8 +34,10 @@
             this.m_lbl_cat = new System.Windows.Forms.Label();
             this.m_pnl_albuminfo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.table1 = new XPTable.Models.Table();
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_cover)).BeginInit();
             this.m_pnl_albuminfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             this.SuspendLayout();
             // 
             // m_pbx_cover
@@ -100,10 +102,19 @@
             this.label1.Text = "简介：回不去的故乡 暖暖的心，贴近彼此 今冬无雪 年少当有为 一念起，天涯咫尺 永远不落的追忆。乡村炊烟，让人魂牵梦萦 孤岛山城，后会无期 清风不扰客，留香等人寻" +
     " 曾经 芳华当惜取 忘不掉和记不起";
             // 
+            // table1
+            // 
+            this.table1.Location = new System.Drawing.Point(3, 232);
+            this.table1.Name = "table1";
+            this.table1.Size = new System.Drawing.Size(1197, 430);
+            this.table1.TabIndex = 6;
+            this.table1.Text = "table1";
+            // 
             // ProgramPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.table1);
             this.Controls.Add(this.m_pnl_albuminfo);
             this.Enabled = false;
             this.Name = "ProgramPanel";
@@ -111,6 +122,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_cover)).EndInit();
             this.m_pnl_albuminfo.ResumeLayout(false);
             this.m_pnl_albuminfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.table1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -123,5 +135,6 @@
         private System.Windows.Forms.Label m_lbl_cat;
         private System.Windows.Forms.Panel m_pnl_albuminfo;
         private System.Windows.Forms.Label label1;
+        private XPTable.Models.Table table1;
     }
 }
