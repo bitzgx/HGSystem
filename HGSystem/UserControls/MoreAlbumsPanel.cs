@@ -47,38 +47,32 @@ namespace HGSystem.UserControls
             if (SwitchToMAP != null)
                 SwitchToMAP(ContentPublishPanel.AlbumType.AllAlbum);
         }
-
-        private void LoadAlbums(int current_page = 1)
+        private int m_curr_page = 0;
+        private int m_curr_rows_per_page = 0;
+        private void LoadAlbums()
         {
-            HGAlbumSearchParams hgasp = new HGAlbumSearchParams(current_page, m_pgc_morealbum.RowsPerPage);
+            // TODO: 这个判断很重要，因为PagerControl会多次调用PageChange，没有必要我们不要多次调用网络。
+            if (m_curr_page == m_pgc_morealbum.CurrentPage && m_curr_rows_per_page == m_pgc_morealbum.RowsPerPage)
+            {
+                Console.WriteLine("No need to do duplicated operation");
+                return;
+            }
+            HGAlbumSearchParams hgasp = new HGAlbumSearchParams(m_pgc_morealbum.CurrentPage, m_pgc_morealbum.RowsPerPage);
+            m_curr_page = m_pgc_morealbum.CurrentPage;
+            m_curr_rows_per_page = m_pgc_morealbum.RowsPerPage;
             HGData.getInstance().Album = HGRestfulAPI.getInstance().getHGAlbum(hgasp);
             HGAlbum hga = HGData.getInstance().Album;
             if (hga == null)
                 return;
             m_pgc_morealbum.RecordCount = hga.Total;
-            // int total_page = (hga.Total - 1) / m_pgc_morealbum.RowsPerPage + 1;
-            // m_pgc_morealbum.TotalPage = total_page;
-            m_pgc_morealbum.CurrentPage = current_page;
 
             foreach (AlbumInfo ai in m_albums) 
                 this.Controls.Remove(ai);
             m_albums.Clear();
             for (int i = 0; i < hga.Data.Length; i++)
             {
-
                 HGAlbumItem hgai = hga.Data[i];
-                /*
-                AlbumType at = (AlbumType)hgai.AlbumType;
-                if (at == AlbumType.AudioAlbum)
-                {
-                    Console.WriteLine("Audio : " + hga.Data[i].AlbumName + " Url: " + hga.Data[i].FileUrl);
-                    m_alp_audio.addAlbum(hga.Data[i]);
-                }
-                else if (at == AlbumType.VideoAlbum)
-                {
-                    Console.WriteLine("Video : " + hga.Data[i].AlbumName + " Url: " + hga.Data[i].FileUrl);
-                    m_alp_video.addAlbum(hga.Data[i]);
-                }*/
+                
                 AlbumInfo ai = new AlbumInfo(m_album_type);
                 ai.AlbumName = hgai.AlbumName;
                 if (!String.IsNullOrEmpty(hgai.FileUrl))
@@ -124,12 +118,12 @@ namespace HGSystem.UserControls
 
         private void MoreAlbumsPanel_Load(object sender, EventArgs e)
         {
-            LoadAlbums();
+            m_pgc_morealbum.CurrentPage = 1;
+            // LoadAlbums();
         }
 
         private void m_pgc_morealbum_PageChange()
         {
-            // MessageBox.Show("Page change");
             Console.WriteLine("Page change");
             LoadAlbums();            
         }
