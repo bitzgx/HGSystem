@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using HGSystem.UserControls;
 using HGSystem.UI;
 using HGSystem.Model;
+using System.IO;
+using HGSystem.Helpers;
 
 namespace HGSystem.UserControls
 {
@@ -101,6 +103,20 @@ namespace HGSystem.UserControls
 
             AlbumInfo ai = new AlbumInfo(m_album_type);
             ai.AlbumName = hgai.AlbumName;
+            if (!String.IsNullOrEmpty(hgai.FileUrl))
+            {
+                try
+                {
+                    MemoryStream ms = new MemoryStream();
+                    Util.Download(HGRestfulAPI.FileServerBaseUrl + hgai.FileUrl, ms);
+                    ai.AlbumImage = Image.FromStream(ms);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("下载网络图片" + hgai.FileUrl + "失败：" + ex.Message);
+                }
+            }
+            // ai.AlbumImage = 
             ai.ClickEventHandler += ShowAlbumDetail;
             m_albums.Add(ai);
 

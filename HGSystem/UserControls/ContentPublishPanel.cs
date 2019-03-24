@@ -92,12 +92,12 @@ namespace HGSystem.UserControls
                 AlbumType at = (AlbumType)hgai.AlbumType;
                 if (at == AlbumType.AudioAlbum) 
                 { 
-                    Console.WriteLine("Audio : " + hga.Data[i].AlbumName);
+                    Console.WriteLine("Audio : " + hga.Data[i].AlbumName + " Url: " + hga.Data[i].FileUrl);
                     m_alp_audio.addAlbum(hga.Data[i]);
                 }
                 else if (at == AlbumType.VideoAlbum)
                 {
-                    Console.WriteLine("Video : " + hga.Data[i].AlbumName);
+                    Console.WriteLine("Video : " + hga.Data[i].AlbumName + " Url: " + hga.Data[i].FileUrl);
                     m_alp_video.addAlbum(hga.Data[i]);
                 }
                 
