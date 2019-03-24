@@ -67,6 +67,7 @@
             this.m_pgc_morealbum.Size = new System.Drawing.Size(498, 28);
             this.m_pgc_morealbum.TabIndex = 14;
             this.m_pgc_morealbum.TotalPage = 0;
+            this.m_pgc_morealbum.PageChange += new System.Action(this.m_pgc_morealbum_PageChange);
             // 
             // MoreAlbumsPanel
             // 

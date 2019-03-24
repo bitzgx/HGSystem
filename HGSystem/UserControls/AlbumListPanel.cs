@@ -113,6 +113,7 @@ namespace HGSystem.UserControls
                 }
                 catch (Exception ex)
                 {
+                    //TODO; don't do that, just log
                     MessageBox.Show("下载网络图片" + hgai.FileUrl + "失败：" + ex.Message);
                 }
             }
