@@ -18,6 +18,8 @@ namespace HGSystem.UserControls
         private IList<AlbumInfo> m_albums = new List<AlbumInfo>();
         private const int AlbumsPerPage = 10;
         public ContentPublishPanel.SwitchToMoreAlbumsPanel SwitchToMAP { get; set; }
+        public ContentPublishPanel.SwitchToProgramPanel SwitchToPP { get; set; }
+
         public ContentPublishPanel.SubControlHeightChagned HeightChanged { get; set; }
         private ContentPublishPanel.AlbumType m_album_type = ContentPublishPanel.AlbumType.VideoAlbum;
         public ContentPublishPanel.AlbumType PanelAlbumType
@@ -113,7 +115,9 @@ namespace HGSystem.UserControls
         }
         private void ShowAlbumDetail(ContentPublishPanel.AlbumType album_type)
         {
-            MessageBox.Show("显示专辑详情");
+            // MessageBox.Show("显示专辑详情");
+            if (SwitchToPP != null)
+                SwitchToPP();
         }
 
         private void MoreAlbumsPanel_Load(object sender, EventArgs e)
