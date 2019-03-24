@@ -21,7 +21,7 @@ namespace HGSystem.UserControls
         private ProgramPanel m_ctl_program;
 
         private int m_searchbar_y = 20;        
-        private int m_subcontrol_width = 1160;
+        private int m_subcontrol_width = 1160;        
         private int m_alp_height = 500;
         private int m_map_height = 600;
 
@@ -86,14 +86,14 @@ namespace HGSystem.UserControls
                 m_ctl_navbar = new NavigationBar();
                 m_ctl_navbar.SwitchToMAP = SwitchToMAP;
                 this.Controls.Add(m_ctl_navbar);
-                m_ctl_navbar.Size = new Size(m_subcontrol_width, m_ctl_navbar.Height); // TODO:
+                m_ctl_navbar.Size = new Size(this.Width, m_ctl_navbar.Height); // TODO:
                 m_ctl_navbar.Location = new Point(0, m_searchbar_y);                
             }
             if (m_ctl_program == null)
             {
                 m_ctl_program = new ProgramPanel();
                 this.Controls.Add(m_ctl_program);
-                m_ctl_program.Size = new Size(m_subcontrol_width, m_alp_height);
+                m_ctl_program.Size = new Size(this.Width, m_alp_height);
                 m_ctl_program.Location = new Point(0, m_searchbar_y + m_ctl_navbar.Height);
             }
 

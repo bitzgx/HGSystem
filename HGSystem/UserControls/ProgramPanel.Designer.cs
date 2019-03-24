@@ -33,7 +33,7 @@
             this.m_lbl_albumlabel = new System.Windows.Forms.Label();
             this.m_lbl_cat = new System.Windows.Forms.Label();
             this.m_pnl_albuminfo = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.m_lbl_albumintro = new System.Windows.Forms.Label();
             this.m_tc_no = new XPTable.Models.TextColumn();
             this.m_bc_name = new XPTable.Models.ButtonColumn();
             this.m_tc_timelen = new XPTable.Models.TextColumn();
@@ -42,13 +42,15 @@
             this.m_tc_play_times = new XPTable.Models.TextColumn();
             this.m_tc_share_times = new XPTable.Models.TextColumn();
             this.m_bt_operations = new XPTable.Models.ButtonColumn();
+            this.m_lbl_sep1 = new System.Windows.Forms.Label();
+            this.m_lbl_sep2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_cover)).BeginInit();
             this.m_pnl_albuminfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // m_pbx_cover
             // 
-            this.m_pbx_cover.Location = new System.Drawing.Point(44, -1);
+            this.m_pbx_cover.Location = new System.Drawing.Point(44, 17);
             this.m_pbx_cover.Name = "m_pbx_cover";
             this.m_pbx_cover.Size = new System.Drawing.Size(167, 155);
             this.m_pbx_cover.TabIndex = 0;
@@ -58,7 +60,7 @@
             // 
             this.m_lbl_albumname.AutoSize = true;
             this.m_lbl_albumname.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Bold);
-            this.m_lbl_albumname.Location = new System.Drawing.Point(234, -1);
+            this.m_lbl_albumname.Location = new System.Drawing.Point(234, 17);
             this.m_lbl_albumname.Name = "m_lbl_albumname";
             this.m_lbl_albumname.Size = new System.Drawing.Size(102, 22);
             this.m_lbl_albumname.TabIndex = 1;
@@ -68,7 +70,7 @@
             // 
             this.m_lbl_albumlabel.AutoSize = true;
             this.m_lbl_albumlabel.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_lbl_albumlabel.Location = new System.Drawing.Point(235, 35);
+            this.m_lbl_albumlabel.Location = new System.Drawing.Point(235, 53);
             this.m_lbl_albumlabel.Name = "m_lbl_albumlabel";
             this.m_lbl_albumlabel.Size = new System.Drawing.Size(52, 15);
             this.m_lbl_albumlabel.TabIndex = 2;
@@ -78,7 +80,7 @@
             // 
             this.m_lbl_cat.AutoSize = true;
             this.m_lbl_cat.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_lbl_cat.Location = new System.Drawing.Point(235, 64);
+            this.m_lbl_cat.Location = new System.Drawing.Point(235, 82);
             this.m_lbl_cat.Name = "m_lbl_cat";
             this.m_lbl_cat.Size = new System.Drawing.Size(52, 15);
             this.m_lbl_cat.TabIndex = 3;
@@ -87,7 +89,8 @@
             // m_pnl_albuminfo
             // 
             this.m_pnl_albuminfo.BackColor = System.Drawing.Color.Transparent;
-            this.m_pnl_albuminfo.Controls.Add(this.label1);
+            this.m_pnl_albuminfo.Controls.Add(this.m_lbl_sep1);
+            this.m_pnl_albuminfo.Controls.Add(this.m_lbl_albumintro);
             this.m_pnl_albuminfo.Controls.Add(this.m_pbx_cover);
             this.m_pnl_albuminfo.Controls.Add(this.m_lbl_albumname);
             this.m_pnl_albuminfo.Controls.Add(this.m_lbl_cat);
@@ -98,14 +101,14 @@
             this.m_pnl_albuminfo.Size = new System.Drawing.Size(1200, 172);
             this.m_pnl_albuminfo.TabIndex = 5;
             // 
-            // label1
+            // m_lbl_albumintro
             // 
-            this.label1.Font = new System.Drawing.Font("宋体", 11F);
-            this.label1.Location = new System.Drawing.Point(235, 89);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(454, 65);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "简介：回不去的故乡 暖暖的心，贴近彼此 今冬无雪 年少当有为 一念起，天涯咫尺 永远不落的追忆。乡村炊烟，让人魂牵梦萦 孤岛山城，后会无期 清风不扰客，留香等人寻" +
+            this.m_lbl_albumintro.Font = new System.Drawing.Font("宋体", 11F);
+            this.m_lbl_albumintro.Location = new System.Drawing.Point(235, 107);
+            this.m_lbl_albumintro.Name = "m_lbl_albumintro";
+            this.m_lbl_albumintro.Size = new System.Drawing.Size(454, 65);
+            this.m_lbl_albumintro.TabIndex = 4;
+            this.m_lbl_albumintro.Text = "简介：回不去的故乡 暖暖的心，贴近彼此 今冬无雪 年少当有为 一念起，天涯咫尺 永远不落的追忆。乡村炊烟，让人魂牵梦萦 孤岛山城，后会无期 清风不扰客，留香等人寻" +
     " 曾经 芳华当惜取 忘不掉和记不起";
             // 
             // m_tc_no
@@ -145,10 +148,29 @@
             // 
             this.m_bt_operations.Text = "操作";
             // 
+            // m_lbl_sep1
+            // 
+            this.m_lbl_sep1.BackColor = System.Drawing.Color.Transparent;
+            this.m_lbl_sep1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.m_lbl_sep1.Location = new System.Drawing.Point(0, 1);
+            this.m_lbl_sep1.Name = "m_lbl_sep1";
+            this.m_lbl_sep1.Size = new System.Drawing.Size(1200, 3);
+            this.m_lbl_sep1.TabIndex = 5;
+            // 
+            // m_lbl_sep2
+            // 
+            this.m_lbl_sep2.BackColor = System.Drawing.Color.Transparent;
+            this.m_lbl_sep2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.m_lbl_sep2.Location = new System.Drawing.Point(0, 180);
+            this.m_lbl_sep2.Name = "m_lbl_sep2";
+            this.m_lbl_sep2.Size = new System.Drawing.Size(1200, 3);
+            this.m_lbl_sep2.TabIndex = 6;
+            // 
             // ProgramPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.m_lbl_sep2);
             this.Controls.Add(this.m_pnl_albuminfo);
             this.Enabled = false;
             this.Name = "ProgramPanel";
@@ -168,7 +190,7 @@
         private System.Windows.Forms.Label m_lbl_albumlabel;
         private System.Windows.Forms.Label m_lbl_cat;
         private System.Windows.Forms.Panel m_pnl_albuminfo;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label m_lbl_albumintro;
         private XPTable.Models.TextColumn m_tc_no;
         private XPTable.Models.ButtonColumn m_bc_name;
         private XPTable.Models.TextColumn m_tc_timelen;
@@ -177,5 +199,7 @@
         private XPTable.Models.TextColumn m_tc_play_times;
         private XPTable.Models.TextColumn m_tc_share_times;
         private XPTable.Models.ButtonColumn m_bt_operations;
+        private System.Windows.Forms.Label m_lbl_sep1;
+        private System.Windows.Forms.Label m_lbl_sep2;
     }
 }
