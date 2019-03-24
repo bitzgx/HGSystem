@@ -48,7 +48,7 @@
             // 
             this.m_lbl_albumtypename.AutoSize = true;
             this.m_lbl_albumtypename.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.m_lbl_albumtypename.Location = new System.Drawing.Point(49, 25);
+            this.m_lbl_albumtypename.Location = new System.Drawing.Point(50, 25);
             this.m_lbl_albumtypename.Name = "m_lbl_albumtypename";
             this.m_lbl_albumtypename.Size = new System.Drawing.Size(76, 16);
             this.m_lbl_albumtypename.TabIndex = 5;
