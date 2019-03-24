@@ -21,12 +21,17 @@ namespace HGSystem.UserControls
         private int m_map_height = 600;
 
         public delegate void SwitchToMoreAlbumsPanel(ContentPublishPanel.AlbumType at);
+        public delegate void SubControlHeightChagned(int height);
 
         public ContentPublishPanel()
         {
             ContentPublishPanel_Load();
         }
 
+        private void HeightChanged(int height)
+        {
+            m_map.Size = new Size(m_subcontrol_width, height);
+        }
         private void SwitchToMAP(ContentPublishPanel.AlbumType at)
         {
             if (at == ContentPublishPanel.AlbumType.AllAlbum)
@@ -34,6 +39,8 @@ namespace HGSystem.UserControls
                 if (m_map != null) m_map.Hide();
                 if (m_alp_video != null) m_alp_video.Show();
                 if (m_alp_audio != null) m_alp_audio.Show();
+                // Use AutoScrollMinSize instead of AutoScroll可以帮助优化弹出MessageBox之后直接往上跳的情况，但是不能完全解决。
+                // this.AutoScrollMinSize = new Size(ClientRectangle.Width, ClientRectangle.Height);
                 return;
             }
             else
@@ -44,13 +51,18 @@ namespace HGSystem.UserControls
                 {
                     m_map = new MoreAlbumsPanel();
                     m_map.SwitchToMAP = SwitchToMAP;
-                    this.Controls.Add(m_map);
+                    m_map.HeightChanged = HeightChanged;
                     m_map.Size = new Size(m_subcontrol_width, m_map_height);
                     m_map.Location = new Point(0, m_searchbar_y + m_searchbar.Height);
+                    this.Controls.Add(m_map);
                     m_map.BringToFront();
+
                 }
                 m_map.PanelAlbumType = at;
                 m_map.Show();
+                // Use AutoScrollMinSize instead of AutoScroll可以帮助优化弹出MessageBox之后直接往上跳的情况，但是不能完全解决。
+                // this.AutoScrollMinSize = new Size(ClientRectangle.Width, ClientRectangle.Height);
+                // this.AutoScroll = true;
             }
         }
 
@@ -74,8 +86,8 @@ namespace HGSystem.UserControls
             m_alp_audio.Location = new Point(0, m_searchbar_y + m_searchbar.Height + m_alp_height);
 
             // Use AutoScrollMinSize instead of AutoScroll可以帮助优化弹出MessageBox之后直接往上跳的情况，但是不能完全解决。
-            this.AutoScrollMinSize = new Size(ClientRectangle.Width, ClientRectangle.Height);
-            // this.AutoScroll = true;
+            // this.AutoScrollMinSize = new Size(ClientRectangle.Width, ClientRectangle.Height);
+            //this.AutoScroll = true;
 
             // this.VerticalScroll.Maximum = 1200;
             displayAlbums();

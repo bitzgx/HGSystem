@@ -31,6 +31,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.m_lbl_albumtypename = new System.Windows.Forms.Label();
             this.m_lbl_back = new System.Windows.Forms.Label();
+            this.m_pgc_morealbum = new HGSystem.UserControls.PagerControl();
             this.SuspendLayout();
             // 
             // m_lbl_albumtypename
@@ -55,10 +56,23 @@
             this.m_lbl_back.Text = "< 返回";
             this.m_lbl_back.Click += new System.EventHandler(this.m_lbl_back_Click);
             // 
+            // m_pgc_morealbum
+            // 
+            this.m_pgc_morealbum.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.m_pgc_morealbum.CurrentPage = 1;
+            this.m_pgc_morealbum.Location = new System.Drawing.Point(668, 574);
+            this.m_pgc_morealbum.Name = "m_pgc_morealbum";
+            this.m_pgc_morealbum.RecordCount = 0;
+            this.m_pgc_morealbum.RowsPerPage = 5;
+            this.m_pgc_morealbum.Size = new System.Drawing.Size(498, 28);
+            this.m_pgc_morealbum.TabIndex = 14;
+            this.m_pgc_morealbum.TotalPage = 0;
+            // 
             // MoreAlbumsPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.m_pgc_morealbum);
             this.Controls.Add(this.m_lbl_back);
             this.Controls.Add(this.m_lbl_albumtypename);
             this.Name = "MoreAlbumsPanel";
@@ -74,5 +88,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label m_lbl_albumtypename;
         private System.Windows.Forms.Label m_lbl_back;
+        private PagerControl m_pgc_morealbum;
     }
 }

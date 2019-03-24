@@ -7,14 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using HGSystem.UserControls;
+using HGSystem.Model;
 
 namespace HGSystem.UserControls
 {
     public partial class MoreAlbumsPanel : UserControl
     {
         private IList<AlbumInfo> m_albums = new List<AlbumInfo>();
-
+        private int AlbumsPerPage = 14;
         public ContentPublishPanel.SwitchToMoreAlbumsPanel SwitchToMAP { get; set; }
+        public ContentPublishPanel.SubControlHeightChagned HeightChanged { get; set; }
         private ContentPublishPanel.AlbumType m_album_type = ContentPublishPanel.AlbumType.VideoAlbum;
         public ContentPublishPanel.AlbumType PanelAlbumType
         {
@@ -43,9 +45,14 @@ namespace HGSystem.UserControls
                 SwitchToMAP(ContentPublishPanel.AlbumType.AllAlbum);
         }
 
-        private void LoadAlbums()
+        private void LoadAlbums(int current_page = 1)
         {
-            for (int i = 0; i < 10; i++)
+            HGAlbumSearchParams hgasp = new HGAlbumSearchParams(current_page, AlbumsPerPage);
+            HGData.getInstance().Album = HGRestfulAPI.getInstance().getHGAlbum(hgasp);
+            m_pgc_morealbum.TotalPage = HGData.getInstance().Album.Total;
+
+            m_albums.Clear();
+            for (int i = 0; i < HGData.getInstance().Album.Data.Length; i++)
             {
                 AlbumInfo ai = new AlbumInfo(m_album_type);
                 ai.ClickEventHandler += ShowAlbumDetail;
@@ -53,9 +60,10 @@ namespace HGSystem.UserControls
                 m_albums.Add(ai);
             }
         }
+        
         private void ShowAlbums()
         {
-            int albums_count = m_albums.Count > 10 ? 10 : m_albums.Count;
+            int albums_count = m_albums.Count > AlbumsPerPage ? AlbumsPerPage : m_albums.Count;
             for (int i = 0; i < albums_count; i++)
             {
                 AlbumInfo ai = m_albums[i];
@@ -64,12 +72,14 @@ namespace HGSystem.UserControls
 
                 this.Controls.Add(ai);
             }
+            m_pgc_morealbum.Location = new Point(600, 60 + 220 * (albums_count / 5) + 220);
+            if (HeightChanged != null)
+                HeightChanged(60 + 220 * (albums_count / 5) + 220 + m_pgc_morealbum.Height + 20);
         }
         private void ShowAlbumDetail(ContentPublishPanel.AlbumType album_type)
         {
             MessageBox.Show("显示专辑详情");
         }
-
 
         private void MoreAlbumsPanel_Load(object sender, EventArgs e)
         {

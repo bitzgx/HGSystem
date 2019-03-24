@@ -42,7 +42,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -135,10 +134,10 @@
     </Compile>
     <Compile Include="UserControls\MoreAlbumsPanel.Designer.cs">
       <DependentUpon>MoreAlbumsPanel.cs</DependentUpon>
-    </Compile>	
+    </Compile>
     <Compile Include="UserControls\PagerControl.cs">
       <SubType>UserControl</SubType>
-    </Compile>	
+    </Compile>
     <Compile Include="UserControls\PagerControl.Designer.cs">
       <DependentUpon>PagerControl.cs</DependentUpon>
     </Compile>
