@@ -135,6 +135,12 @@
     </Compile>
     <Compile Include="UserControls\MoreAlbumsPanel.Designer.cs">
       <DependentUpon>MoreAlbumsPanel.cs</DependentUpon>
+    </Compile>	
+    <Compile Include="UserControls\PagerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>	
+    <Compile Include="UserControls\PagerControl.Designer.cs">
+      <DependentUpon>PagerControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PanelWithoutAutoScroll.cs">
       <SubType>Component</SubType>
@@ -184,6 +190,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\MoreAlbumsPanel.resx">
       <DependentUpon>MoreAlbumsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PagerControl.resx">
+      <DependentUpon>PagerControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SearchBar.resx">
       <DependentUpon>SearchBar.cs</DependentUpon>
