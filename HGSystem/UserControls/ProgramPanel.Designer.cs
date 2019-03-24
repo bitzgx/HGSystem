@@ -35,8 +35,16 @@
             this.m_pnl_albuminfo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.m_tbl_programs = new XPTable.Models.Table();
-            this.m_tbm_program = new XPTable.Models.TableModel();
             this.m_clm_program = new XPTable.Models.ColumnModel();
+            this.m_tbm_program = new XPTable.Models.TableModel();
+            this.m_tc_no = new XPTable.Models.TextColumn();
+            this.m_bc_name = new XPTable.Models.ButtonColumn();
+            this.m_tc_timelen = new XPTable.Models.TextColumn();
+            this.m_tc_cat = new XPTable.Models.TextColumn();
+            this.m_tc_createat = new XPTable.Models.TextColumn();
+            this.m_tc_play_times = new XPTable.Models.TextColumn();
+            this.m_tc_share_times = new XPTable.Models.TextColumn();
+            this.m_bt_operations = new XPTable.Models.ButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_cover)).BeginInit();
             this.m_pnl_albuminfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_tbl_programs)).BeginInit();
@@ -116,13 +124,59 @@
             this.m_tbl_programs.TableModel = this.m_tbm_program;
             this.m_tbl_programs.Click += new System.EventHandler(this.m_tbx_programs_Click);
             // 
+            // m_clm_program
+            // 
+            this.m_clm_program.Columns.AddRange(new XPTable.Models.Column[] {
+            this.m_tc_no,
+            this.m_bc_name,
+            this.m_tc_timelen,
+            this.m_tc_cat,
+            this.m_tc_createat,
+            this.m_tc_play_times,
+            this.m_tc_share_times,
+            this.m_bt_operations});
+            this.m_clm_program.HeaderHeight = 50;
+            // 
             // m_tbm_program
             // 
             this.m_tbm_program.RowHeight = 35;
             // 
-            // m_clm_program
+            // m_tc_no
             // 
-            this.m_clm_program.HeaderHeight = 50;
+            this.m_tc_no.Editable = false;
+            this.m_tc_no.Sortable = false;
+            this.m_tc_no.Text = "序号";
+            // 
+            // m_bc_name
+            // 
+            this.m_bc_name.Text = "节目名称";
+            this.m_bc_name.Width = 175;
+            // 
+            // m_tc_timelen
+            // 
+            this.m_tc_timelen.Editable = false;
+            this.m_tc_timelen.Text = "时长";
+            this.m_tc_timelen.Width = 100;
+            // 
+            // m_tc_cat
+            // 
+            this.m_tc_cat.Text = "类别";
+            // 
+            // m_tc_createat
+            // 
+            this.m_tc_createat.Text = "上传时间";
+            // 
+            // m_tc_play_times
+            // 
+            this.m_tc_play_times.Text = "播放量";
+            // 
+            // m_tc_share_times
+            // 
+            this.m_tc_share_times.Text = "转发量";
+            // 
+            // m_bt_operations
+            // 
+            this.m_bt_operations.Text = "操作";
             // 
             // ProgramPanel
             // 
@@ -153,5 +207,13 @@
         private XPTable.Models.Table m_tbl_programs;
         private XPTable.Models.TableModel m_tbm_program;
         private XPTable.Models.ColumnModel m_clm_program;
+        private XPTable.Models.TextColumn m_tc_no;
+        private XPTable.Models.ButtonColumn m_bc_name;
+        private XPTable.Models.TextColumn m_tc_timelen;
+        private XPTable.Models.TextColumn m_tc_cat;
+        private XPTable.Models.TextColumn m_tc_createat;
+        private XPTable.Models.TextColumn m_tc_play_times;
+        private XPTable.Models.TextColumn m_tc_share_times;
+        private XPTable.Models.ButtonColumn m_bt_operations;
     }
 }
