@@ -15,6 +15,7 @@ namespace HGSystem.UserControls
         public SearchBar()
         {
             InitializeComponent();
+            initAlbums();
         }
 
         private void m_btn_search_Click(object sender, EventArgs e)
@@ -22,12 +23,16 @@ namespace HGSystem.UserControls
             // HGRestfulAPI.getInstance().getHGAlbum(1, "", 2, 1521738981174, 1541738981174, 1, 10);
         }
 
-        private void SearchBar_Load(object sender, EventArgs e)
-        {
+        private void initAlbums()
+        { 
             // TODO: 根据界面参数来生成搜索参数
             HGAlbumSearchParams hgasp = new HGAlbumSearchParams(1, 10);
             HGData.getInstance().Album = HGRestfulAPI.getInstance().getHGAlbum(hgasp);
             // HGAlbum hga = HGRestfulAPI.getInstance().getHGAlbum(1, "", 2, 1521738981174, 1541738981174, 1, 10);
+        }
+
+        private void SearchBar_Load(object sender, EventArgs e)
+        {
         }
     }
 }

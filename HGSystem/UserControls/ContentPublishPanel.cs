@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
-
+using HGSystem.Model;
 
 namespace HGSystem.UserControls
 {
@@ -78,6 +78,30 @@ namespace HGSystem.UserControls
             // this.AutoScroll = true;
 
             // this.VerticalScroll.Maximum = 1200;
+            displayAlbums();
+        }
+
+        public void displayAlbums()
+        {
+            HGAlbum hga = HGData.getInstance().Album;
+            if (hga == null)
+                return;
+            for (int i = 0; i < hga.Data.Length; i++)
+            {
+                HGAlbumItem hgai = hga.Data[i];
+                AlbumType at = (AlbumType)hgai.AlbumType;
+                if (at == AlbumType.AudioAlbum) 
+                { 
+                    Console.WriteLine("Audio : " + hga.Data[i].AlbumName);
+                    m_alp_audio.addAlbum(hga.Data[i]);
+                }
+                else if (at == AlbumType.VideoAlbum)
+                {
+                    Console.WriteLine("Video : " + hga.Data[i].AlbumName);
+                    m_alp_video.addAlbum(hga.Data[i]);
+                }
+                
+            }
         }
     }
 }

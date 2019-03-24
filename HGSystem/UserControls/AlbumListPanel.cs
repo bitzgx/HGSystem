@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using HGSystem.UserControls;
 using HGSystem.UI;
+using HGSystem.Model;
 
 namespace HGSystem.UserControls
 {
@@ -84,9 +85,35 @@ namespace HGSystem.UserControls
             }
         }
 
+        private void setupNewAlbum()
+        {
+            AlbumInfo ai = new AlbumInfo(m_album_type);
+            ai.ClickEventHandler += NewAlbum;
+            ai.AlbumName = "新建专辑";
+            m_albums.Add(ai);            
+        }
+        public void addAlbum(HGAlbumItem hgai)
+        {
+            if (m_albums.Count == 0)
+            {
+                setupNewAlbum(); 
+            }
+
+            AlbumInfo ai = new AlbumInfo(m_album_type);
+            ai.AlbumName = hgai.AlbumName;
+            ai.ClickEventHandler += ShowAlbumDetail;
+            m_albums.Add(ai);
+
+            //if (m_albums.Count > 9)
+            //{
+            //    return;
+            //    // m_albums[index].AlbumName = hgai.AlbumName;
+            //    // m_albums[index].AlbumImage = Image.LoadImage(HGRestfulAPI.getInstance().FileServerBaseUrl + hgai.FileUrl);
+            //}
+        }
         private void AlbumListPanel_Load(object sender, EventArgs e)
         {
-            LoadAlbums();
+            // LoadAlbums();
             ShowAlbums();
         }
 
