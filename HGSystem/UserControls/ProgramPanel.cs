@@ -139,9 +139,17 @@ namespace HGSystem.UserControls
         }
 
         private void m_bte_upload_Click(object sender, EventArgs e)
-        {
-            UploadAudioForm uaf = new UploadAudioForm();
-            uaf.ShowDialog();
+        {            
+            if ((ContentPublishPanel.AlbumType)m_hgai.AlbumType == ContentPublishPanel.AlbumType.AudioAlbum)
+            {
+                UploadAudioForm uaf = new UploadAudioForm();
+                uaf.ShowDialog();
+            }
+            else
+            {
+                UploadAudioForm uaf = new UploadAudioForm();
+                uaf.ShowDialog();
+            }
         }
 
         private void m_pc_programs_PageChange()
