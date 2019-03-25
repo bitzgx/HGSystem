@@ -64,6 +64,7 @@
             this.m_pbx_delete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.m_pbx_delete.TabIndex = 4;
             this.m_pbx_delete.TabStop = false;
+            this.m_pbx_delete.Click += new System.EventHandler(this.m_pbx_delete_Click);
             // 
             // UCUploadAudioItem
             // 

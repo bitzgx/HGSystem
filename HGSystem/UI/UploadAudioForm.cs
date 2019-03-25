@@ -14,11 +14,23 @@ namespace HGSystem.UI
 {
     public partial class UploadAudioForm : Form
     {
-        private IList<UploadAudioItem> m_lst_uai = new List<UploadAudioItem>();
         private IList<UCUploadAudioItem> m_lst_uuai = new List<UCUploadAudioItem>();
+
+        public delegate void DeleteUploadAudioItem(UCUploadAudioItem uuai);
+
         public UploadAudioForm()
         {
             InitializeComponent();
+        }
+
+        private void DeleteAudioItem(UCUploadAudioItem uuai)
+        {
+            m_pl_uploadaudios.Controls.Remove(uuai);
+            m_lst_uuai.Remove(uuai);            
+            for (int i = 0; i < m_lst_uuai.Count; i++)
+            {
+                m_lst_uuai[i].Location = new Point(0, 37 * i);
+            }
         }
 
         private void m_bte_cancel_Click(object sender, EventArgs e)
@@ -53,9 +65,10 @@ namespace HGSystem.UI
                     int timelen = 280; // TODO: get timelen dynamically
                     UploadAudioItem uai = new UploadAudioItem(audiotype, name, timelen, filename);
                     UCUploadAudioItem uuai = new UCUploadAudioItem(uai);
+                    uuai.DeleteAudioItem = DeleteAudioItem;
                     m_pl_uploadaudios.Controls.Add(uuai);
                     uuai.Location = new Point(0, 37 * m_lst_uuai.Count);
-                    m_lst_uuai.Add(new UCUploadAudioItem(uai));                    
+                    m_lst_uuai.Add(uuai);                    
                 }
             }
         }
