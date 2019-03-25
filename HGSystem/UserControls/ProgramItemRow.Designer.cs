@@ -146,7 +146,7 @@
             this.Controls.Add(this.m_lbl_name);
             this.Controls.Add(this.m_lbl_no);
             this.Font = new System.Drawing.Font("宋体", 11F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ProgramItemRow";
             this.Size = new System.Drawing.Size(1333, 38);
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_delete)).EndInit();
