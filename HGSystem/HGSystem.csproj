@@ -59,6 +59,7 @@
     <Compile Include="Model\HGData.cs" />
     <Compile Include="Model\HGImageUploadRes.cs" />
     <Compile Include="Model\HGProgram.cs" />
+    <Compile Include="Model\UploadAudioItem.cs" />
     <Compile Include="UI\UploadAudioForm.cs">
       <SubType>Form</SubType>
     </Compile>

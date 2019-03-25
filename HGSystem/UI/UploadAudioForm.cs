@@ -14,6 +14,7 @@ namespace HGSystem.UI
 {
     public partial class UploadAudioForm : Form
     {
+        private IList<UploadAudioItem> m_lst_uai = new List<UploadAudioItem>();
         public UploadAudioForm()
         {
             InitializeComponent();
@@ -27,6 +28,32 @@ namespace HGSystem.UI
         private void m_bte_add_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void m_bte_shortaudio_Click(object sender, EventArgs e)
+        {
+            setupAudio("短视频");
+        }
+
+        private void m_bte_audio_Click(object sender, EventArgs e)
+        {
+            setupAudio("视频");
+        }
+
+        private void setupAudio(String audiotype)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "MP3文件(*.mp3)|*.mp3";
+                if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    string filename = openFileDialog.FileName;
+                    String name = System.IO.Path.GetFileName(filename);
+                    int timelen = 280; // TODO: get timelen dynamically
+                    UploadAudioItem uai = new UploadAudioItem(audiotype, name, timelen);
+                    m_lst_uai.Add(uai);
+                }
+            }
         }
     }
 }
