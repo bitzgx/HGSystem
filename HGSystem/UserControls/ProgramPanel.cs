@@ -16,13 +16,14 @@ namespace HGSystem.UserControls
         private HGProgram m_hg_program;
         private IList<ProgramItemRow> m_lst_pirs = new List<ProgramItemRow>();
         private HGAlbumItem m_hgai;
+        public HGAlbumItem HGAI { get { return m_hgai; } set { m_hgai = value; SetupPanel(); } }
         public ProgramPanel(HGAlbumItem hgai)
         {
             InitializeComponent();
 
-            m_hgai = hgai;
+            HGAI = hgai;
             SuggestedHeight = 600;
-            SetupPanel();
+            // SetupPanel();
             InitFakePrograms();
         }
 
@@ -34,6 +35,7 @@ namespace HGSystem.UserControls
             m_lbl_albumlabel.Text = "标签：";// TODO: + m_hgai.AlbumName ?
             m_lbl_cat.Text = "分类：" + m_hgai.AlbumCategoryName;
             m_lbl_albumintro.Text = "简介："; // TODO: + m_hgai.Al
+            //TODO: 
             if ((ContentPublishPanel.AlbumType)m_hgai.AlbumType == ContentPublishPanel.AlbumType.AudioAlbum)
                 m_bte_upload.Text = "上传音频";
             else

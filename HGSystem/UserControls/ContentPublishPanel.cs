@@ -101,9 +101,11 @@ namespace HGSystem.UserControls
             {
                 m_ctl_program = new ProgramPanel(hgai);
                 this.Controls.Add(m_ctl_program);
-                m_ctl_program.HeightChanged += HeightChanged;                
+                m_ctl_program.HeightChanged += HeightChanged;
                 m_ctl_program.Location = new Point(0, m_searchbar_y + m_ctl_navbar.Height);
             }
+            else
+                m_ctl_program.HGAI = hgai;
 
             if (m_searchbar != null) m_searchbar.Hide();
             if (m_map != null) m_map.Hide();
