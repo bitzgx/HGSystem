@@ -50,11 +50,6 @@
             this.m_lbl_sep4 = new System.Windows.Forms.Label();
             this.m_pc_programs = new HGSystem.UserControls.PagerControl();
             this.m_bte_upload = new HGSystem.ButtonEx();
-            this.m_pir_no2 = new HGSystem.UserControls.ProgramItemRow();
-            this.m_pir_no3 = new HGSystem.UserControls.ProgramItemRow();
-            this.m_pir_no4 = new HGSystem.UserControls.ProgramItemRow();
-            this.m_pir_no5 = new HGSystem.UserControls.ProgramItemRow();
-            this.m_pir_no1 = new HGSystem.UserControls.ProgramItemRow();
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_cover)).BeginInit();
             this.m_pnl_albuminfo.SuspendLayout();
             this.m_pnl_header.SuspendLayout();
@@ -280,56 +275,6 @@
             this.m_bte_upload.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.m_bte_upload.UseVisualStyleBackColor = true;
             // 
-            // m_pir_no2
-            // 
-            this.m_pir_no2.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.m_pir_no2.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_pir_no2.Location = new System.Drawing.Point(0, 264);
-            this.m_pir_no2.Margin = new System.Windows.Forms.Padding(4);
-            this.m_pir_no2.Name = "m_pir_no2";
-            this.m_pir_no2.Size = new System.Drawing.Size(1200, 38);
-            this.m_pir_no2.TabIndex = 13;
-            // 
-            // m_pir_no3
-            // 
-            this.m_pir_no3.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.m_pir_no3.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_pir_no3.Location = new System.Drawing.Point(0, 302);
-            this.m_pir_no3.Margin = new System.Windows.Forms.Padding(4);
-            this.m_pir_no3.Name = "m_pir_no3";
-            this.m_pir_no3.Size = new System.Drawing.Size(1200, 38);
-            this.m_pir_no3.TabIndex = 12;
-            // 
-            // m_pir_no4
-            // 
-            this.m_pir_no4.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.m_pir_no4.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_pir_no4.Location = new System.Drawing.Point(0, 340);
-            this.m_pir_no4.Margin = new System.Windows.Forms.Padding(4);
-            this.m_pir_no4.Name = "m_pir_no4";
-            this.m_pir_no4.Size = new System.Drawing.Size(1200, 38);
-            this.m_pir_no4.TabIndex = 11;
-            // 
-            // m_pir_no5
-            // 
-            this.m_pir_no5.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.m_pir_no5.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_pir_no5.Location = new System.Drawing.Point(0, 378);
-            this.m_pir_no5.Margin = new System.Windows.Forms.Padding(4);
-            this.m_pir_no5.Name = "m_pir_no5";
-            this.m_pir_no5.Size = new System.Drawing.Size(1200, 38);
-            this.m_pir_no5.TabIndex = 10;
-            // 
-            // m_pir_no1
-            // 
-            this.m_pir_no1.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.m_pir_no1.Font = new System.Drawing.Font("宋体", 11F);
-            this.m_pir_no1.Location = new System.Drawing.Point(0, 226);
-            this.m_pir_no1.Margin = new System.Windows.Forms.Padding(4);
-            this.m_pir_no1.Name = "m_pir_no1";
-            this.m_pir_no1.Size = new System.Drawing.Size(1200, 38);
-            this.m_pir_no1.TabIndex = 9;
-            // 
             // ProgramPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -337,11 +282,6 @@
             this.Controls.Add(this.m_pc_programs);
             this.Controls.Add(this.m_lbl_sep4);
             this.Controls.Add(this.m_bte_upload);
-            this.Controls.Add(this.m_pir_no2);
-            this.Controls.Add(this.m_pir_no3);
-            this.Controls.Add(this.m_pir_no4);
-            this.Controls.Add(this.m_pir_no5);
-            this.Controls.Add(this.m_pir_no1);
             this.Controls.Add(this.m_lbl_sep3);
             this.Controls.Add(this.m_pnl_header);
             this.Controls.Add(this.m_lbl_sep2);
@@ -389,10 +329,5 @@
         private ButtonEx m_bte_upload;
         private System.Windows.Forms.Label m_lbl_sep4;
         private PagerControl m_pc_programs;
-        private ProgramItemRow m_pir_no1;
-        private ProgramItemRow m_pir_no5;
-        private ProgramItemRow m_pir_no4;
-        private ProgramItemRow m_pir_no3;
-        private ProgramItemRow m_pir_no2;
     }
 }

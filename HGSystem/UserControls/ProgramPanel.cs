@@ -62,11 +62,7 @@ namespace HGSystem.UserControls
             }
             m_curr_page = m_pc_programs.CurrentPage;
             m_curr_rows_per_page = m_pc_programs.RowsPerPage;
-            m_pir_no1.Hide();
-            m_pir_no2.Hide();
-            m_pir_no3.Hide();
-            m_pir_no4.Hide();
-            m_pir_no5.Hide();
+
             m_lst_pirs.Clear();
             int count = calcProgramCounts();
             for ( int i = 0; i < count; i++ )
