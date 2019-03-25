@@ -50,7 +50,7 @@ namespace HGSystem.UserControls
         private int m_curr_page = 0;
         private int m_curr_rows_per_page = 0;
         public int SuggestedHeight { get; set; }
-
+        public ContentPublishPanel.SubControlHeightChagned HeightChanged { get; set; }
 
         private void LoadPrograms()
         {
@@ -63,11 +63,13 @@ namespace HGSystem.UserControls
             m_curr_page = m_pc_programs.CurrentPage;
             m_curr_rows_per_page = m_pc_programs.RowsPerPage;
 
+            foreach (ProgramItemRow pir in m_lst_pirs)
+                this.Controls.Remove(pir);
             m_lst_pirs.Clear();
             int count = calcProgramCounts();
             for ( int i = 0; i < count; i++ )
             {
-                ProgramItemRow pir = new ProgramItemRow(i + 1, m_hg_program.Programs[i]);
+                ProgramItemRow pir = new ProgramItemRow((m_curr_page - 1) * m_curr_rows_per_page + i + 1, m_hg_program.Programs[i]);
                 pir.Size = new Size(1160, 38);
                 pir.Location = new Point(0, 226 + 40 * i);
                 m_lst_pirs.Add(pir);
@@ -77,6 +79,8 @@ namespace HGSystem.UserControls
             m_bte_upload.Location = new Point(44, 226 + 40 * count + 25);
             m_pc_programs.Location = new Point(680, 226 + 40 * count + 25);
             SuggestedHeight = 226 + 40 * count + 40 + m_pc_programs.Height;
+            if (HeightChanged != null)
+                HeightChanged(this, SuggestedHeight);
             /*
             if (SuggestedHeight >= 600)
             {
@@ -112,6 +116,16 @@ namespace HGSystem.UserControls
                 m_pc_programs.RowsPerPage = 5;
                 m_pc_programs.CurrentPage = 1;
             }
+            LoadPrograms();
+        }
+
+        private void m_bte_upload_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void m_pc_programs_PageChange()
+        {
             LoadPrograms();
         }
     }

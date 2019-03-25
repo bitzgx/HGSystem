@@ -111,7 +111,7 @@ namespace HGSystem.UserControls
             }
             m_pgc_morealbum.Location = new Point(600, 70 + 220 * ((albums_count - 1)/ 5) + 220);
             if (HeightChanged != null)
-                HeightChanged(70 + 220 * ((albums_count - 1) / 5) + 220 + m_pgc_morealbum.Height + 20);
+                HeightChanged(this, 70 + 220 * ((albums_count - 1) / 5) + 220 + m_pgc_morealbum.Height + 20);
         }
         private void ShowAlbumDetail(ContentPublishPanel.AlbumType album_type)
         {

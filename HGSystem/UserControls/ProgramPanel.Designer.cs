@@ -260,6 +260,7 @@
             this.m_pc_programs.Size = new System.Drawing.Size(509, 26);
             this.m_pc_programs.TabIndex = 16;
             this.m_pc_programs.TotalPage = 0;
+            this.m_pc_programs.PageChange += new System.Action(this.m_pc_programs_PageChange);
             // 
             // m_bte_upload
             // 
@@ -274,6 +275,7 @@
             this.m_bte_upload.Text = "上传视频 ";
             this.m_bte_upload.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.m_bte_upload.UseVisualStyleBackColor = true;
+            this.m_bte_upload.Click += new System.EventHandler(this.m_bte_upload_Click);
             // 
             // ProgramPanel
             // 

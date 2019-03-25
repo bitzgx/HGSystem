@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using HGSystem.Model;
+using System.Windows.Forms;
 
 namespace HGSystem.UserControls
 {
@@ -26,7 +27,7 @@ namespace HGSystem.UserControls
         private int m_map_height = 600;
 
         public delegate void SwitchToMoreAlbumsPanel(ContentPublishPanel.AlbumType at);
-        public delegate void SubControlHeightChagned(int height);
+        public delegate void SubControlHeightChagned(UserControl uc, int height);
         public delegate void SwitchToProgramPanel();
 
         public ContentPublishPanel()
@@ -34,9 +35,16 @@ namespace HGSystem.UserControls
             ContentPublishPanel_Load();
         }
 
-        private void HeightChanged(int height)
+        private void HeightChanged(UserControl uc, int height)
         {
-            m_map.Size = new Size(m_subcontrol_width, height);
+            uc.Size = new Size(m_subcontrol_width, height);
+            if (uc== m_ctl_program)
+            {
+                if ( height > 600 )
+                    m_ctl_navbar.Size = new Size(m_subcontrol_width, m_ctl_navbar.Height);
+                else
+                    m_ctl_navbar.Size = new Size(this.Width, m_ctl_navbar.Height);
+            }
         }
 
         private void SwitchToMAP(ContentPublishPanel.AlbumType at)
@@ -93,13 +101,7 @@ namespace HGSystem.UserControls
             {
                 m_ctl_program = new ProgramPanel();
                 this.Controls.Add(m_ctl_program);
-                if (m_ctl_program.SuggestedHeight >= 600)
-                {
-                    m_ctl_program.Size = new Size(m_subcontrol_width, m_ctl_program.SuggestedHeight);
-                    m_ctl_navbar.Size = new Size(m_subcontrol_width, m_ctl_navbar.Height); // TODO:
-                }
-                else
-                    m_ctl_program.Size = new Size(this.Width, m_ctl_program.SuggestedHeight);
+                m_ctl_program.HeightChanged += HeightChanged;                
                 m_ctl_program.Location = new Point(0, m_searchbar_y + m_ctl_navbar.Height);
             }
 
