@@ -91,7 +91,7 @@ namespace HGSystem.UI
             {
                 string file = dialog.FileName;
                 Console.WriteLine("file is " + file);
-                if (getImageSize(file) > 0.1)
+                if (getImageSize(file) > 1)
                 {
                     MessageBox.Show("图片文件不要超过1M");
                     return;
