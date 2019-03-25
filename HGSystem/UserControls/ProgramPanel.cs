@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using HGSystem.Model;
+using HGSystem.UI;
 
 namespace HGSystem.UserControls
 {
@@ -121,7 +122,8 @@ namespace HGSystem.UserControls
 
         private void m_bte_upload_Click(object sender, EventArgs e)
         {
-
+            UploadAudioForm uaf = new UploadAudioForm();
+            uaf.ShowDialog();
         }
 
         private void m_pc_programs_PageChange()

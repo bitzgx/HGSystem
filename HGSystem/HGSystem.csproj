@@ -59,6 +59,12 @@
     <Compile Include="Model\HGData.cs" />
     <Compile Include="Model\HGImageUploadRes.cs" />
     <Compile Include="Model\HGProgram.cs" />
+    <Compile Include="UI\UploadAudioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UploadAudioForm.Designer.cs">
+      <DependentUpon>UploadAudioForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\NewAlbumForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     <Compile Include="UserControls\SearchBar.Designer.cs">
       <DependentUpon>SearchBar.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\UploadAudioForm.resx">
+      <DependentUpon>UploadAudioForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\NewAlbumForm.resx">
       <DependentUpon>NewAlbumForm.cs</DependentUpon>
     </EmbeddedResource>
