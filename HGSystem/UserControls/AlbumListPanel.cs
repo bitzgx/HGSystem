@@ -42,7 +42,7 @@ namespace HGSystem.UserControls
             InitializeComponent();
             this.PanelAlbumType = album_type;
         }
-
+        /*
         private void LoadAlbums()
         {
             for (int i = 0; i < 10; i++)
@@ -60,8 +60,8 @@ namespace HGSystem.UserControls
                 m_albums.Add(ai);
             }
         }
-
-        private void NewAlbum(ContentPublishPanel.AlbumType album_type)
+        */
+        private void NewAlbum(ContentPublishPanel.AlbumType album_type, HGAlbumItem hgai)
         {
             NewAlbumForm naf = new NewAlbumForm(album_type);
             // OpacityWindow naf2 = new OpacityWindow(naf);
@@ -70,11 +70,11 @@ namespace HGSystem.UserControls
             // naf2.Close();
         }
 
-        private void ShowAlbumDetail(ContentPublishPanel.AlbumType album_type)
+        private void ShowAlbumDetail(ContentPublishPanel.AlbumType at, HGAlbumItem hgai)
         {
             // MessageBox.Show("显示专辑详情");
             if (SwitchToPP != null)
-                SwitchToPP();
+                SwitchToPP(hgai);
         }
         private void ShowAlbums()
         {
@@ -91,7 +91,7 @@ namespace HGSystem.UserControls
 
         private void setupNewAlbum()
         {
-            AlbumInfo ai = new AlbumInfo(m_album_type);
+            AlbumInfo ai = new AlbumInfo(m_album_type, null);
             ai.ClickEventHandler += NewAlbum;
             ai.AlbumName = "新建专辑";
             m_albums.Add(ai);            
@@ -103,7 +103,7 @@ namespace HGSystem.UserControls
                 setupNewAlbum(); 
             }
 
-            AlbumInfo ai = new AlbumInfo(m_album_type);
+            AlbumInfo ai = new AlbumInfo(m_album_type, hgai);
             ai.AlbumName = hgai.AlbumName;
             if (!String.IsNullOrEmpty(hgai.FileUrl))
             {

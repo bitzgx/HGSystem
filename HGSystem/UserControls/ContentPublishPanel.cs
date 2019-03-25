@@ -28,7 +28,7 @@ namespace HGSystem.UserControls
 
         public delegate void SwitchToMoreAlbumsPanel(ContentPublishPanel.AlbumType at);
         public delegate void SubControlHeightChagned(UserControl uc, int height);
-        public delegate void SwitchToProgramPanel();
+        public delegate void SwitchToProgramPanel(HGAlbumItem hgai);
 
         public ContentPublishPanel()
         {
@@ -86,7 +86,7 @@ namespace HGSystem.UserControls
             }
         }
 
-        private void SwitchToPP()
+        private void SwitchToPP(HGAlbumItem hgai)
         {
             // System.Windows.Forms.MessageBox.Show("显示专辑详情");
             if (m_ctl_navbar == null)
@@ -99,7 +99,7 @@ namespace HGSystem.UserControls
             }
             if (m_ctl_program == null)
             {
-                m_ctl_program = new ProgramPanel();
+                m_ctl_program = new ProgramPanel(hgai);
                 this.Controls.Add(m_ctl_program);
                 m_ctl_program.HeightChanged += HeightChanged;                
                 m_ctl_program.Location = new Point(0, m_searchbar_y + m_ctl_navbar.Height);

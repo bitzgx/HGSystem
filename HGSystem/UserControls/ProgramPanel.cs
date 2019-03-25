@@ -15,13 +15,29 @@ namespace HGSystem.UserControls
     {
         private HGProgram m_hg_program;
         private IList<ProgramItemRow> m_lst_pirs = new List<ProgramItemRow>();
-        public ProgramPanel()
+        private HGAlbumItem m_hgai;
+        public ProgramPanel(HGAlbumItem hgai)
         {
             InitializeComponent();
 
+            m_hgai = hgai;
             SuggestedHeight = 600;
-
+            SetupPanel();
             InitFakePrograms();
+        }
+
+        private void SetupPanel()
+        {
+            if (m_hgai == null)
+                return;
+            m_lbl_albumname.Text = String.IsNullOrEmpty(m_hgai.AlbumName) ? "未知编辑" : m_hgai.AlbumName;
+            m_lbl_albumlabel.Text = "标签：";// TODO: + m_hgai.AlbumName ?
+            m_lbl_cat.Text = "分类：" + m_hgai.AlbumCategoryName;
+            m_lbl_albumintro.Text = "简介："; // TODO: + m_hgai.Al
+            if ((ContentPublishPanel.AlbumType)m_hgai.AlbumType == ContentPublishPanel.AlbumType.AudioAlbum)
+                m_bte_upload.Text = "上传音频";
+            else
+                m_bte_upload.Text = "上传视频";
         }
 
         private void InitFakePrograms()

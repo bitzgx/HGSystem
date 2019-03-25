@@ -75,7 +75,7 @@ namespace HGSystem.UserControls
             {
                 HGAlbumItem hgai = hga.Data[i];
                 
-                AlbumInfo ai = new AlbumInfo(m_album_type);
+                AlbumInfo ai = new AlbumInfo(m_album_type, hgai);
                 ai.AlbumName = hgai.AlbumName;
                 if (!String.IsNullOrEmpty(hgai.FileUrl))
                 {
@@ -113,11 +113,11 @@ namespace HGSystem.UserControls
             if (HeightChanged != null)
                 HeightChanged(this, 70 + 220 * ((albums_count - 1) / 5) + 220 + m_pgc_morealbum.Height + 20);
         }
-        private void ShowAlbumDetail(ContentPublishPanel.AlbumType album_type)
+        private void ShowAlbumDetail(ContentPublishPanel.AlbumType at, HGAlbumItem hgai)
         {
             // MessageBox.Show("显示专辑详情");
             if (SwitchToPP != null)
-                SwitchToPP();
+                SwitchToPP(hgai);
         }
 
         private void MoreAlbumsPanel_Load(object sender, EventArgs e)
