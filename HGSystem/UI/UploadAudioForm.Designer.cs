@@ -53,7 +53,7 @@
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.m_bte_upload);
             this.panel1.Controls.Add(this.m_bte_cancel);
-            this.panel1.Location = new System.Drawing.Point(333, 128);
+            this.panel1.Location = new System.Drawing.Point(348, 150);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(511, 438);
             this.panel1.TabIndex = 24;
@@ -167,7 +167,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UploadAudioForm";
-            this.Opacity = 0.95D;
+            this.Opacity = 0.97D;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "UploadAudioForm";

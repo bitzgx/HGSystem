@@ -57,6 +57,7 @@
             // 
             // m_pbx_delete
             // 
+            this.m_pbx_delete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.m_pbx_delete.Image = ((System.Drawing.Image)(resources.GetObject("m_pbx_delete.Image")));
             this.m_pbx_delete.Location = new System.Drawing.Point(382, 8);
             this.m_pbx_delete.Name = "m_pbx_delete";
