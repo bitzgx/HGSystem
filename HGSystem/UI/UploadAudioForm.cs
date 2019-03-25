@@ -15,6 +15,7 @@ namespace HGSystem.UI
     public partial class UploadAudioForm : Form
     {
         private IList<UploadAudioItem> m_lst_uai = new List<UploadAudioItem>();
+        private IList<UCUploadAudioItem> m_lst_uuai = new List<UCUploadAudioItem>();
         public UploadAudioForm()
         {
             InitializeComponent();
@@ -50,8 +51,11 @@ namespace HGSystem.UI
                     string filename = openFileDialog.FileName;
                     String name = System.IO.Path.GetFileName(filename);
                     int timelen = 280; // TODO: get timelen dynamically
-                    UploadAudioItem uai = new UploadAudioItem(audiotype, name, timelen);
-                    m_lst_uai.Add(uai);
+                    UploadAudioItem uai = new UploadAudioItem(audiotype, name, timelen, filename);
+                    UCUploadAudioItem uuai = new UCUploadAudioItem(uai);
+                    m_pl_uploadaudios.Controls.Add(uuai);
+                    uuai.Location = new Point(0, 37 * m_lst_uuai.Count);
+                    m_lst_uuai.Add(new UCUploadAudioItem(uai));                    
                 }
             }
         }
