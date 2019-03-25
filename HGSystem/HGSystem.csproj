@@ -60,6 +60,12 @@
     <Compile Include="Model\HGImageUploadRes.cs" />
     <Compile Include="Model\HGProgram.cs" />
     <Compile Include="Model\UploadAudioItem.cs" />
+    <Compile Include="UI\UploadVideoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UploadVideoForm.Designer.cs">
+      <DependentUpon>UploadVideoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UploadAudioForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     <Compile Include="UserControls\UCUploadAudioItem.Designer.cs">
       <DependentUpon>UCUploadAudioItem.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\UploadVideoForm.resx">
+      <DependentUpon>UploadVideoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UploadAudioForm.resx">
       <DependentUpon>UploadAudioForm.cs</DependentUpon>
     </EmbeddedResource>

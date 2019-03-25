@@ -147,8 +147,8 @@ namespace HGSystem.UserControls
             }
             else
             {
-                UploadAudioForm uaf = new UploadAudioForm();
-                uaf.ShowDialog();
+                UploadVideoForm uvf = new UploadVideoForm();
+                uvf.ShowDialog();
             }
         }
 
