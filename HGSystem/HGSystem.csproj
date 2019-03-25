@@ -58,6 +58,7 @@
     <Compile Include="Model\HGComCategory.cs" />
     <Compile Include="Model\HGData.cs" />
     <Compile Include="Model\HGImageUploadRes.cs" />
+    <Compile Include="Model\HGProgram.cs" />
     <Compile Include="UI\NewAlbumForm.cs">
       <SubType>Form</SubType>
     </Compile>

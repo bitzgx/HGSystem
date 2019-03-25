@@ -93,7 +93,13 @@ namespace HGSystem.UserControls
             {
                 m_ctl_program = new ProgramPanel();
                 this.Controls.Add(m_ctl_program);
-                m_ctl_program.Size = new Size(this.Width, m_alp_height);
+                if (m_ctl_program.SuggestedHeight >= 600)
+                {
+                    m_ctl_program.Size = new Size(m_subcontrol_width, m_ctl_program.SuggestedHeight);
+                    m_ctl_navbar.Size = new Size(m_subcontrol_width, m_ctl_navbar.Height); // TODO:
+                }
+                else
+                    m_ctl_program.Size = new Size(this.Width, m_ctl_program.SuggestedHeight);
                 m_ctl_program.Location = new Point(0, m_searchbar_y + m_ctl_navbar.Height);
             }
 

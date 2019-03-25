@@ -47,14 +47,14 @@
             this.m_lbl_op = new System.Windows.Forms.Label();
             this.m_pnl_header = new System.Windows.Forms.Panel();
             this.m_lbl_sep3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.m_lbl_sep4 = new System.Windows.Forms.Label();
+            this.m_pc_programs = new HGSystem.UserControls.PagerControl();
             this.m_bte_upload = new HGSystem.ButtonEx();
             this.m_pir_no2 = new HGSystem.UserControls.ProgramItemRow();
             this.m_pir_no3 = new HGSystem.UserControls.ProgramItemRow();
             this.m_pir_no4 = new HGSystem.UserControls.ProgramItemRow();
             this.m_pir_no5 = new HGSystem.UserControls.ProgramItemRow();
             this.m_pir_no1 = new HGSystem.UserControls.ProgramItemRow();
-            this.m_pc_programs = new HGSystem.UserControls.PagerControl();
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_cover)).BeginInit();
             this.m_pnl_albuminfo.SuspendLayout();
             this.m_pnl_header.SuspendLayout();
@@ -245,14 +245,26 @@
             this.m_lbl_sep3.Size = new System.Drawing.Size(1200, 3);
             this.m_lbl_sep3.TabIndex = 8;
             // 
-            // label1
+            // m_lbl_sep4
             // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(0, 420);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1200, 7);
-            this.label1.TabIndex = 15;
+            this.m_lbl_sep4.BackColor = System.Drawing.Color.Transparent;
+            this.m_lbl_sep4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.m_lbl_sep4.Location = new System.Drawing.Point(0, 420);
+            this.m_lbl_sep4.Name = "m_lbl_sep4";
+            this.m_lbl_sep4.Size = new System.Drawing.Size(1200, 7);
+            this.m_lbl_sep4.TabIndex = 15;
+            // 
+            // m_pc_programs
+            // 
+            this.m_pc_programs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.m_pc_programs.CurrentPage = 1;
+            this.m_pc_programs.Location = new System.Drawing.Point(563, 439);
+            this.m_pc_programs.Name = "m_pc_programs";
+            this.m_pc_programs.RecordCount = 0;
+            this.m_pc_programs.RowsPerPage = 5;
+            this.m_pc_programs.Size = new System.Drawing.Size(509, 26);
+            this.m_pc_programs.TabIndex = 16;
+            this.m_pc_programs.TotalPage = 0;
             // 
             // m_bte_upload
             // 
@@ -318,24 +330,12 @@
             this.m_pir_no1.Size = new System.Drawing.Size(1200, 38);
             this.m_pir_no1.TabIndex = 9;
             // 
-            // m_pc_programs
-            // 
-            this.m_pc_programs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(217)))), ((int)(((byte)(247)))));
-            this.m_pc_programs.CurrentPage = 0;
-            this.m_pc_programs.Location = new System.Drawing.Point(563, 439);
-            this.m_pc_programs.Name = "m_pc_programs";
-            this.m_pc_programs.RecordCount = 0;
-            this.m_pc_programs.RowsPerPage = 5;
-            this.m_pc_programs.Size = new System.Drawing.Size(509, 26);
-            this.m_pc_programs.TabIndex = 16;
-            this.m_pc_programs.TotalPage = 0;
-            // 
             // ProgramPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.m_pc_programs);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.m_lbl_sep4);
             this.Controls.Add(this.m_bte_upload);
             this.Controls.Add(this.m_pir_no2);
             this.Controls.Add(this.m_pir_no3);
@@ -386,13 +386,13 @@
         private System.Windows.Forms.Label m_lbl_op;
         private System.Windows.Forms.Panel m_pnl_header;
         private System.Windows.Forms.Label m_lbl_sep3;
+        private ButtonEx m_bte_upload;
+        private System.Windows.Forms.Label m_lbl_sep4;
+        private PagerControl m_pc_programs;
         private ProgramItemRow m_pir_no1;
         private ProgramItemRow m_pir_no5;
         private ProgramItemRow m_pir_no4;
         private ProgramItemRow m_pir_no3;
         private ProgramItemRow m_pir_no2;
-        private ButtonEx m_bte_upload;
-        private System.Windows.Forms.Label label1;
-        private PagerControl m_pc_programs;
     }
 }
