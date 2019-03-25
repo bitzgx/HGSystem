@@ -35,7 +35,7 @@
             this.m_lbl_cat = new System.Windows.Forms.Label();
             this.m_lbl_createat = new System.Windows.Forms.Label();
             this.m_lbl_play_times = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.m_lbl_share_times = new System.Windows.Forms.Label();
             this.m_pbx_delete = new System.Windows.Forms.PictureBox();
             this.m_pbx_share = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_pbx_delete)).BeginInit();
@@ -99,14 +99,14 @@
             this.m_lbl_play_times.Text = "10万";
             this.m_lbl_play_times.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // m_lbl_share_times
             // 
-            this.label1.Location = new System.Drawing.Point(819, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 16);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "10万";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.m_lbl_share_times.Location = new System.Drawing.Point(819, 10);
+            this.m_lbl_share_times.Name = "m_lbl_share_times";
+            this.m_lbl_share_times.Size = new System.Drawing.Size(102, 16);
+            this.m_lbl_share_times.TabIndex = 6;
+            this.m_lbl_share_times.Text = "10万";
+            this.m_lbl_share_times.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // m_pbx_delete
             // 
@@ -138,7 +138,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.m_pbx_share);
             this.Controls.Add(this.m_pbx_delete);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.m_lbl_share_times);
             this.Controls.Add(this.m_lbl_play_times);
             this.Controls.Add(this.m_lbl_createat);
             this.Controls.Add(this.m_lbl_cat);
@@ -163,7 +163,7 @@
         private System.Windows.Forms.Label m_lbl_cat;
         private System.Windows.Forms.Label m_lbl_createat;
         private System.Windows.Forms.Label m_lbl_play_times;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label m_lbl_share_times;
         private System.Windows.Forms.PictureBox m_pbx_delete;
         private System.Windows.Forms.PictureBox m_pbx_share;
     }

@@ -67,7 +67,7 @@ namespace HGSystem.UserControls
             int count = calcProgramCounts();
             for ( int i = 0; i < count; i++ )
             {
-                ProgramItemRow pir = new ProgramItemRow();
+                ProgramItemRow pir = new ProgramItemRow(i + 1, m_hg_program.Programs[i]);
                 pir.Size = new Size(1160, 38);
                 pir.Location = new Point(0, 226 + 40 * i);
                 m_lst_pirs.Add(pir);
