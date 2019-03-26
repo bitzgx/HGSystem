@@ -277,6 +277,10 @@ namespace HGSystem
             // this is also OK without timeout setting
             // String res = new ApplicationUtil().UploadByHttp(FileServerBaseUrl + resturl, filename);
 
+            // This doesn't work
+            //filename = @"E:\work\testmp3.mp3";
+            //String res = WebRequestExtensions.UploadFile(filename, FileServerBaseUrl + resturl, "audio/mp3");
+
             HGImageUploadRes hgiur = parseHGImageUploadResponse(res);
             return hgiur;
 

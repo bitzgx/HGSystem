@@ -312,4 +312,97 @@ namespace HGSystem.Helpers
         #endregion
     }
 
+    public static class WebRequestExtensions
+    {
+        public static Stream GetRequestStreamWithTimeout(
+            this WebRequest request,
+            int? millisecondsTimeout = null)
+        {
+            return AsyncToSyncWithTimeout(
+                request.BeginGetRequestStream,
+                request.EndGetRequestStream,
+                millisecondsTimeout ?? request.Timeout);
+        }
+
+        public static WebResponse GetResponseWithTimeout(
+            this HttpWebRequest request,
+            int? millisecondsTimeout = null)
+        {
+            return AsyncToSyncWithTimeout(
+                request.BeginGetResponse,
+                request.EndGetResponse,
+                millisecondsTimeout ?? request.Timeout);
+        }
+
+        private static T AsyncToSyncWithTimeout<T>(
+            Func<AsyncCallback, object, IAsyncResult> begin,
+            Func<IAsyncResult, T> end,
+            int millisecondsTimeout)
+        {
+            var iar = begin(null, null);
+            if (!iar.AsyncWaitHandle.WaitOne(millisecondsTimeout))
+            {
+                var ex = new TimeoutException();
+                throw new WebException(ex.Message, ex, WebExceptionStatus.Timeout, null);
+            }
+            return end(iar);
+        }
+
+        public static String UploadFile(string path, string url, string contentType)
+        {
+            // Build request
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = WebRequestMethods.Http.Post;
+            request.AllowWriteStreamBuffering = false;
+            request.ContentType = contentType;
+            string fileName = Path.GetFileName(path);
+            request.Headers["Content-Disposition"] = string.Format("attachment; filename=\"{0}\"", fileName);
+
+            try
+            {
+                // Open source file
+                using (var fileStream = File.OpenRead(path))
+                {
+                    // Set content length based on source file length
+                    request.ContentLength = fileStream.Length;
+
+                    // Get the request stream with the default timeout
+                    using (var requestStream = WebRequestExtensions.GetRequestStreamWithTimeout(request, 300000))
+                    {
+                        // Upload the file with no timeout
+                        // fileStream.CopyTo(requestStream);
+
+                        byte[] bArr = new byte[fileStream.Length];
+                        fileStream.Read(bArr, 0, bArr.Length);
+                        fileStream.Close();
+                        Stream postStream = request.GetRequestStream();
+                        requestStream.Write(bArr, 0, bArr.Length);
+                    }
+                }
+
+                // Get response with the default timeout, and parse the response body
+                using (var response = WebRequestExtensions.GetResponseWithTimeout(request, 300000))
+                using (var responseStream = response.GetResponseStream())
+                using (var reader = new StreamReader(responseStream))
+                {
+                    string json = reader.ReadToEnd();
+                    return json;
+                    //var j = JObject.Parse(json);
+                    //return j.Value<long>("Id");
+                }
+            }
+            catch (WebException ex)
+            {
+                if (ex.Status == WebExceptionStatus.Timeout)
+                {
+                    Console.WriteLine("Timeout while uploading '{0}':'{1}'", fileName, ex.Message);
+                }
+                else
+                {
+                    Console.WriteLine("Error while uploading '{0}':'{1}'", fileName, ex.Message);
+                }
+                throw;
+            }
+        }
+    }
 }
