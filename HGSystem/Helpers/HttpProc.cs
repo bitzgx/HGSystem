@@ -254,7 +254,7 @@ namespace HGSystem.Helpers
                 throw new Exception("文本域和文件域不能同时为空。");
 
             //写入结束标记
-            byte[] buffer = encoding.GetBytes("--" + BOUNDARY + "--/r/n");
+            byte[] buffer = encoding.GetBytes("--" + BOUNDARY + "--\r\n");
             postStream.Write(buffer, 0, buffer.Length);
 
             //添加请求标头
@@ -281,8 +281,8 @@ namespace HGSystem.Helpers
             foreach (string var in strArr)
             {
                 Match M = RE.Match(var, "([^=]+)=(.+)");
-                textField += "--" + BOUNDARY + "/r/n";
-                textField += "Content-Disposition: form-data; name=/"" + M.Groups[1].Value + "/"/r/n/r/n" + M.Groups[2].Value + "/r/n";
+                textField += "--" + BOUNDARY + "\r\n";
+                textField += "Content-Disposition: form-data; name=\"" + M.Groups[1].Value + "\"\r\n\r\n" + M.Groups[2].Value + "\r\n";
             }
             byte[] buffer = encoding.GetBytes(textField);
             postStream.Write(buffer, 0, buffer.Length);
@@ -301,9 +301,9 @@ namespace HGSystem.Helpers
             {
                 Match M = RE.Match(var, "([^=]+)=(.+)");
                 filePath = M.Groups[2].Value;
-                fileField = "--" + BOUNDARY + "/r/n";
-                fileField += "Content-Disposition: form-data; name=/"" + M.Groups[1].Value + "/"; filename=/"" + Path.GetFileName(filePath) + "/"/r/n";
-                fileField += "Content-Type: image/jpeg/r/n/r/n";
+                fileField = "--" + BOUNDARY + "\r\n";
+                fileField += "Content-Disposition: form-data; name=\"" + M.Groups[1].Value + "\"; filename=\"" + Path.GetFileName(filePath) + "\"\r\n";
+                fileField += "Content-Type: image/jpeg\r\n\r\n";
  
                 byte[] buffer = encoding.GetBytes(fileField);
                 postStream.Write(buffer, 0, buffer.Length);
@@ -323,7 +323,7 @@ namespace HGSystem.Helpers
                 fs.Dispose();
                 fs = null;
  
-                buffer = encoding.GetBytes("/r/n");
+                buffer = encoding.GetBytes("\r\n");
                 postStream.Write(buffer, 0, buffer.Length);
             }
         }
@@ -440,18 +440,18 @@ namespace HGSystem.Helpers
             requestHeaders.Add("Accept-Language", "zh-cn");
             requestHeaders.Add("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)");
 
-            string headers = request + "/r/n";
+            string headers = request + "\r\n";
 
             foreach (string key in requestHeaders)
             {
-                headers += key + ":" + requestHeaders[key] + "/r/n";
+                headers += key + ":" + requestHeaders[key] + "\r\n";
             }
 
             //有Cookie就带上Cookie
-            if (cookie != "") { headers += "Cookie:" + cookie + "/r/n"; }
+            if (cookie != "") { headers += "Cookie:" + cookie + "\r\n"; }
 
             //空行，请求头结束
-            headers += "/r/n";
+            headers += "\r\n";
 
             strRequestHeaders = headers;
             requestHeaders.Clear();
@@ -584,7 +584,7 @@ namespace HGSystem.Helpers
             string html = encoding.GetString(buffer);
             StringReader sr = new StringReader(html);
 
-            int start = html.IndexOf("/r/n/r/n") + 4;//找到空行位置
+            int start = html.IndexOf("\r\n\r\n") + 4;//找到空行位置
             strResponseHeaders = html.Substring(0, start);//获取响应头文本
 
             //获取响应状态码
@@ -595,7 +595,7 @@ namespace HGSystem.Helpers
                 string line = sr.ReadLine();
 
                 //分析此行字符串,获取服务器响应状态码
-                Match M = RE.Match(line, @"/d/d/d");
+                Match M = RE.Match(line, @"\d\d\d");
                 if (M.Success)
                 {
                     statusCode = int.Parse(M.Value);
@@ -650,7 +650,7 @@ namespace HGSystem.Helpers
                             //将16进制的实体大小字符串转换为10进制
                             int length = int.Parse(M.Value, System.Globalization.NumberStyles.AllowHexSpecifier);
                             responseHeaders.Add("Content-Length", length.ToString());//添加响应标头
-                            strResponseHeaders += M.Value + "/r/n";
+                            strResponseHeaders += M.Value + "\r\n";
                         }
                     }
                     break;//跳出循环
