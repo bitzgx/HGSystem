@@ -94,7 +94,7 @@ namespace HGSystem.Helpers
     ///<summary>
     ///实现向WEB服务器发送和接收数据
     ///</summary>
-    public class WebClient
+    public class MyWebClient
     {
         private WebHeaderCollection requestHeaders, responseHeaders;
         private TcpClient clientSocket;
@@ -115,7 +115,7 @@ namespace HGSystem.Helpers
         ///<summary>
         ///初始化WebClient类
         ///</summary>
-        public WebClient()
+        public MyWebClient()
         {
             responseHeaders = new WebHeaderCollection();
             requestHeaders = new WebHeaderCollection();

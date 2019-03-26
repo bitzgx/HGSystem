@@ -51,8 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\Base64Helper.cs" />
+    <Compile Include="Helpers\CurlHelper.cs" />
     <Compile Include="Helpers\EncryptHelper.cs" />
     <Compile Include="Helpers\DebugHelper.cs" />
+    <Compile Include="Helpers\HttpProc.cs" />
     <Compile Include="Helpers\Util.cs" />
     <Compile Include="Model\HGAlbum.cs" />
     <Compile Include="Model\HGComCategory.cs" />

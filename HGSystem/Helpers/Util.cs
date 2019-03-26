@@ -117,7 +117,7 @@ namespace HGSystem.Helpers
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "POST";
-            request.Timeout = 10000;
+            request.Timeout = 1000000;
             var postStream = new MemoryStream();
             #region 处理Form表单文件上传
             //通过表单上传文件

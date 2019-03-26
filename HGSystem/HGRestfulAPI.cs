@@ -263,11 +263,21 @@ namespace HGSystem
             //String res = HttpHelper.UploadFileByOffset(FileServerBaseUrl + resturl, filename, 0);
             //Console.WriteLine(res);
             
-            String resturl = "/file/ihongka_files/upload";            
+            // TODO: this seems OK for image but not OK for mp3/mp4
+            String resturl = "/file/ihongka_files/upload";
+            // filename = @"E:\work\testmp3.mp3";
             FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
             String res = Util.HttpRequestPost(FileServerBaseUrl + resturl, "media", filename, fs);
             HGImageUploadRes hgiur = parseHGImageUploadResponse(res);
             return hgiur;
+
+            //String resturl = "/file/ihongka_files/upload";
+            ////MyWebClient wc = new MyWebClient();
+            ////String res = wc.UploadFile(FileServerBaseUrl + resturl, "file=" + filename);
+            //String res = CurlHelper.PostFile(FileServerBaseUrl + resturl, filename);
+            //HGImageUploadRes hgiur = parseHGImageUploadResponse(res);
+            //return hgiur;
+
         }
 
         private HGImageUploadRes parseHGImageUploadResponse(String json_data)
