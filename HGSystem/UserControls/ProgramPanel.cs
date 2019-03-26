@@ -46,6 +46,7 @@ namespace HGSystem.UserControls
             if (Helpers.DebugHelper.getInstance().SamplePrograms)
                 hgpp = new HGProgramParams("190323013156596558242", 2, 1, 5, 1);
             m_hg_program = HGRestfulAPI.getInstance().getHGProgram(hgpp);
+            LoadPrograms(true);
         }
 
         private void InitFakePrograms()
@@ -79,10 +80,10 @@ namespace HGSystem.UserControls
         public int SuggestedHeight { get; set; }
         public ContentPublishPanel.SubControlHeightChagned HeightChanged { get; set; }
 
-        private void LoadPrograms()
+        private void LoadPrograms(bool force_reload = false)
         {
             // TODO: 这个判断很重要，因为PagerControl会多次调用PageChange，没有必要我们不要多次调用网络。
-            if (m_curr_page == m_pc_programs.CurrentPage && m_curr_rows_per_page == m_pc_programs.RowsPerPage)
+            if (!force_reload && m_curr_page == m_pc_programs.CurrentPage && m_curr_rows_per_page == m_pc_programs.RowsPerPage)
             {
                 Console.WriteLine("No need to do duplicated operation");
                 return;

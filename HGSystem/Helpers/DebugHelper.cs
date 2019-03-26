@@ -14,7 +14,7 @@ namespace HGSystem.Helpers
             FastUserLogin = true;
             FakeNewAlbum = false;
             SampleAlbums = true;
-            SamplePrograms = true;
+            SamplePrograms = false;
         }
 
         public static DebugHelper getInstance()
