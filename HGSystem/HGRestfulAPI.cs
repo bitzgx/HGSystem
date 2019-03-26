@@ -265,6 +265,8 @@ namespace HGSystem
             
             // TODO: this seems OK for image but not OK for mp3/mp4
             String resturl = "/file/ihongka_files/upload";
+            // TODO: how to get SHA256 for file
+            String sha256 = EncryptHelper.SHA256(filename, true);
             // filename = @"E:\work\testmp3.mp3";
             FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
             String res = Util.HttpRequestPost(FileServerBaseUrl + resturl, "media", filename, fs);
