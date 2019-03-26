@@ -111,6 +111,6 @@ namespace HGSystem.Model
         //    Programs = new List<HGProgramItem>();
         //}
         public int Total { get; set; }
-        public HGProgramItem[] Programs { get; set; }
+        public HGProgramItem[] Data { get; set; }
     }
 }

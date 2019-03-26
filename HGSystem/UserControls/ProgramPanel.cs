@@ -45,7 +45,7 @@ namespace HGSystem.UserControls
             HGProgramParams hgpp = new HGProgramParams(m_hgai.AlbumId, 2, 1, 5, 1);
             if (Helpers.DebugHelper.getInstance().SamplePrograms)
                 hgpp = new HGProgramParams("190323013156596558242", 2, 1, 5, 1);
-            HGProgram hgp = HGRestfulAPI.getInstance().getHGProgram(hgpp);
+            m_hg_program = HGRestfulAPI.getInstance().getHGProgram(hgpp);
         }
 
         private void InitFakePrograms()
@@ -97,7 +97,7 @@ namespace HGSystem.UserControls
             for ( int i = 0; i < count; i++ )
             {
                 int index = (m_curr_page - 1) * m_curr_rows_per_page + i + 1;
-                ProgramItemRow pir = new ProgramItemRow(index, m_hg_program.Programs[index - 1]);
+                ProgramItemRow pir = new ProgramItemRow(index, m_hg_program.Data[index - 1]);
                 pir.Size = new Size(1160, 38);
                 pir.Location = new Point(0, 226 + 40 * i);
                 m_lst_pirs.Add(pir);
@@ -120,7 +120,7 @@ namespace HGSystem.UserControls
         }
         private int calcProgramCounts()
         {
-            int total_programs = m_hg_program.Programs.Length;
+            int total_programs = m_hg_program.Data.Length;
             int rows_per_page = m_curr_rows_per_page;
             if (rows_per_page <= 0)
                 return 0;
@@ -140,7 +140,7 @@ namespace HGSystem.UserControls
         {
             if (m_hg_program != null)
             {
-                m_pc_programs.RecordCount = m_hg_program.Programs.Length;
+                m_pc_programs.RecordCount = m_hg_program.Data.Length;
                 m_pc_programs.RowsPerPage = 5;
                 m_pc_programs.CurrentPage = 1;
             }
