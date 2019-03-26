@@ -265,11 +265,18 @@ namespace HGSystem
             
             // TODO: this seems OK for image but not OK for mp3/mp4
             String resturl = "/file/ihongka_files/upload";
+            
             // TODO: how to get SHA256 for file
+            // filename = @"E:\work\testmp4.mp4";
             String sha256 = EncryptHelper.SHA256(filename, true);
-            // filename = @"E:\work\testmp3.mp3";
+                        
+            // TODO: this is OK
             FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
             String res = Util.HttpRequestPost(FileServerBaseUrl + resturl, "media", filename, fs);
+
+            // this is also OK without timeout setting
+            // String res = new ApplicationUtil().UploadByHttp(FileServerBaseUrl + resturl, filename);
+
             HGImageUploadRes hgiur = parseHGImageUploadResponse(res);
             return hgiur;
 

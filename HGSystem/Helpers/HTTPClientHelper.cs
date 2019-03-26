@@ -228,7 +228,7 @@ namespace HGSystem
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uriStr);
  
                 request.Method = "POST";
-                request.Timeout = 10000;
+                // request.Timeout = 10000; // TODO: No timeout should be set for the Fileupload. but there is a problem that if the network situation is really bad, how to end this connection?
                 var boundary = "******"+DateTime.Now.Ticks+"***";
                 request.ContentType = "multipart/form-data; boundary=" + boundary;
                 boundary = "--" + boundary;
