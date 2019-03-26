@@ -20,12 +20,18 @@ namespace HGSystem.UserControls
             m_index = index;
             m_hgi = hgi;
             m_lbl_no.Text = m_index.ToString();
-            m_lbl_name.Text = hgi.Name;
-            m_lbl_timelen.Text = getTimeLen(hgi.TimeLen);
-            m_lbl_cat.Text = hgi.Category;
-            m_lbl_createat.Text = hgi.CreatedAt.ToShortDateString();
-            m_lbl_play_times.Text = getAmount(hgi.PlayAmount);
-            m_lbl_share_times.Text = getAmount(hgi.ShareAmount);
+            // m_lbl_name.Text = hgi.Name;
+            m_lbl_name.Text = hgi.MaterialName;
+            // m_lbl_timelen.Text = getTimeLen(hgi.TimeLen);
+            m_lbl_timelen.Text = getTimeLen(hgi.MaterialDuration);
+            // m_lbl_cat.Text = hgi.Category;
+            m_lbl_cat.Text = hgi.MaterialAlbumCategoryName;
+            // m_lbl_createat.Text = hgi.CreatedAt.ToShortDateString();
+            m_lbl_createat.Text = Helpers.Util.ConvertLongToDateTime(hgi.MaterialCtime).ToShortDateString();
+            // m_lbl_play_times.Text = getAmount(hgi.PlayAmount);
+            m_lbl_play_times.Text = hgi.LikeCount;
+            // m_lbl_share_times.Text = getAmount(hgi.ShareAmount);
+            m_lbl_share_times.Text = hgi.LikeCount;
         }
 
         private String getAmount(int amount)

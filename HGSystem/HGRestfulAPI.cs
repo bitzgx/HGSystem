@@ -190,6 +190,18 @@ namespace HGSystem
             String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, json_params, buildHeaderParams(null));
             return parseHGData<HGAlbum>(res);
         }
+        
+        public HGProgram getHGProgram(HGProgramParams hgpp)
+        {
+            String resturl = "/platform/material";
+            if (hgpp == null)
+                throw new Exception("查询节目传递的参数为空");
+            string json_params = JsonConvert.SerializeObject(hgpp);
+            Console.WriteLine(json_params);
+            String res = HttpHelper.HttpPostJsonData(BaseUrl + resturl, json_params, buildHeaderParams(null));
+            HGProgram hgprogram = parseHGData<HGProgram>(res);
+            return hgprogram;
+        }
         public bool newHGAlbum(HGAlbumParams hgap)
         {
             String resturl = "/platform/album/add";

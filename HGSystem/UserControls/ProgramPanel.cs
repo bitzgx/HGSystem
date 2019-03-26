@@ -24,7 +24,7 @@ namespace HGSystem.UserControls
             HGAI = hgai;
             SuggestedHeight = 600;
             // SetupPanel();
-            InitFakePrograms();
+            // InitFakePrograms();
         }
 
         private void SetupPanel()
@@ -40,6 +40,12 @@ namespace HGSystem.UserControls
                 m_bte_upload.Text = "上传音频";
             else
                 m_bte_upload.Text = "上传视频";
+
+            // TODO: hgpp's isCheck and materialRecycleStatus doens't make sence and can't be retreived by m_hgai
+            HGProgramParams hgpp = new HGProgramParams(m_hgai.AlbumId, 2, 1, 5, 1);
+            if (Helpers.DebugHelper.getInstance().SamplePrograms)
+                hgpp = new HGProgramParams("190323013156596558242", 2, 1, 5, 1);
+            HGProgram hgp = HGRestfulAPI.getInstance().getHGProgram(hgpp);
         }
 
         private void InitFakePrograms()
@@ -48,6 +54,7 @@ namespace HGSystem.UserControls
             {
                 m_hg_program = new HGProgram();
             }
+            /*
             m_hg_program.Programs.Add(new HGProgramItem("2018年3月20日.mp3", 320, "短音频", DateTime.Now, 100000, 100000));
             m_hg_program.Programs.Add(new HGProgramItem("2018年3月20日.mp3", 310, "短音频", DateTime.Now.AddDays(1), 2000, 2000));
             m_hg_program.Programs.Add(new HGProgramItem("2018年3月20日.mp3", 310, "短音频", DateTime.Now.AddDays(1), 2000, 2000));
@@ -59,6 +66,7 @@ namespace HGSystem.UserControls
             m_hg_program.Programs.Add(new HGProgramItem("2018年3月20日.mp3", 310, "短音频", DateTime.Now.AddDays(1), 2000, 2000));
             m_hg_program.Programs.Add(new HGProgramItem("2018年3月20日.mp3", 310, "短音频", DateTime.Now.AddDays(1), 2000, 2000));
             m_hg_program.Programs.Add(new HGProgramItem("2018年3月20日.mp3", 310, "短音频", DateTime.Now.AddDays(1), 2000, 2000));
+             */
         }
 
         private void m_tbx_programs_Click(object sender, EventArgs e)
@@ -112,7 +120,7 @@ namespace HGSystem.UserControls
         }
         private int calcProgramCounts()
         {
-            int total_programs = m_hg_program.Programs.Count;
+            int total_programs = m_hg_program.Programs.Length;
             int rows_per_page = m_curr_rows_per_page;
             if (rows_per_page <= 0)
                 return 0;
@@ -132,7 +140,7 @@ namespace HGSystem.UserControls
         {
             if (m_hg_program != null)
             {
-                m_pc_programs.RecordCount = m_hg_program.Programs.Count;
+                m_pc_programs.RecordCount = m_hg_program.Programs.Length;
                 m_pc_programs.RowsPerPage = 5;
                 m_pc_programs.CurrentPage = 1;
             }

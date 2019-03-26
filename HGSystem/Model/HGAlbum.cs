@@ -6,14 +6,14 @@ using System.Text;
 
 namespace HGSystem.Model
 {
+    public class SliceParams
+    {
+        public int pageNum { get; set; }
+        public int pageSize { get; set; }
+    } 
     // 搜索专辑的参数
     public class HGAlbumSearchParams
     {
-        public class SliceParams
-        {
-            public int pageNum { get; set; }
-            public int pageSize { get; set; }
-        } 
         public HGAlbumSearchParams(String on, int[] ac, String ai, String an, String abs, String ctbt, String ctet, int pn, int ps, String dir, String ob)
         {
             orgName = on;
