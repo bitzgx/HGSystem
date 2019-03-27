@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.m_pbx_logo = new System.Windows.Forms.PictureBox();
             this.m_lbl_sep = new System.Windows.Forms.Label();
-            this.m_ctl_contentpublish = new HGSystem.UserControls.ContentPublishPanel();
             this.m_btn_close = new HGSystem.ButtonEx();
             this.m_btn_minimize = new HGSystem.ButtonEx();
             this.m_btn_notifications = new HGSystem.ButtonEx();
@@ -59,16 +58,6 @@
             this.m_lbl_sep.Name = "m_lbl_sep";
             this.m_lbl_sep.Size = new System.Drawing.Size(1200, 3);
             this.m_lbl_sep.TabIndex = 10;
-            // 
-            // m_ctl_contentpublish
-            // 
-            this.m_ctl_contentpublish.AutoScroll = true;
-            this.m_ctl_contentpublish.AutoScrollMinSize = new System.Drawing.Size(200, 100);
-            this.m_ctl_contentpublish.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.m_ctl_contentpublish.Location = new System.Drawing.Point(0, 40);
-            this.m_ctl_contentpublish.Name = "m_ctl_contentpublish";
-            this.m_ctl_contentpublish.Size = new System.Drawing.Size(1200, 700);
-            this.m_ctl_contentpublish.TabIndex = 11;
             // 
             // m_btn_close
             // 
@@ -114,6 +103,7 @@
             this.m_btn_settings.Size = new System.Drawing.Size(32, 30);
             this.m_btn_settings.TabIndex = 5;
             this.m_btn_settings.UseVisualStyleBackColor = true;
+            this.m_btn_settings.Click += new System.EventHandler(this.m_btn_settings_Click);
             // 
             // m_btn_profile
             // 
@@ -174,7 +164,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1200, 740);
-            this.Controls.Add(this.m_ctl_contentpublish);
             this.Controls.Add(this.m_lbl_sep);
             this.Controls.Add(this.m_btn_close);
             this.Controls.Add(this.m_btn_minimize);

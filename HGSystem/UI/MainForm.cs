@@ -18,6 +18,7 @@ namespace HGSystem
         // private ContentPublishPanel m_ctl_contentpublish;
         private HGPlan m_ctl_hgplan;
         private Material m_ctl_material;
+        private UCSettings m_ctl_settings;
 
         private int m_uc_offset;
         private ButtonEx m_buttonex_checked;
@@ -216,6 +217,19 @@ namespace HGSystem
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void m_btn_settings_Click(object sender, EventArgs e)
+        {
+            if (m_ctl_settings == null)
+            {
+                m_ctl_settings = new UCSettings();
+                this.Controls.Add(m_ctl_settings);                
+            }
+            BringToFrontUserControl(m_ctl_settings);
+            m_ctl_settings.Location = new Point(0, 86);
+            m_ctl_settings.Size = new Size(this.Width, this.Height - 86);
+            InitNavigators();
         }
 
     }
